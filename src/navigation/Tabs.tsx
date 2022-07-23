@@ -1,15 +1,17 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen, FavoritesScreen, AccountScreen, CartScreen } from './../screens/screens';
-import { COLORS, FONTS, ICONS } from './../constants';
+import { Title } from './../components/importComponents';
+import { COLORS, ICONS } from './../constants';
 
 const tabsContent = [
   {name: 'Home', screen: HomeScreen, icon: ICONS.homeIcon},
   {name: 'Favorites', screen: FavoritesScreen, icon: ICONS.favoritesIcon},
   {name: 'Account', screen: AccountScreen, icon: ICONS.accountIcon},
   {name: 'Cart', screen: CartScreen, icon: ICONS.cartIcon},
-]
+];
+
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
@@ -39,9 +41,14 @@ const Tabs = () => {
                       <View style={focused ? {alignItems: 'center', position: 'absolute', bottom: 10} : {alignItems: 'center'}}>
                         <Image
                           source={tabContent.icon}
-                          style={{width: 20, height: 20, marginBottom: 4, tintColor: focused ? COLORS.red : COLORS.mediumGrey}}
+                          style={{width: 20, height: 20, marginBottom: 4, tintColor: focused ? COLORS.red : COLORS.mediumGray}}
                         />
-                        <Text style={{fontFamily: FONTS.poppinsMedium, fontSize: 14, color: focused ? COLORS.red : COLORS.mediumGrey}}>{tabContent.name}</Text>
+                        <Title 
+                          fontSize={14} 
+                          color={focused ? COLORS.red : COLORS.mediumGray}
+                        >
+                          {tabContent.name}
+                        </Title>
                       </View>
                     );
                   }
