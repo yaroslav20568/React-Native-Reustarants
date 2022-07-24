@@ -2,20 +2,22 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 interface IImage {
-	img: object, 
-	width: number,
-	height: number
+  img: string, 
+  width: number,
+  height: number,
+  borderRadius?: number
 } 
 
 const ImageStyle = styled.Image<IImage>`
-  width: ${(props) => props.width};
+  width: ${(props) => props.width === 100 ? `${props.width}%` : props.width};
   height: ${(props) => props.height};
+  borderRadius: ${(props => props.borderRadius || 0)};
 `;
 
 const Image = (props: IImage) => {
   return (
 	<>
-		<ImageStyle {...props} source={props.img} />
+		<ImageStyle {...props} source={{uri: props.img}} />
 	</>
   )
 }

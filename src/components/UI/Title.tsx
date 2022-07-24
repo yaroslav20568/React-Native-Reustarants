@@ -12,11 +12,11 @@ interface ITitle {
 }
 
 const TitleStyle = styled.Text<ITitle>`
-  font-family: ${(props) => props.fontFamily || FONTS.poppinsMedium};
-  font-size: ${(props) => props.fontSize || FONTS_SIZE.small14};
+  fontFamily: ${(props) => props.fontFamily || FONTS.poppinsMedium};
+  fontSize: ${(props) => props.fontSize || FONTS_SIZE.small14};
   color: ${(props) => props.color || COLORS.black};
-  margin-top: ${(props) => props.marginTop || 0};
-  margin-bottom: ${(props) => props.marginBottom || 0};
+  marginTop: ${(props) => props.marginTop || 0};
+  marginBottom: ${(props) => props.marginBottom || 0};
 `;
 
 const Title = (props: ITitle) => {

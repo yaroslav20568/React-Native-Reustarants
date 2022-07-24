@@ -36,5 +36,5 @@ const restaurantsApi = createApi({
   }),
 });
 
-export {restaurantsApi};
-export const {useGetRestaurantsQuery} = restaurantsApi;
+export { restaurantsApi };
+export const { useGetRestaurantsQuery } = restaurantsApi;

@@ -2,6 +2,7 @@ enum COLORS {
   white = '#fff',
   darkWhite = '#F2F5F8',
   black = '#000',
+  lightGray = '#d3d3d3',
   mediumGray = '#667C8A',
   darkGray = '#435D6B',
   // lightPink1 = '#F8C6C8',
