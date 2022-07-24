@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen, FavoritesScreen, AccountScreen, CartScreen } from './../screens/screens';
+import { HomeScreen, FavoritesScreen, AccountScreen, CartScreen } from '../screens/importScreens';
 import { Title } from './../components/importComponents';
 import { COLORS, ICONS } from './../constants';
 
