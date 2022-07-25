@@ -40,7 +40,7 @@ const RestaurantRating = styled.View`
 const RestaurantItem = ({image_url, name, rating, price}: IRestaurant) => {
 
   return (
-    <RestaurantItemContainer>
+    <RestaurantItemContainer activeOpacity={1}>
 	  <Image 
 	    img={image_url} 
 		width={100}

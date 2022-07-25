@@ -23,7 +23,7 @@ const Tabs = () => {
           tabBarStyle: {
             height: 66,
             paddingVertical: 6,
-            position: 'absolute',
+            position: 'relative',
             bottom: 0
           }
         }}
