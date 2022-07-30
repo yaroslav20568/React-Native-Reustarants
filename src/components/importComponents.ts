@@ -8,3 +8,4 @@ export { default as SearchPlacesInput } from './Home/SearchPlacesInput';
 export { default as RestaurantsList } from './Home/RestaurantsList';
 export { default as RestaurantItem } from './Home/RestaurantItem';
 export { default as Loader } from './Home/Loader';
+export { default as HeaderTabs } from './Home/HeaderTabs';

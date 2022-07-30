@@ -5,7 +5,6 @@ enum COLORS {
   lightGray = '#d3d3d3',
   mediumGray = '#667C8A',
   darkGray = '#435D6B',
-  // lightPink1 = '#F8C6C8',
   lightPink = '#F9C8CA',
   darkPink = '#F27D82',
   red = '#C8161D',
@@ -37,6 +36,6 @@ enum ICONS {
   cartIcon = require('./assets/icons/tabs/cartIcon.png')
 }
 
-const YELP_API_KEY: string = 'Ikh6rOdGP7a3LpPTCfumachEEBl4XuDxA-0xdr0hwah4yWaaI6ZYRvN-CalASYMCfqTzrvN5HRVEotEVl9cZm4hLHCe0WHyR9cJU8M1PMRYAyRwMToH3rQdQl5_QYXYx'; 
+const YELP_API_KEY: string = 'URmBU2AAP3ghri1S_fKYgD_KMNEgyuY35WMgG7IQpmBgeYb5LAzIUPtQONnCTxVMf2XXxbnscBuylVHWXQsoPwDjCf-JmoEeSpykessKFmhU7qd7FE_jAImYhffkYnYx'; 
 
 export { COLORS, FONTS, FONTS_SIZE, ICONS, YELP_API_KEY };

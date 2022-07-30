@@ -8,7 +8,7 @@ export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const useActions = () => {
-	const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-	return bindActionCreators(AllActions, dispatch);
+  return bindActionCreators(AllActions, dispatch);
 };

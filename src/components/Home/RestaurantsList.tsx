@@ -9,8 +9,8 @@ const RestaurantsList = () => {
   return (
     <View>
 	  {!isLoading ? 
-			data?.businesses.map((restaurant) => <RestaurantItem {...restaurant} />) : 
-			<Loader />}
+	    data?.businesses.map((restaurant) => <RestaurantItem {...restaurant} />) : 
+	    <Loader />}
     </View>
   );
 };

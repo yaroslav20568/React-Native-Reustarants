@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import { Title, HomeHeader, RestaurantsList } from '../../components/importComponents';
+import { Title, HomeHeader, RestaurantsList, HeaderTabs } from '../../components/importComponents';
 import { ScreenContainer } from '../styles';
 import { FONTS, COLORS, FONTS_SIZE } from '../../constants';
 // import { useAppSelector, useActions } from '../../redux/typedHooks';
 // import { useGetRestaurantsQuery } from '../../redux/RTKQuery/restaurantsApi';
+
+const nameTabs: Array<string> = ['Delivery', 'Pickup'];
 
 const HomeScreen = () => {
 //   const { cityName } = useAppSelector((state) => state.city)
@@ -19,20 +21,9 @@ const HomeScreen = () => {
   return (
     <ScreenContainer>
 	  <HomeHeader />
-
-      {/* <Title
-        fontFamily={FONTS.poppinsSemiBold}
-        fontSize={FONTS_SIZE.large30}
-      >
-        Hey !
-      </Title>
-
-      <Title
-        fontSize={FONTS_SIZE.medium16}
-        color={COLORS.mediumGray}
-      >
-        Let’s get your order
-      </Title> */}
+	  
+	  <HeaderTabs nameTabs={nameTabs} />
+	  
 	  <RestaurantsList />
     </ScreenContainer>
   );
