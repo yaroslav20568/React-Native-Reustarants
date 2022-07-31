@@ -36,6 +36,6 @@ enum ICONS {
   cartIcon = require('./assets/icons/tabs/cartIcon.png')
 }
 
-const YELP_API_KEY: string = 'URmBU2AAP3ghri1S_fKYgD_KMNEgyuY35WMgG7IQpmBgeYb5LAzIUPtQONnCTxVMf2XXxbnscBuylVHWXQsoPwDjCf-JmoEeSpykessKFmhU7qd7FE_jAImYhffkYnYx'; 
+const YELP_API_KEY: string = 'hERrSIqRYCBJ17qb2PBv5a9BX1pt1fL64UGAsaQUddKolA4ujZX50qCd1W3U6e1ZbFboCpFiKrfZcQtDb759Fkzm9RqVn4E0Wy-UbL-vx7F5KMsG86Lag6u2-HHmYnYx'; 
 
 export { COLORS, FONTS, FONTS_SIZE, ICONS, YELP_API_KEY };

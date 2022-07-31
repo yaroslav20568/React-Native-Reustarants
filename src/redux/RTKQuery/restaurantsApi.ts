@@ -5,7 +5,8 @@ interface IRestaurant {
   image_url: string,
   name: string,
   rating: number,
-  price: string
+  price: string,
+  transactions: Array<string>
 }
 
 interface IRestaurantsResp {
@@ -27,9 +28,9 @@ const restaurantsApi = createApi({
     baseUrl: 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/',
   }),
   endpoints: builder => ({
-    getRestaurants: builder.query<IRestaurantsResp, ''>({
-      query: () => ({
-        url: 'businesses/search?term=restaurants&location=SanDiego',
+    getRestaurants: builder.query<IRestaurantsResp, string>({
+      query: (cityName) => ({
+        url: `businesses/search?term=restaurants&location=${cityName}`,
         headers: headers,
       }),
     }),

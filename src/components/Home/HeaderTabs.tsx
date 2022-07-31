@@ -30,12 +30,12 @@ const HeaderTab = styled.TouchableOpacity<IHeaderTab>`
 `;
 
 const HeaderTabs = ({ nameTabs }: PropsHeaderTabs) => {
-  const shippingMethod = useAppSelector(state => state.shippingMethod);
+  const shippingMethod = useAppSelector((state) => state.shippingMethod);
   const { setShippingMethod } = useActions();
   
   return (
 	<HeaderTabsContainer>
-	  {nameTabs.map(nameTab => (
+	  {nameTabs.map((nameTab) => (
 		<HeaderTab 
 		  marginRight={10} 
 		  nameTab={nameTab} 
