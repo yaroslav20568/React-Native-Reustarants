@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import { Title, Image } from '../importComponents';
 import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
 
-interface IRestaurant {
+interface PropsRestaurant {
   image_url: string;
   name: string;
   rating: number;
@@ -37,7 +37,7 @@ const RestaurantRating = styled.View`
   borderRadius: 100;
 `;
 
-const RestaurantItem = ({image_url, name, rating, price}: IRestaurant) => {
+const RestaurantItem = ({ image_url, name, rating, price }: PropsRestaurant) => {
 
   return (
     <RestaurantItemContainer activeOpacity={1}>
