@@ -1,0 +1,18 @@
+import React from 'react';
+import { View, Text } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { RestaurantDetail } from '../screens/importScreens';
+import Tabs from './Tabs';
+
+const Stacks = () => {
+  const Stack = createNativeStackNavigator();
+
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Tabs" component={Tabs} />
+      <Stack.Screen name="RestaurantDetail" component={RestaurantDetail} />
+	</Stack.Navigator>
+  )
+}
+
+export default Stacks;

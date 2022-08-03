@@ -1,6 +1,7 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
+import { useNavigation } from '@react-navigation/native';
 import { Title, Image } from '../importComponents';
 import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
 
@@ -38,9 +39,13 @@ const RestaurantRating = styled.View`
 `;
 
 const RestaurantItem = ({ image_url, name, rating, price }: PropsRestaurant) => {
+  const navigation: any = useNavigation();
 
   return (
-    <RestaurantItemContainer activeOpacity={1}>
+    <RestaurantItemContainer 
+	  activeOpacity={1} 
+	  onPress={() => navigation.navigate('RestaurantDetail')}
+	>
 	  <Image 
 	    img={image_url} 
 		width={100}
