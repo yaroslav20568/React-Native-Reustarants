@@ -1,5 +1,6 @@
 export { default as Title } from './UI/Title';
 export { default as Image } from './UI/Image';
+export { default as Line } from './UI/Line';
 
 export { default as HomeHeader } from './Home/HomeHeader';
 export { default as BurgerMenu } from './Home/BurgerMenu';
