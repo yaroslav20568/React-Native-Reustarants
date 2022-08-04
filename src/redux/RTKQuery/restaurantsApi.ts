@@ -1,12 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { YELP_API_KEY } from '../../constants';
 
+interface ICategory {
+  title: string
+}
+
 interface IRestaurant {
   image_url: string,
   name: string,
   rating: number,
   price: string,
-  transactions: Array<string>
+  transactions: Array<string>,
+  categories: Array<ICategory>,
+  review_count: number
 }
 
 interface IRestaurantsResp {

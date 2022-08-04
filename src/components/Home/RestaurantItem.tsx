@@ -5,11 +5,17 @@ import { useNavigation } from '@react-navigation/native';
 import { Title, Image } from '../importComponents';
 import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
 
+interface ICategory {
+  title: string
+}
+
 interface PropsRestaurant {
   image_url: string;
   name: string;
   rating: number;
   price: string;
+  categories: Array<ICategory>;
+  review_count: number;
 }
 
 const RestaurantItemContainer = styled.TouchableOpacity`
@@ -38,13 +44,13 @@ const RestaurantRating = styled.View`
   borderRadius: 100;
 `;
 
-const RestaurantItem = ({ image_url, name, rating, price }: PropsRestaurant) => {
+const RestaurantItem = ({ image_url, name, rating, price, categories, review_count }: PropsRestaurant) => {
   const navigation: any = useNavigation();
 
   return (
     <RestaurantItemContainer 
 	  activeOpacity={1} 
-	  onPress={() => navigation.navigate('RestaurantDetail')}
+	  onPress={() => navigation.navigate('RestaurantDetail', { image_url, name, rating, price, categories, review_count })}
 	>
 	  <Image 
 	    img={image_url} 

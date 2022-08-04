@@ -11,3 +11,7 @@ export { default as Loader } from './Home/Loader';
 export { default as HeaderTabs } from './Home/HeaderTabs';
 export { default as Categories } from './Home/Categories';
 export { default as CategoryItem } from './Home/CategoryItem';
+
+export { default as RestaurantInfo } from './RestaurantDetail/RestaurantInfo';
+export { default as MenuItems } from './RestaurantDetail/MenuItems';
+export { default as MenuItem } from './RestaurantDetail/MenuItem';
