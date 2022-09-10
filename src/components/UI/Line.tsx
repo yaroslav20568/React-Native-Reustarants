@@ -15,7 +15,7 @@ const LineContainer = styled.View<ILine>`
 
 const Line = (props: ILine) => {
   return (
-	<LineContainer {...props} />
+		<LineContainer {...props} />
   )
 }
 

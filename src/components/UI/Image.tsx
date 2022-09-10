@@ -16,9 +16,9 @@ const ImageStyle = styled.Image<IImage>`
 
 const Image = (props: IImage) => {
   return (
-	<>
-	  <ImageStyle {...props} source={{uri: props.img}} />
-	</>
+		<>
+			<ImageStyle {...props} source={{uri: props.img}} />
+		</>
   )
 }
 

@@ -43,11 +43,8 @@ const HomeScreen = () => {
   return (
     <ScreenContainer>
 	  <HomeHeader />
-	  
 	  <HeaderTabs nameTabs={nameTabs} />
-
 	  <Categories categoryItems={categoryItems} />
-	  
 	  <RestaurantsList />
     </ScreenContainer>
   );
