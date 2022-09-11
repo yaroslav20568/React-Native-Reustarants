@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { cityReducer, shippingMethodReducer } from './importReducers';
+import { cityReducer, shippingMethodReducer, cartReducer } from './importReducers';
 import { restaurantsApi } from './RTKQuery/restaurantsApi';
 
 const store = configureStore({
   reducer: {
     city: cityReducer,
-	shippingMethod: shippingMethodReducer,
-	[restaurantsApi.reducerPath]: restaurantsApi.reducer
+		shippingMethod: shippingMethodReducer,
+		cart: cartReducer,
+		[restaurantsApi.reducerPath]: restaurantsApi.reducer
   },
 
   middleware: (getDefaultMiddleware) =>

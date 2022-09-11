@@ -6,10 +6,26 @@ import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
 import { Title, Image, Line } from '../importComponents';
 
 interface IFood {
+	id: number,
 	title: string,
 	description: string,
 	price: string,
 	image: string
+}
+
+interface IPayload {
+	isChecked: boolean;
+	item: IFood;
+}
+
+interface IProps {
+	id: number,
+	title: string,
+	description: string,
+	price: string,
+	image: string,
+	onAddToCart: (obj: IPayload) => void,
+	isItemInCart: (id: number) => boolean
 }
 
 const MenuItemContainer = styled.View`
@@ -26,11 +42,25 @@ const TitlesContainer = styled.View`
 	width: 65.7%;
 `;
 
-const MenuItem = ({title, description, price, image}: IFood) => {
-	const [isSelected, setIsSelected] = useState<boolean>(false);
+const MenuItem = ({id, title, description, price, image, onAddToCart, isItemInCart}: IProps) => {
+	// const [isSelected, setIsSelected] = useState<boolean>(false);
 
-	const onChecked = (): void => {
-		setIsSelected(prevState => !prevState);
+	// const onChecked = (): void => {
+	// 	setIsSelected(prevState => !prevState);
+	// };
+
+	const handleAddToCart = (isChecked: boolean) => {
+		const obj = {
+			isChecked,
+			item: {
+				id,
+				title,
+				description,
+				price,
+				image
+			}
+		}
+		onAddToCart(obj);
 	};
 
   return (
@@ -42,8 +72,9 @@ const MenuItem = ({title, description, price, image}: IFood) => {
 					unfillColor="transparent"
 					innerIconStyle={{ borderRadius: 0, borderColor: COLORS.mediumGray }}
 					iconStyle={{ borderRadius: 0 }}
-					isChecked={isSelected}
-					onPress={onChecked}
+					isChecked={isItemInCart(id)}
+					// onPress={onChecked}
+					onPress={handleAddToCart}
 				/>
 				<TitlesContainer>
 					<Title 
