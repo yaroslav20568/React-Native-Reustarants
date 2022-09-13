@@ -16,10 +16,12 @@ interface IPayload {
 
 interface IState {
 	items: Array<IFood>;
+	totalPrice: number;
 }
 
 const initialState:IState = {
-	items: []
+	items: [],
+	totalPrice: 0
 };
 
 const cartSlice = createSlice({
@@ -32,6 +34,7 @@ const cartSlice = createSlice({
 			} else {
 				state.items = state.items.filter(item => item.id !== action.payload.item.id);
 			}
+			state.totalPrice = state.items.reduce((acc, item) => acc + Number(item.price.replace('$', '')), 0);
 		}
 	}
 });

@@ -8,7 +8,7 @@ interface ITitle {
   color?: string,
   marginTop?: number,
   marginBottom?: number,
-  children: string
+  children: string | number
 }
 
 const TitleStyle = styled.Text<ITitle>`
