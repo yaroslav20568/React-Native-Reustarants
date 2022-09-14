@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import styled from 'styled-components/native';
 import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
@@ -43,12 +42,6 @@ const TitlesContainer = styled.View`
 `;
 
 const MenuItem = ({id, title, description, price, image, onAddToCart, isItemInCart}: IProps) => {
-	// const [isSelected, setIsSelected] = useState<boolean>(false);
-
-	// const onChecked = (): void => {
-	// 	setIsSelected(prevState => !prevState);
-	// };
-
 	const handleAddToCart = (isChecked: boolean) => {
 		const obj = {
 			isChecked,
@@ -73,7 +66,6 @@ const MenuItem = ({id, title, description, price, image, onAddToCart, isItemInCa
 					innerIconStyle={{ borderRadius: 0, borderColor: COLORS.mediumGray }}
 					iconStyle={{ borderRadius: 0 }}
 					isChecked={isItemInCart(id)}
-					// onPress={onChecked}
 					onPress={handleAddToCart}
 				/>
 				<TitlesContainer>

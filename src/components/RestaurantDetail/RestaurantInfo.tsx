@@ -19,34 +19,34 @@ interface PropsRestaurantInfo {
 
 const InfoTexts = styled.View`
   paddingVertical: 10;
-  paddingLeft: 15;
+  paddingHorizontal: 15;
 `;
 
 const RestaurantInfo = ({ image_url, name, rating, price, categories, review_count }: PropsRestaurantInfo) => {
   const categoriesString = categories.reduce((str, currValue) => str + currValue.title + ' · ', '') + `${price} · 💳 · ${rating} ⭐ · (${review_count}+)`;
   
   return (
-	<View>
-	  <Image
-        img={image_url}
-		width={100}
-		height={190}
-	  />
-	  <InfoTexts>
-        <Title 
-          fontSize={FONTS_SIZE.large24}
-		  fontFamily={FONTS.poppinsSemiBold} 
-        >
-		  {name}
-        </Title>
-		<Title
-		  fontFamily={FONTS.poppinsRegular}
-		  fontSize={FONTS_SIZE.small14}
-		>
-		  {categoriesString && categoriesString}
-		</Title>
-      </InfoTexts>
-	</View>
+		<View>
+			<Image
+				img={image_url}
+				width={100}
+				height={190}
+			/>
+			<InfoTexts>
+				<Title 
+					fontSize={FONTS_SIZE.large24}
+					fontFamily={FONTS.poppinsSemiBold} 
+				>
+					{name}
+				</Title>
+				<Title
+					fontFamily={FONTS.poppinsRegular}
+					fontSize={FONTS_SIZE.small14}
+				>
+					{categoriesString && categoriesString}
+				</Title>
+			</InfoTexts>
+		</View>
   )
 }
 

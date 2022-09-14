@@ -17,3 +17,4 @@ export { default as RestaurantInfo } from './RestaurantDetail/RestaurantInfo';
 export { default as MenuItems } from './RestaurantDetail/MenuItems';
 export { default as MenuItem } from './RestaurantDetail/MenuItem';
 export { default as ViewCart } from './RestaurantDetail/ViewCart';
+export { default as Modal } from './RestaurantDetail/Modal';
