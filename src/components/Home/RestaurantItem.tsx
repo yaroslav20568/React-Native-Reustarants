@@ -4,18 +4,9 @@ import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 import { Title, Image } from '../importComponents';
 import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
+import { IRestaurant } from './../../types';
 
-interface ICategory {
-  title: string
-}
-
-interface PropsRestaurant {
-  image_url: string;
-  name: string;
-  rating: number;
-  price: string;
-  categories: Array<ICategory>;
-  review_count: number;
+interface PropsRestaurant extends IRestaurant {
 }
 
 const RestaurantItemContainer = styled.TouchableOpacity`
@@ -49,34 +40,34 @@ const RestaurantItem = ({ image_url, name, rating, price, categories, review_cou
 
   return (
     <RestaurantItemContainer 
-	  activeOpacity={1} 
-	  onPress={() => navigation.navigate('RestaurantDetail', { image_url, name, rating, price, categories, review_count })}
-	>
-	  <Image 
-	    img={image_url} 
-		width={100}
-		height={180} 
-	  />
+			activeOpacity={1} 
+			onPress={() => navigation.navigate('RestaurantDetail', { image_url, name, rating, price, categories, review_count })}
+		>
+			<Image 
+				img={image_url} 
+				width={100}
+				height={180} 
+			/>
 
       <RestaurantInfo>
-		<View>
-		  <Title 
-		    fontFamily={FONTS.poppinsSemiBold}
-			fontSize={FONTS_SIZE.medium16}
-		  >
-			{name}
-		  </Title>
-		  <Title
-		    color={COLORS.mediumGray}
-		  >
-			{price}
-		  </Title>
-		</View>
+				<View>
+					<Title 
+						fontFamily={FONTS.poppinsSemiBold}
+						fontSize={FONTS_SIZE.medium16}
+					>
+						{name}
+					</Title>
+					<Title
+						color={COLORS.mediumGray}
+					>
+						{price}
+					</Title>
+				</View>
 
-		<RestaurantRating>
-		  <Title>{String(rating)}</Title>
-		</RestaurantRating>
-	  </RestaurantInfo>
+				<RestaurantRating>
+					<Title>{String(rating)}</Title>
+				</RestaurantRating>
+			</RestaurantInfo>
     </RestaurantItemContainer>
   );
 };

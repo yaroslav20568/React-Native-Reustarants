@@ -1,14 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { MenuItem } from '../../components/importComponents';
-
-interface IFood {
-	id: number,
-	title: string,
-	description: string,
-	price: string,
-	image: string
-}
+import { IFood } from './../../types';
 
 interface IPayload {
 	isChecked: boolean;
@@ -18,14 +11,6 @@ interface IPayload {
 interface IProps {
 	onAddToCart: (obj: IPayload) => void,
 	isItemInCart: (id: number) => boolean
-}
-
-interface IFood {
-	id: number,
-	title: string,
-	description: string,
-	price: string,
-	image: string
 }
 
 const MenuItemsContainer = styled.View`

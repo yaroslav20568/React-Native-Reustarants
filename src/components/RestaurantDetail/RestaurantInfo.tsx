@@ -3,18 +3,13 @@ import { View } from 'react-native';
 import styled from 'styled-components/native';
 import { FONTS, FONTS_SIZE } from '../../constants';
 import { Image, Title } from '../importComponents';
+import { IRestaurant } from './../../types';
 
 interface ICategory {
   title: string
 }
 
-interface PropsRestaurantInfo {
-  image_url: string,
-  name: string,
-  rating: number,
-  price: string,
-  categories: Array<ICategory>,
-  review_count: number
+interface PropsRestaurantInfo extends IRestaurant {
 }
 
 const InfoTexts = styled.View`

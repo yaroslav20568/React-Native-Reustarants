@@ -1,13 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-
-interface IFood {
-	id: number,
-	title: string,
-	description: string,
-	price: string,
-	image: string
-}
+import { IFood } from './../../types';
 
 interface IPayload {
 	isChecked: boolean;

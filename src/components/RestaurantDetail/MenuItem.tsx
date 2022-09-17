@@ -3,26 +3,14 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import styled from 'styled-components/native';
 import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
 import { Title, Image, Line } from '../importComponents';
-
-interface IFood {
-	id: number,
-	title: string,
-	description: string,
-	price: string,
-	image: string
-}
+import { IFood } from './../../types';
 
 interface IPayload {
 	isChecked: boolean;
 	item: IFood;
 }
 
-interface IProps {
-	id: number,
-	title: string,
-	description: string,
-	price: string,
-	image: string,
+interface IProps extends IFood {
 	onAddToCart: (obj: IPayload) => void,
 	isItemInCart: (id: number) => boolean
 }
@@ -34,6 +22,7 @@ const MenuItemContainer = styled.View`
 const MenuItemInfo = styled.View`
 	flexDirection: row;
 	alignItems: center;
+	justifyContent: space-between;
 	paddingVertical: 20;
 `;
 

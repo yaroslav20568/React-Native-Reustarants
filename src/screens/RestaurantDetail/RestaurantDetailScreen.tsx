@@ -5,14 +5,7 @@ import { useRoute } from '@react-navigation/native';
 import { COLORS } from '../../constants';
 import { Line, MenuItems, Modal, RestaurantInfo, ViewCart } from '../../components/importComponents';
 import { useActions, useAppSelector } from '../../redux/typedHooks';
-
-interface IFood {
-	id: number,
-	title: string,
-	description: string,
-	price: string,
-	image: string
-}
+import { IFood } from './../../types';
 
 interface IPayload {
 	isChecked: boolean;

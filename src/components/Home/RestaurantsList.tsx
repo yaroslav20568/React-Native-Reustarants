@@ -15,7 +15,7 @@ const RestaurantsList = () => {
 
   return (
     <View>
-	  {!isLoading ? 
+			{!isLoading ? 
         restaurants?.map((restaurant) => <RestaurantItem {...restaurant} />) : 
         <Loader />}
     </View>

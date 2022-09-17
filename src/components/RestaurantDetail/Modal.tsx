@@ -3,14 +3,7 @@ import { ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import { Title, Line, ViewCart } from '../importComponents';
 import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
-
-interface IFood {
-	id: number,
-	title: string,
-	description: string,
-	price: string,
-	image: string
-}
+import { IFood } from './../../types';
 
 interface IProps {
 	RestaurantName: string,
