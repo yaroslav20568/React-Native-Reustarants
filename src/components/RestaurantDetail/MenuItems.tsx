@@ -1,4 +1,5 @@
 import React from 'react';
+import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
 import { MenuItem } from '../../components/importComponents';
 import { IFood } from './../../types';
@@ -23,7 +24,7 @@ const foodItems: Array<IFood> = [
 		id: 1,
 		title: 'Yorkshire pudding',
 		description: 'Traditional english pudding',
-		price: '$13.50',
+		price: '$13.5',
 		image: 'https://realfood.tesco.com/media/images/Yorkshire-puddings-1400x919-5d5494f0-b313-48b3-b423-2179f1233e8e-0-1400x919.jpg'
 	},
 	{
@@ -37,14 +38,21 @@ const foodItems: Array<IFood> = [
 		id: 3,
 		title: 'French fries',
 		description: 'Deep fried potato pieces',
-		price: '$34.20',
+		price: '$34.2',
 		image: 'https://saleonvine.ru/wp-content/uploads/2020/04/s-7fe516830a9ab07aee104122ac4c154bba311172.jpg'
 	},
 	{
 		id: 4,
 		title: 'Draniki',
 		description: 'Potato pancakes and pancakes',
-		price: '$15.50',
+		price: '$15.5',
+		image: 'https://grandgames.net/puzzle/f1200/draniki_.jpg'
+	},
+	{
+		id: 5,
+		title: 'Draniki',
+		description: 'Potato pancakes and pancakes',
+		price: '$15.5',
 		image: 'https://grandgames.net/puzzle/f1200/draniki_.jpg'
 	}
 ];
@@ -52,7 +60,11 @@ const foodItems: Array<IFood> = [
 const MenuItems = ({ onAddToCart, isItemInCart }: IProps) => {
   return (
 		<MenuItemsContainer>
-			{foodItems.map(foodItem => <MenuItem {...foodItem} onAddToCart={onAddToCart} isItemInCart={isItemInCart} />)}
+			{/* {foodItems.map(foodItem => <MenuItem {...foodItem} onAddToCart={onAddToCart} isItemInCart={isItemInCart} />)} */}
+			<FlatList
+        data={foodItems}
+        renderItem={({ item }) => <MenuItem {...item} onAddToCart={onAddToCart} isItemInCart={isItemInCart} />}
+			/>
 		</MenuItemsContainer>
   )
 }

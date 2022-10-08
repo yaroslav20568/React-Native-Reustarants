@@ -5,10 +5,6 @@ import { FONTS, FONTS_SIZE } from '../../constants';
 import { Image, Title } from '../importComponents';
 import { IRestaurant } from './../../types';
 
-interface ICategory {
-  title: string
-}
-
 interface PropsRestaurantInfo extends IRestaurant {
 }
 

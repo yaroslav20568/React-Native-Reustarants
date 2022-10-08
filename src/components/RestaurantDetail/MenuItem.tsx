@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import styled from 'styled-components/native';
 import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
@@ -26,8 +27,16 @@ const MenuItemInfo = styled.View`
 	paddingVertical: 20;
 `;
 
+const CheckboxContainer = styled.View`
+	width: 11%;
+`;
+
 const TitlesContainer = styled.View`
-	width: 65.7%;
+	width: 65%;
+`;
+
+const ImageContainer = styled.View`
+	width: 24%;
 `;
 
 const MenuItem = ({id, title, description, price, image, onAddToCart, isItemInCart}: IProps) => {
@@ -48,15 +57,17 @@ const MenuItem = ({id, title, description, price, image, onAddToCart, isItemInCa
   return (
 		<MenuItemContainer>
 			<MenuItemInfo>
-				<BouncyCheckbox
-					size={25}
-					fillColor="green"
-					unfillColor="transparent"
-					innerIconStyle={{ borderRadius: 0, borderColor: COLORS.mediumGray }}
-					iconStyle={{ borderRadius: 0 }}
-					isChecked={isItemInCart(id)}
-					onPress={handleAddToCart}
-				/>
+				<CheckboxContainer>
+					<BouncyCheckbox
+						size={25}
+						fillColor="green"
+						unfillColor="transparent"
+						innerIconStyle={{ borderRadius: 0, borderColor: COLORS.mediumGray }}
+						iconStyle={{ borderRadius: 0 }}
+						isChecked={isItemInCart(id)}
+						onPress={handleAddToCart}
+					/>
+				</CheckboxContainer>
 				<TitlesContainer>
 					<Title 
 						fontFamily={FONTS.poppinsSemiBold}
@@ -67,7 +78,9 @@ const MenuItem = ({id, title, description, price, image, onAddToCart, isItemInCa
 					<Title>{description}</Title>
 					<Title>{price}</Title>
 				</TitlesContainer>
-				<Image img={image} width={90} height={110} borderRadius={10} />
+				<ImageContainer>
+					<Image img={image} width={100} height={110} borderRadius={10} />
+				</ImageContainer>
 			</MenuItemInfo>
 
 			<Line 

@@ -18,3 +18,6 @@ export { default as MenuItems } from './RestaurantDetail/MenuItems';
 export { default as MenuItem } from './RestaurantDetail/MenuItem';
 export { default as ViewCart } from './RestaurantDetail/ViewCart';
 export { default as Modal } from './RestaurantDetail/Modal';
+export { default as ModalList } from './RestaurantDetail/ModalList';
+
+export { default as OrderList } from './OrderCompleted/OrderList';

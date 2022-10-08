@@ -6,17 +6,20 @@ import { RestaurantItem, Loader } from '../importComponents';
 
 const RestaurantsList = () => {
   const shippingMethod = useAppSelector((state) => state.shippingMethod);
-  const { restaurants, isLoading } = useGetRestaurantsQuery('SanDiego', {
+  const { restaurants, isLoading } = useGetRestaurantsQuery('LosAngeles', {
     selectFromResult: ({ data, isLoading }) => ({
       restaurants: data?.businesses.filter(restaurant => restaurant.transactions.includes(shippingMethod.name.toLowerCase())),
       isLoading: isLoading
-	}),
+		}),
   });
 
   return (
     <View>
 			{!isLoading ? 
-        restaurants?.map((restaurant) => <RestaurantItem {...restaurant} />) : 
+        <FlatList
+					data={restaurants}
+					renderItem={({ item }) => <RestaurantItem {...item} />}
+				/> : 
         <Loader />}
     </View>
   );

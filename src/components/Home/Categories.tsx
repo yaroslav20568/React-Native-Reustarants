@@ -19,7 +19,7 @@ const CategoriesContainer = styled.ScrollView`
 const Categories = ({ categoryItems }: PropsCategories) => {
   return (
 	<CategoriesContainer horizontal>
-	  {categoryItems.map((category) => <CategoryItem {...category} />)}
+		{categoryItems.map((category) => <CategoryItem {...category} />)}
 	</CategoriesContainer>
   )
 }

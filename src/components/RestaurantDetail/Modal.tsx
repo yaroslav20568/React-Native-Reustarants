@@ -1,9 +1,12 @@
-import React from 'react';
-import { ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { FlatList, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
-import { Title, Line, ViewCart } from '../importComponents';
+import { useNavigation } from '@react-navigation/native';
+import Lottie from 'lottie-react-native';
+import { Title, Line, ViewCart, ModalList } from '../importComponents';
 import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
 import { IFood } from './../../types';
+import { useActions } from './../../redux/typedHooks';
 
 interface IProps {
 	RestaurantName: string,
@@ -39,13 +42,6 @@ const TitleRestaurantWrapper = styled.View`
 	align-items: center;
 `;
 
-const CartItem = styled.View`
-	flex-direction: row;
-	justify-content: space-between;
-	paddingHorizontal: 20;
-	paddingVertical: 20;
-`;
-
 const SubtotalContainer = styled.View`
 	paddingVertical: 20;
 	flex-direction: row;
@@ -57,12 +53,43 @@ const ViewCartWrapper = styled.View`
 `;
 
 const Modal = ({ RestaurantName, onCloseModal, cartItems, totalPrice }: IProps) => {
+	const [autoplayBool, setAutoPlayBool] = useState<boolean>(false);
+	const navigation:any = useNavigation();
+	const { clearCart } = useActions();
+
+	const checkoutComplete = () => {
+		setAutoPlayBool(true);
+
+		setTimeout(() => {
+			setAutoPlayBool(false);
+			onCloseModal();
+			setTimeout(() => {
+				navigation.navigate('OrderCompleted', {
+					RestaurantName,
+					cartItems,
+					totalPrice
+				});
+				clearCart();
+			}, 400);
+		}, 2000);
+	};
+	
 	return (
 		<>
 			<ModalMinorContainer 
 				onPress={onCloseModal}
 				activeOpacity={1}
 			></ModalMinorContainer>
+
+			{autoplayBool && 
+				<Lottie 
+					source={require('../../assets/animations/scanner.json')} 
+					style={{position: 'absolute', zIndex: 300}} 
+					autoPlay={autoplayBool}
+					duration={3000}
+				/>
+			}
+
 			<ModalMainContainer>
 				<ScrollView>
 					<TitleRestaurantWrapper>
@@ -75,19 +102,7 @@ const Modal = ({ RestaurantName, onCloseModal, cartItems, totalPrice }: IProps) 
 						</Title>
 					</TitleRestaurantWrapper>
 
-					{cartItems.map(cartItem => (
-						<>
-							<CartItem>
-								<Title>{cartItem.title}</Title>
-								<Title>{cartItem.price}</Title>
-							</CartItem>
-							<Line 
-								width={100} 
-								height={1} 
-								backgroundColor={COLORS.mediumGray} 
-							/>
-						</>
-					))}
+					<ModalList cartItems={cartItems} />
 
 					<SubtotalContainer>
 						<Title 
@@ -106,7 +121,7 @@ const Modal = ({ RestaurantName, onCloseModal, cartItems, totalPrice }: IProps) 
 						<ViewCart 
 							title="Checkout" 
 							totalPrice={totalPrice} 
-							onCallback={() => {}} 
+							onCallback={checkoutComplete} 
 						/>
 					</ViewCartWrapper>
 				</ScrollView>

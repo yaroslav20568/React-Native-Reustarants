@@ -42,10 +42,10 @@ const categoryItems: Array<ICategory> = [
 const HomeScreen = () => {
   return (
     <ScreenContainer>
-	  <HomeHeader />
-	  <HeaderTabs nameTabs={nameTabs} />
-	  <Categories categoryItems={categoryItems} />
-	  <RestaurantsList />
+			<HomeHeader />
+			<HeaderTabs nameTabs={nameTabs} />
+			<Categories categoryItems={categoryItems} />
+			<RestaurantsList />
     </ScreenContainer>
   );
 };

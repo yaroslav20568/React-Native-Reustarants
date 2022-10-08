@@ -1,5 +1,6 @@
-import React, { useState, useCallback } from 'react';
-import { View, ScrollView } from 'react-native';
+import React, { useState, useCallback, useRef } from 'react';
+import { View, ScrollView, Animated, Text } from 'react-native';
+import { Dimensions } from 'react-native'
 import styled from 'styled-components/native';
 import { useRoute } from '@react-navigation/native';
 import { COLORS } from '../../constants';
@@ -16,15 +17,15 @@ const ViewCartWrapper = styled.View`
 	position: absolute;
 	z-index: 10;
 	bottom: 60;
-	paddingHorizontal: 60;
-	width: 100%;
-	// background: #999;
+	width: 70%;
+	alignSelf: center;
 `;
 
 const RestaurantDetailScreen = () => {
   const route: any = useRoute();
 
-	const [modalIsOpen, setModalIsOpen] = useState(false);
+	// const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+	const [scrollPosition, setScrollPosition] = useState<number>(0);
 
 	const { addToCart } = useActions();
 	const { cartItems, totalPrice } = useAppSelector(state => ({
@@ -41,16 +42,37 @@ const RestaurantDetailScreen = () => {
 	}, []);
 
 	const onOpenModal = useCallback(() => {
-		setModalIsOpen(true);
+		// setModalIsOpen(true);
+		translateEndModal();
 	}, []);
 
 	const onCloseModal = useCallback(() => {
-		setModalIsOpen(false);
+		// setModalIsOpen(false);
+		translateStartModal();
 	}, []);
+
+	console.log(scrollPosition);
+  const fadeAnimModal = useRef(new Animated.Value(-Dimensions.get('window').width)).current;
 	
-  return (
+	const translateEndModal = () => {
+    Animated.timing(fadeAnimModal, {
+      toValue: 0,
+      duration: 400,
+			useNativeDriver: true
+    }).start();
+  };
+
+	const translateStartModal = () => {
+    Animated.timing(fadeAnimModal, {
+      toValue: -Dimensions.get('window').width,
+      duration: 400,
+			useNativeDriver: true
+    }).start();
+  };
+
+	return (
 		<View style={{flex: 1}}>
-			<ScrollView>
+			<ScrollView onScroll={(e) => setScrollPosition(e.nativeEvent.contentOffset.y)}>
 				<RestaurantInfo {...route.params} />
 				<Line 
 					width={100} 
@@ -59,14 +81,18 @@ const RestaurantDetailScreen = () => {
 				/>
 				<MenuItems onAddToCart={onAddToCart} isItemInCart={isItemInCart} />
 			</ScrollView>
-
-			{modalIsOpen && 
+			
+			<Animated.View
+        style={{transform: [{ translateX: fadeAnimModal }], position: 'absolute', width: '100%', height: '100%', zIndex: 100 }}
+      >
 				<Modal 
 					RestaurantName={route.params.name} 
 					onCloseModal={onCloseModal} 
 					cartItems={cartItems}
 					totalPrice={totalPrice}
-				/>}
+				/>
+			</Animated.View>
+			
 			{totalPrice !== 0 && 
 				<ViewCartWrapper>
 					<ViewCart 
