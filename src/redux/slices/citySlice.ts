@@ -6,7 +6,7 @@ interface IState {
 }
 
 const initialState: IState = {
-  cityName: 'SanDiego',
+  cityName: '',
 };
 
 const citySlice = createSlice({

@@ -3,13 +3,13 @@ import { YELP_API_KEY } from '../../constants';
 import { IRestaurant } from './../../types';
 
 interface IRestaurantInfo extends IRestaurant {
-  transactions: Array<string>
+  transactions: Array<string>;
 }
 
 interface IRestaurantsResp {
-  businesses: Array<IRestaurantInfo>,
-  region: object,
-  total: number
+  businesses: Array<IRestaurantInfo>;
+  region: object;
+  total: number;
 }
 
 const headers = {
@@ -22,16 +22,16 @@ const headers = {
 const restaurantsApi = createApi({
   reducerPath: 'restaurantsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/',
+    baseUrl: 'https://api.yelp.com/v3/',
   }),
   endpoints: builder => ({
     getRestaurants: builder.query<IRestaurantsResp, string>({
       query: (cityName) => ({
         url: `businesses/search?term=restaurants&location=${cityName}`,
-        headers: headers,
-      }),
-    }),
-  }),
+        headers: headers
+      })
+    })
+  })
 });
 
 export { restaurantsApi };

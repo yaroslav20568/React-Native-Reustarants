@@ -1,26 +1,29 @@
 import React from 'react';
-import styled from 'styled-components/native';
 import { CategoryItem } from '../importComponents';
-
-interface ICategory {
-  image: object,
-  text: string
-}
+import { ICategory } from '../../types';
+import { CategoriesContainer } from './styles';
+import { View } from 'react-native';
 
 interface PropsCategories {
-  categoryItems: Array<ICategory>
+  shippingTypeItems: Array<ICategory>
 }
 
-const CategoriesContainer = styled.ScrollView`
-  paddingVertical: 5;
-  marginVertical: 5;
-`;
+const Categories = ({ shippingTypeItems }: PropsCategories) => {
+	const ItemSeparatorComponent = (): JSX.Element => {
+		return (
+			<View style={{width: 28}} />
+		);
+	};
 
-const Categories = ({ categoryItems }: PropsCategories) => {
   return (
-	<CategoriesContainer horizontal>
-		{categoryItems.map((category) => <CategoryItem {...category} />)}
-	</CategoriesContainer>
+		<CategoriesContainer 
+			data={shippingTypeItems}
+			renderItem={({item}) => <CategoryItem {...item} />}
+			horizontal
+			showsHorizontalScrollIndicator={false}
+			ItemSeparatorComponent={ItemSeparatorComponent}
+			keyExtractor={(_, index) => `categoryItem_${index}`}
+		/>
   )
 }
 

@@ -1,13 +1,14 @@
+interface ICategory {
+  image: object;
+  text: string;
+}
+
 interface IFood {
 	id: number,
 	title: string,
 	description: string,
 	price: string,
 	image: string
-}
-
-interface ICategory {
-  title: string
 }
 
 interface IRestaurant {
@@ -19,4 +20,4 @@ interface IRestaurant {
   review_count: number;
 }
 
-export type { IFood, IRestaurant };
+export type { ICategory, IFood, IRestaurant };

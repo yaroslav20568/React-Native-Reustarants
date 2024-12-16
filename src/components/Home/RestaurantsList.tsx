@@ -1,24 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { FlatList, View, Text } from 'react-native';
-import { useGetRestaurantsQuery } from '../../redux/RTKQuery/restaurantsApi';
-import { useAppSelector } from '../../redux/typedHooks';
-import { RestaurantItem, Loader } from '../importComponents';
+import React from 'react';
+import { FlatList, View } from 'react-native';
+import { RestaurantItem, Loader, Title } from '../importComponents';
+import { IRestaurant } from '../../types';
+import { FONTS_SIZE } from '../../constants';
 
-const RestaurantsList = () => {
-  const shippingMethod = useAppSelector((state) => state.shippingMethod);
-  const { restaurants, isLoading } = useGetRestaurantsQuery('LosAngeles', {
-    selectFromResult: ({ data, isLoading }) => ({
-      restaurants: data?.businesses.filter(restaurant => restaurant.transactions.includes(shippingMethod.name.toLowerCase())),
-      isLoading: isLoading
-		}),
-  });
+interface PropsRestaurantsList {
+	restaurants: Array<IRestaurant> | undefined;
+  isLoading: boolean;
+}
 
-  return (
+const RestaurantsList = ({ restaurants, isLoading }: PropsRestaurantsList) => {
+  const ListEmptyComponent = (): JSX.Element => {
+		return (
+			<Title fontSize={FONTS_SIZE.medium18}>Рестараны не найдены</Title>
+		);
+	};
+
+	return (
     <View>
 			{!isLoading ? 
         <FlatList
 					data={restaurants}
 					renderItem={({ item }) => <RestaurantItem {...item} />}
+					ListEmptyComponent={ListEmptyComponent}
+					keyExtractor={(_, index) => `restaurantItem_${index}`}
 				/> : 
         <Loader />}
     </View>
