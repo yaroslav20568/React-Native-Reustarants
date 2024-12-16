@@ -39,8 +39,8 @@ const shippingTypeItems: Array<ICategory> = [
 
 const HomeScreen = () => {
 	const { shippingMethod, cityName } = useAppSelector(state => ({
-		shippingMethod: state.shippingMethod.name,
-		cityName: state.city.cityName
+		shippingMethod: state.restaurantsFilter.shippingMethod,
+		cityName: state.restaurantsFilter.cityName
 	}));
 
 	const { setShippingMethod, setCity } = useActions();
