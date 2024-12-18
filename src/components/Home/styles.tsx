@@ -1,6 +1,9 @@
+import { FlatList, TouchableOpacity } from "react-native";
+import Animated from "react-native-reanimated";
 import styled from "styled-components/native";
 import { COLORS } from "../../constants";
-import { FlatList } from "react-native";
+
+const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
 interface IHeaderTab {
 	nameTab: string,
@@ -24,20 +27,20 @@ const HeaderTab = styled.TouchableOpacity<IHeaderTab>`
 
 const WrapperLocationIcon = styled.View`
 	position: absolute;
-	top: 12;
+	top: 11;
 	left: 10;
 	zIndex: 1;
 `;
 
 const WrapperClear = styled.View`
 	position: absolute;
-	top: 11;
+	top: 9;
 	right: 15;
 	flexDirection: row;
 	alignItems: center;
 `;
 
-const WrapperClearIcon = styled.TouchableOpacity`
+const WrapperClearIcon = styled(AnimatedTouchable)`
 	marginRight: 8;
 	backgroundColor: #999;
 	paddingVertical: 2;

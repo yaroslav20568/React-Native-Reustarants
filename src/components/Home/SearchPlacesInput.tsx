@@ -1,26 +1,34 @@
 import React, { useRef } from 'react';
 import 'react-native-get-random-values';
 import { GooglePlaceData, GooglePlacesAutocomplete, GooglePlacesAutocompleteRef } from 'react-native-google-places-autocomplete';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { COLORS, GOOGLE_API_KEY } from '../../constants';
 import { WrapperLocationIcon, WrapperClear, WrapperClearIcon, WrapperTimerIcon } from './styles';
 import { Title } from '../importComponents';
 
 interface PropsSearchPlacesInput {
-	cityName: string;
   setCity: (cityName: string) => void;
 }
 
-const SearchPlacesInput = ({ cityName, setCity }: PropsSearchPlacesInput) => {
+const SearchPlacesInput = ({ setCity }: PropsSearchPlacesInput) => {
 	const ref = useRef<GooglePlacesAutocompleteRef | undefined>();
+
+	const animatedValue = useSharedValue<number>(30);
+
+	const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{translateX: animatedValue.value}]
+	}));
 
 	const onSetCity = (data: GooglePlaceData): void => {
 		setCity(data.description.split(',')[0].replace(' ', ''));
+		animatedValue.value = withTiming(0, {duration: 700});
 	};
 
 	const onClearCity = (): void => {
 		setCity('');
 		ref.current?.setAddressText('');
+		animatedValue.value = withTiming(30, {duration: 700});
 	};
 
 	const renderLocationIcon = (): JSX.Element => {
@@ -34,14 +42,13 @@ const SearchPlacesInput = ({ cityName, setCity }: PropsSearchPlacesInput) => {
 	const renderClearIcon = (): JSX.Element => {
 		return (
 			<WrapperClear>
-				{cityName ? 
-					<WrapperClearIcon 
-						onPress={onClearCity}
-						activeOpacity={.7}
-					>
-						<MaterialIcons name='clear' size={15} color={COLORS.white} />
-					</WrapperClearIcon> : 
-					null}
+				<WrapperClearIcon 
+					onPress={onClearCity}
+					activeOpacity={.7}
+					style={animatedStyles}
+				>
+					<MaterialIcons name='clear' size={15} color={COLORS.white} />
+				</WrapperClearIcon>
 				<WrapperTimerIcon>
 					<MaterialIcons name='timer' size={20} color={COLORS.black} />
 					<Title>Search</Title>
@@ -76,7 +83,7 @@ const SearchPlacesInput = ({ cityName, setCity }: PropsSearchPlacesInput) => {
 				},
 				poweredContainer: {
 					display: 'none'
-				},
+				}
 			}}
 			query={{
 				key: GOOGLE_API_KEY,

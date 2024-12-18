@@ -11,7 +11,9 @@ interface PropsCategory {
 
 const CategoryItem = ({ image, text }: PropsCategory) => {
   return (
-    <CategoryItemContainer>
+    <CategoryItemContainer
+			activeOpacity={.7}
+		>
       <Image
         source={image}
         style={{

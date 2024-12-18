@@ -62,10 +62,7 @@ const HomeScreen = () => {
 				shippingMethod={shippingMethod}
 				setShippingMethod={setShippingMethod}
 			/>
-			<SearchPlacesInput 
-				cityName={cityName}
-				setCity={setCity}
-			/>
+			<SearchPlacesInput setCity={setCity} />
 			<Categories shippingTypeItems={shippingTypeItems} />
 			<RestaurantsList 
 				restaurants={restaurants}
