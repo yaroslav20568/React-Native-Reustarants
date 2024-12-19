@@ -5,7 +5,7 @@ export { default as Line } from './UI/Line';
 export { default as SearchPlacesInput } from './Home/SearchPlacesInput';
 export { default as RestaurantsList } from './Home/RestaurantsList';
 export { default as RestaurantItem } from './Home/RestaurantItem';
-export { default as Loader } from './Home/Loader';
+export { default as RestaurantsLoader } from './Home/RestaurantsLoader';
 export { default as HeaderTabs } from './Home/HeaderTabs';
 export { default as HeaderTab } from './Home/HeaderTab';
 export { default as Categories } from './Home/Categories';

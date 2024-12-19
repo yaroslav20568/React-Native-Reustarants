@@ -155,4 +155,13 @@ const RestaurantsEmptyText = styled.Text`
 	fontSize: ${FONTS_SIZE.medium18};
 `;
 
-export { HeaderTabsContainer, HeaderTabToddler, HeaderTabStyle, HeaderTabText, LocationIconWrapper, ClearWrapper, ClearIconWrapper, TimerIconWrapper, TimerIconText, CategoriesContainer, CategoryItemContainer, CategoryItemImage, CategoryItemText, FlatListSeparator, RestaurantsContainer, RestaurantImage, RestaurantInfo, RestaurantName, RestaurantPrice, WrapperRestaurantRating, RestaurantRating, RestaurantsEmptyText };
+const RestaurantLoaderStyle = styled(Animated.View)`
+	width: 100%;
+	aspectRatio: 1.5;
+	backgroundColor: ${COLORS.lightGray};
+	borderBottomLeftRadius: 10;
+  borderBottomRightRadius: 10;
+	marginBottom: 20;
+`;
+
+export { HeaderTabsContainer, HeaderTabToddler, HeaderTabStyle, HeaderTabText, LocationIconWrapper, ClearWrapper, ClearIconWrapper, TimerIconWrapper, TimerIconText, CategoriesContainer, CategoryItemContainer, CategoryItemImage, CategoryItemText, FlatListSeparator, RestaurantsContainer, RestaurantImage, RestaurantInfo, RestaurantName, RestaurantPrice, WrapperRestaurantRating, RestaurantRating, RestaurantsEmptyText, RestaurantLoaderStyle };

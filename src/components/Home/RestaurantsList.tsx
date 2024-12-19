@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import { RestaurantItem, Loader } from '../importComponents';
+import { RestaurantItem, RestaurantsLoader } from '../importComponents';
 import { IRestaurant } from '../../types';
 import { FlatListSeparator, RestaurantsContainer, RestaurantsEmptyText } from './styles';
 
@@ -32,7 +32,7 @@ const RestaurantsList = ({ restaurants, isLoading }: PropsRestaurantsList) => {
 					ItemSeparatorComponent={ItemSeparatorComponent}
 					keyExtractor={(_, index) => `restaurantItem_${index}`}
 				/> : 
-        <Loader />}
+        <RestaurantsLoader />}
     </RestaurantsContainer>
   );
 };
