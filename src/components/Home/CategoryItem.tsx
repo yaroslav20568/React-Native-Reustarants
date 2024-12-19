@@ -1,12 +1,9 @@
 import React from 'react';
-import { Image } from 'react-native';
-import { Title } from '../importComponents';
-import { FONTS } from '../../constants';
-import { CategoryItemContainer } from './styles';
+import { CategoryItemContainer, CategoryItemImage, CategoryItemText } from './styles';
 
 interface PropsCategory {
-  image: object,
-  text: string
+  image: object;
+  text: string;
 }
 
 const CategoryItem = ({ image, text }: PropsCategory) => {
@@ -14,14 +11,10 @@ const CategoryItem = ({ image, text }: PropsCategory) => {
     <CategoryItemContainer
 			activeOpacity={.7}
 		>
-      <Image
-        source={image}
-        style={{
-          width: 50,
-          height: 40
-        }}
-      />
-      <Title fontFamily={FONTS.poppinsSemiBold}>{text}</Title>
+			<CategoryItemImage 
+				source={image}
+			/>
+			<CategoryItemText>{text}</CategoryItemText>
     </CategoryItemContainer>
   );
 };

@@ -1,17 +1,16 @@
 import React from 'react';
 import { CategoryItem } from '../importComponents';
 import { ICategory } from '../../types';
-import { CategoriesContainer } from './styles';
-import { View } from 'react-native';
+import { CategoriesContainer, FlatListSeparator } from './styles';
 
 interface PropsCategories {
-  shippingTypeItems: Array<ICategory>
+  shippingTypeItems: Array<ICategory>;
 }
 
 const Categories = ({ shippingTypeItems }: PropsCategories) => {
 	const ItemSeparatorComponent = (): JSX.Element => {
 		return (
-			<View style={{width: 28}} />
+			<FlatListSeparator width={28} />
 		);
 	};
 

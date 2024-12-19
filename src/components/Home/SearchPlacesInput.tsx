@@ -4,8 +4,7 @@ import { GooglePlaceData, GooglePlacesAutocomplete, GooglePlacesAutocompleteRef 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { COLORS, GOOGLE_API_KEY } from '../../constants';
-import { WrapperLocationIcon, WrapperClear, WrapperClearIcon, WrapperTimerIcon } from './styles';
-import { Title } from '../importComponents';
+import { LocationIconWrapper, ClearWrapper, ClearIconWrapper, TimerIconWrapper, TimerIconText } from './styles';
 
 interface PropsSearchPlacesInput {
   setCity: (cityName: string) => void;
@@ -33,27 +32,39 @@ const SearchPlacesInput = ({ setCity }: PropsSearchPlacesInput) => {
 
 	const renderLocationIcon = (): JSX.Element => {
 		return (
-			<WrapperLocationIcon>
-				<MaterialIcons name='location-pin' size={25} color={COLORS.black} />
-			</WrapperLocationIcon>
+			<LocationIconWrapper>
+				<MaterialIcons 
+					name='location-pin' 
+					size={25} 
+					color={COLORS.black} 
+				/>
+			</LocationIconWrapper>
 		);
 	};
 
 	const renderClearIcon = (): JSX.Element => {
 		return (
-			<WrapperClear>
-				<WrapperClearIcon 
+			<ClearWrapper>
+				<ClearIconWrapper 
 					onPress={onClearCity}
 					activeOpacity={.7}
 					style={animatedStyles}
 				>
-					<MaterialIcons name='clear' size={15} color={COLORS.white} />
-				</WrapperClearIcon>
-				<WrapperTimerIcon>
-					<MaterialIcons name='timer' size={20} color={COLORS.black} />
-					<Title>Search</Title>
-				</WrapperTimerIcon>
-			</WrapperClear>
+					<MaterialIcons 
+						name='clear' 
+						size={15} 
+						color={COLORS.white} 
+					/>
+				</ClearIconWrapper>
+				<TimerIconWrapper>
+					<MaterialIcons 
+						name='timer' 
+						size={20} 
+						color={COLORS.black} 
+					/>
+					<TimerIconText>Search</TimerIconText>
+				</TimerIconWrapper>
+			</ClearWrapper>
 		);
 	}
 
@@ -76,7 +87,7 @@ const SearchPlacesInput = ({ setCity }: PropsSearchPlacesInput) => {
 					backgroundColor: COLORS.lightGray,
 					borderRadius: 30,
 					paddingLeft: 40,
-					paddingRight: 130
+					paddingRight: 110
 				},
 				listView: {
 					zIndex: 100

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Title } from '../importComponents';
-import { COLORS, FONTS_SIZE, FONTS } from '../../constants';
-import { HeaderTabsContainer, HeaderTab } from './styles';
+import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { HeaderTabsContainer, HeaderTabToddler } from './styles';
+import { HeaderTab } from '../importComponents';
 
 interface PropsHeaderTabs {
   nameTabs: Array<string>;
@@ -10,24 +10,30 @@ interface PropsHeaderTabs {
 }
 
 const HeaderTabs = ({ nameTabs, shippingMethod, setShippingMethod }: PropsHeaderTabs) => {
+	const translateX = useSharedValue<number>(0);
+
+	const headerTabToddlerStyles = useAnimatedStyle(() => ({
+		transform: [{translateX: translateX.value}]
+	}));
+
+	const onSelectTab = (nameTab: string, index: number): void => {
+		setShippingMethod(nameTab);
+		translateX.value = withTiming(index * 96);
+	};
+
   return (
 		<HeaderTabsContainer>
+			<HeaderTabToddler 
+				style={headerTabToddlerStyles} 
+			/>
 			{nameTabs.map((nameTab, index) => 
 				<HeaderTab 
-					nameTab={nameTab} 
-					activeTab={shippingMethod}
-					onPress={() => setShippingMethod(nameTab)}
-					activeOpacity={.7}
+					nameTab={nameTab}
+					shippingMethod={shippingMethod}
+					index={index}
+					onSelectTab={onSelectTab}
 					key={`nameTab_${index}`}
-				>
-					<Title 
-						color={shippingMethod === nameTab ? COLORS.white : COLORS.black} 
-						fontSize={FONTS_SIZE.medium16} 
-						fontFamily={FONTS.poppinsSemiBold}
-					>
-						{nameTab}
-					</Title>
-				</HeaderTab>
+				/>
 			)}
 		</HeaderTabsContainer>
   )

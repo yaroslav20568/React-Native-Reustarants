@@ -1,10 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Title, Image } from '../importComponents';
-import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
 import { IRestaurant } from './../../types';
-import { RestaurantInfo, RestaurantItemContainer, RestaurantRating } from './styles';
+import { RestaurantImage, RestaurantInfo, RestaurantName, RestaurantPrice, RestaurantRating, WrapperRestaurantRating } from './styles';
 
 interface PropsRestaurant extends IRestaurant {
 }
@@ -17,34 +15,23 @@ const RestaurantItem = ({ image_url, name, rating, price, categories, review_cou
 	};
 
   return (
-    <RestaurantItemContainer 
+    <TouchableOpacity 
 			activeOpacity={.7} 
 			onPress={onNavigate}
 		>
-			<Image 
-				img={image_url} 
-				width={100}
-				height={180} 
+			<RestaurantImage 
+				source={{uri: image_url}}
 			/>
       <RestaurantInfo>
 				<View>
-					<Title 
-						fontFamily={FONTS.poppinsSemiBold}
-						fontSize={FONTS_SIZE.medium16}
-					>
-						{name}
-					</Title>
-					<Title
-						color={COLORS.mediumGray}
-					>
-						{price}
-					</Title>
+					<RestaurantName>{name}</RestaurantName>
+					{price && <RestaurantPrice>{price}</RestaurantPrice>}
 				</View>
-				<RestaurantRating>
-					<Title>{String(rating)}</Title>
-				</RestaurantRating>
+				<WrapperRestaurantRating>
+					<RestaurantRating>{String(rating)}</RestaurantRating>
+				</WrapperRestaurantRating>
 			</RestaurantInfo>
-    </RestaurantItemContainer>
+    </TouchableOpacity>
   );
 };
 

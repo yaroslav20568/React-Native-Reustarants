@@ -1,9 +1,9 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 import { RestaurantsList, HeaderTabs, Categories, SearchPlacesInput } from '../../components/importComponents';
 import { ICategory } from '../../types';
 import { useActions, useAppSelector } from '../../redux/typedHooks';
 import { useGetRestaurantsQuery } from '../../redux/RTKQuery/restaurantsApi';
+import { ScreenContainer } from '../styles';
 
 const nameTabs: Array<string> = ['Delivery', 'Pickup'];
 const shippingTypeItems: Array<ICategory> = [
@@ -53,22 +53,25 @@ const HomeScreen = () => {
 	});
 
   return (
-    <ScrollView 
+    <ScreenContainer 
 			keyboardShouldPersistTaps='handled'
-			style={{paddingHorizontal: 15}}
 		>
 			<HeaderTabs 
 				nameTabs={nameTabs}
 				shippingMethod={shippingMethod}
 				setShippingMethod={setShippingMethod}
 			/>
-			<SearchPlacesInput setCity={setCity} />
-			<Categories shippingTypeItems={shippingTypeItems} />
+			<SearchPlacesInput 
+				setCity={setCity} 
+			/>
+			<Categories 
+				shippingTypeItems={shippingTypeItems} 
+			/>
 			<RestaurantsList 
 				restaurants={restaurants}
 				isLoading={isLoading}
 			/>
-    </ScrollView>
+    </ScreenContainer>
   );
 };
 
