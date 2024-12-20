@@ -8,6 +8,7 @@ const RestaurantsLoader = () => {
     <View>
       {[...Array(10)].map((_, index) => 
 				<RestaurantLoader 
+					index={index}
 					key={`restaurantLoader_${index}`}
 				/>
 			)}
@@ -15,7 +16,11 @@ const RestaurantsLoader = () => {
   );
 };
 
-const RestaurantLoader = () => {
+interface PropsRestaurantLoader {
+	index: number;
+}
+
+const RestaurantLoader = ({ index }: PropsRestaurantLoader) => {
 	const opacity = useSharedValue<number>(0.4);
 
 	const restaurantLoaderStyles = useAnimatedStyle(() => ({
@@ -28,6 +33,7 @@ const RestaurantLoader = () => {
 
 	return (
 		<RestaurantLoaderStyle 
+			marginBottom={index !== 9 ? 20 : 0}
 			style={restaurantLoaderStyles} 
 		/>
 	);

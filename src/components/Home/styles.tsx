@@ -28,9 +28,7 @@ const HeaderTabToddler = styled(Animated.View)`
 const HeaderTabStyle = styled.TouchableOpacity`
 	width: 96;
 	alignItems: center;
-	// backgroundColor: red;
 	paddingVertical: 5;
-	// paddingHorizontal: 15;
 	borderRadius: 20;
 `;
 
@@ -71,6 +69,7 @@ const TimerIconWrapper = styled.View`
 `;
 
 const TimerIconText = styled.Text`
+	fontFamily: ${FONTS.poppinsRegular};
 	marginLeft: 5;
 `;
 
@@ -152,16 +151,21 @@ const RestaurantRating = styled.Text`
 `;
 
 const RestaurantsEmptyText = styled.Text`
+	fontFamily: ${FONTS.poppinsRegular};
 	fontSize: ${FONTS_SIZE.medium18};
 `;
 
-const RestaurantLoaderStyle = styled(Animated.View)`
+interface IRestaurantLoaderStyle {
+	marginBottom: number;
+}
+
+const RestaurantLoaderStyle = styled(Animated.View)<IRestaurantLoaderStyle>`
 	width: 100%;
 	aspectRatio: 1.5;
 	backgroundColor: ${COLORS.lightGray};
 	borderBottomLeftRadius: 10;
   borderBottomRightRadius: 10;
-	marginBottom: 20;
+	marginBottom: ${(props) => props.marginBottom};
 `;
 
 export { HeaderTabsContainer, HeaderTabToddler, HeaderTabStyle, HeaderTabText, LocationIconWrapper, ClearWrapper, ClearIconWrapper, TimerIconWrapper, TimerIconText, CategoriesContainer, CategoryItemContainer, CategoryItemImage, CategoryItemText, FlatListSeparator, RestaurantsContainer, RestaurantImage, RestaurantInfo, RestaurantName, RestaurantPrice, WrapperRestaurantRating, RestaurantRating, RestaurantsEmptyText, RestaurantLoaderStyle };

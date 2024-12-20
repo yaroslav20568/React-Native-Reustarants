@@ -19,3 +19,5 @@ export { default as Modal } from './RestaurantDetail/Modal';
 export { default as ModalList } from './RestaurantDetail/ModalList';
 
 export { default as OrderList } from './OrderCompleted/OrderList';
+
+export { default as OtpStart } from './Otp/OtpStart';

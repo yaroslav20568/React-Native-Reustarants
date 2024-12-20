@@ -20,4 +20,11 @@ interface IRestaurant {
   review_count: number;
 }
 
-export type { ICategory, IFood, IRestaurant };
+interface ICountry {
+	name: string;
+	alpha2Code: string
+	callingCodes: Array<string>;
+	flag: string;
+}
+
+export type { ICategory, IFood, IRestaurant, ICountry };

@@ -8,7 +8,8 @@ enum COLORS {
   lightPink = '#F9C8CA',
   darkPink = '#F27D82',
   red = '#C8161D',
-  burgundy = '#910203'
+  burgundy = '#910203',
+	lightBlue = '#2167F7'
 }
 
 enum FONTS {
