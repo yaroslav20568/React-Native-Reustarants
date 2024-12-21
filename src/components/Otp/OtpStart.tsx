@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
+import { FlatList, Modal, TouchableOpacity } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { COLORS } from '../../constants';
 import { CountriesModalHeader, CountriesModalHeaderText, CountriesModalInner, CountryButton, CountryName, CurrentCountryCode, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, OtpButton, OtpButtonText, OtpContainer, OtpText, OtpTitle, PhoneInput, PhoneInputWrapper } from './styles';
 import { ICountry } from '../../types';
-import { FlatList, Modal, TouchableOpacity } from 'react-native';
 
 interface PropsOtpStart {
   countries: Array<ICountry> | undefined;
@@ -48,7 +48,7 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 				>
 					<CurrentCountryCodeWrapper>
 						<CurrentCountryFlag 
-							source={{uri: `https://flagsapi.com/${country?.alpha2Code}/flat/32.png`}}
+							source={{uri: `https://flagcdn.com/w40/${country?.alpha2Code.toLowerCase()}.png`}}
 						/>
 						<CurrentCountryCode>+{country?.callingCodes[0]}</CurrentCountryCode>
 					</CurrentCountryCodeWrapper>
@@ -62,14 +62,13 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 				/>
 			</PhoneInputWrapper>
 			<Modal 
-				animationType='slide'
 				visible={visible}
 			>
 				<CountriesModalInner>
 					<CountriesModalHeader>
 						<CountriesModalHeaderText>{country?.name}</CountriesModalHeaderText>
 						<TouchableOpacity
-							activeOpacity={.7}
+							activeOpacity={.4}
 							onPress={closeModal}
 						>
 							<MaterialIcons 
@@ -82,15 +81,10 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 					<FlatList 
 						data={countries}
 						renderItem={({item}) => 
-							<CountryButton
-								activeOpacity={.7}
-								onPress={() => selectCountry(item)}
-							>
-								<CurrentCountryFlag 
-									source={{uri: `https://flagsapi.com/${item?.alpha2Code}/flat/32.png`}}
-								/>
-								<CountryName>{item?.name} (+{item?.callingCodes[0]})</CountryName>
-							</CountryButton>
+							<Country 
+								country={item} 
+								selectCountry={selectCountry} 
+							/>
 						}
 						showsVerticalScrollIndicator={false}
 						keyExtractor={(_, index) => `country_${index}`}
@@ -108,5 +102,28 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 		</OtpContainer>
 	)
 }
+
+interface PropsCountryItem {
+	country: ICountry;
+	selectCountry: (country: ICountry) => void;
+}
+
+const Country = memo(({country, selectCountry}: PropsCountryItem) => {
+	const onSelectCountry = (): void => {
+		selectCountry(country);
+	};
+
+	return (
+		<CountryButton
+			activeOpacity={.7}
+			onPress={onSelectCountry}
+		>
+			<CurrentCountryFlag 
+				source={{uri: `https://flagcdn.com/w40/${country.alpha2Code.toLowerCase()}.png`}}
+			/>
+			<CountryName>{country.name} (+{country.callingCodes[0]})</CountryName>
+		</CountryButton>
+	)
+})
 
 export default OtpStart;

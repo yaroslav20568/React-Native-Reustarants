@@ -49,6 +49,7 @@ const CurrentCountryCodeButton = styled.TouchableOpacity`
 	marginRight: 10;
 	width: 84;
 	paddingHorizontal: 5;
+	paddingVertical: 2.7;
 `;
 
 const CurrentCountryCodeWrapper = styled.View`
@@ -59,7 +60,7 @@ const CurrentCountryCodeWrapper = styled.View`
 
 const CurrentCountryFlag = styled.Image`
 	width: 32;
-	height: 32;
+	aspectRatio: 1.5;
 	marginRight: 5;
 `;
 
@@ -113,6 +114,7 @@ const CountryName = styled.Text`
 	fontFamily: ${FONTS.poppinsMedium};
 	fontSize: ${FONTS_SIZE.medium16};
 	color: ${COLORS.black};
+	flex: 1;
 `;
 
 export { OtpContainer, OtpTitle, OtpText, OtpButton, OtpButtonText, PhoneInputWrapper, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, CurrentCountryCode, PhoneInput, CountriesModalInner, CountriesModalHeader, CountriesModalHeaderText, CountryButton, CountryName };

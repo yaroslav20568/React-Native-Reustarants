@@ -27,7 +27,7 @@ const RestaurantsList = ({ restaurants, isLoading }: PropsRestaurantsList) => {
 			{!isLoading ? 
         <FlatList
 					data={restaurants}
-					renderItem={({ item }) => <RestaurantItem {...item} />}
+					renderItem={({item}) => <RestaurantItem {...item} />}
 					ListEmptyComponent={ListEmptyComponent}
 					ItemSeparatorComponent={ItemSeparatorComponent}
 					keyExtractor={(_, index) => `restaurantItem_${index}`}
