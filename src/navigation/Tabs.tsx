@@ -5,11 +5,18 @@ import { HomeScreen, FavoritesScreen, AccountScreen, CartScreen } from '../scree
 import { Title } from './../components/importComponents';
 import { COLORS, ICONS } from './../constants';
 
+export type RootTabsParamList = {
+	Home: undefined;
+	Favorites: undefined;
+	Account: undefined;
+	Cart: undefined;
+};
+
 const tabsContent = [
   {name: 'Home', screen: HomeScreen, icon: ICONS.homeIcon},
   {name: 'Favorites', screen: FavoritesScreen, icon: ICONS.favoritesIcon},
   {name: 'Account', screen: AccountScreen, icon: ICONS.accountIcon},
-  {name: 'Cart', screen: CartScreen, icon: ICONS.cartIcon},
+  {name: 'Cart', screen: CartScreen, icon: ICONS.cartIcon}
 ];
 
 const Tab = createBottomTabNavigator();

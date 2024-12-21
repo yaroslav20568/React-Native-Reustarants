@@ -11,12 +11,12 @@ interface PropsOtpStart {
 }
 
 const OtpStart = ({ countries }: PropsOtpStart) => {
-	const [country, setCountry] = useState<ICountry | undefined>(undefined);
+	const [selectedCountry, setSelectedCountry] = useState<ICountry | undefined>(undefined);
 	const [phone, setPhone] = useState<string>('');
 	const [visible, setVisible] = useState<boolean>(false);
 
 	useEffect(() => {
-		setCountry(countries?.length ? countries[0] : undefined);
+		setSelectedCountry(countries?.length ? countries[0] : undefined);
 	}, [countries]);
 
 	const openModal = (): void => {
@@ -28,7 +28,7 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 	};
 
 	const selectCountry = (country: ICountry) => {
-		setCountry(country);
+		setSelectedCountry(country);
 		setVisible(false)
 	};
 
@@ -48,9 +48,9 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 				>
 					<CurrentCountryCodeWrapper>
 						<CurrentCountryFlag 
-							source={{uri: `https://flagcdn.com/w40/${country?.alpha2Code.toLowerCase()}.png`}}
+							source={{uri: `https://flagcdn.com/w40/${selectedCountry?.alpha2Code.toLowerCase()}.png`}}
 						/>
-						<CurrentCountryCode>+{country?.callingCodes[0]}</CurrentCountryCode>
+						<CurrentCountryCode>+{selectedCountry?.callingCodes[0]}</CurrentCountryCode>
 					</CurrentCountryCodeWrapper>
 				</CurrentCountryCodeButton>
 				<PhoneInput 
@@ -66,7 +66,7 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 			>
 				<CountriesModalInner>
 					<CountriesModalHeader>
-						<CountriesModalHeaderText>{country?.name}</CountriesModalHeaderText>
+						<CountriesModalHeaderText>{selectedCountry?.name}</CountriesModalHeaderText>
 						<TouchableOpacity
 							activeOpacity={.4}
 							onPress={closeModal}
@@ -108,7 +108,7 @@ interface PropsCountryItem {
 	selectCountry: (country: ICountry) => void;
 }
 
-const Country = memo(({country, selectCountry}: PropsCountryItem) => {
+const Country = memo(({ country, selectCountry }: PropsCountryItem) => {
 	const onSelectCountry = (): void => {
 		selectCountry(country);
 	};

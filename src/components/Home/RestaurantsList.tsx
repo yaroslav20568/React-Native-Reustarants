@@ -18,7 +18,9 @@ const RestaurantsList = ({ restaurants, isLoading }: PropsRestaurantsList) => {
 
 	const ItemSeparatorComponent = (): JSX.Element => {
 		return (
-			<FlatListSeparator height={20} />
+			<FlatListSeparator 
+				height={20} 
+			/>
 		);
 	};
 
@@ -27,7 +29,11 @@ const RestaurantsList = ({ restaurants, isLoading }: PropsRestaurantsList) => {
 			{!isLoading ? 
         <FlatList
 					data={restaurants}
-					renderItem={({item}) => <RestaurantItem {...item} />}
+					renderItem={({item}) => 
+						<RestaurantItem 
+							{...item} 
+						/>
+					}
 					ListEmptyComponent={ListEmptyComponent}
 					ItemSeparatorComponent={ItemSeparatorComponent}
 					keyExtractor={(_, index) => `restaurantItem_${index}`}

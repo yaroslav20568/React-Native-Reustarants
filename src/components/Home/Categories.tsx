@@ -10,14 +10,20 @@ interface PropsCategories {
 const Categories = ({ shippingTypeItems }: PropsCategories) => {
 	const ItemSeparatorComponent = (): JSX.Element => {
 		return (
-			<FlatListSeparator width={28} />
+			<FlatListSeparator 
+				width={28} 
+			/>
 		);
 	};
 
   return (
 		<CategoriesContainer 
 			data={shippingTypeItems}
-			renderItem={({item}) => <CategoryItem {...item} />}
+			renderItem={({item}) => 
+				<CategoryItem 
+					{...item} 
+				/>
+			}
 			horizontal
 			showsHorizontalScrollIndicator={false}
 			ItemSeparatorComponent={ItemSeparatorComponent}
