@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { FlatList, Modal, TouchableOpacity } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -27,10 +27,10 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 		setVisible(false);
 	};
 
-	const selectCountry = (country: ICountry) => {
+	const selectCountry = useCallback((country: ICountry) => {
 		setSelectedCountry(country);
 		setVisible(false)
-	};
+	}, []);
 
 	return (
 		<OtpContainer>

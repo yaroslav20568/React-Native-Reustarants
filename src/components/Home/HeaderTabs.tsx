@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { HeaderTabsContainer, HeaderTabToddler } from './styles';
 import { HeaderTab } from '../importComponents';
@@ -16,10 +16,10 @@ const HeaderTabs = ({ nameTabs, shippingMethod, setShippingMethod }: PropsHeader
 		transform: [{translateX: translateX.value}]
 	}));
 
-	const onSelectTab = (nameTab: string, index: number): void => {
+	const onSelectTab = useCallback((nameTab: string, index: number): void => {
 		setShippingMethod(nameTab);
 		translateX.value = withTiming(index * 96);
-	};
+	}, []);
 
   return (
 		<HeaderTabsContainer>

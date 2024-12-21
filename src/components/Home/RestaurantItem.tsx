@@ -1,17 +1,17 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { IRestaurant } from './../../types';
 import { RestaurantImage, RestaurantInfo, RestaurantName, RestaurantPrice, RestaurantRating, WrapperRestaurantRating } from './styles';
+import { RootStackParamList } from '../../navigation/Stacks';
 
-interface PropsRestaurant extends IRestaurant {
-}
+interface PropsRestaurant extends IRestaurant {}
 
 const RestaurantItem = ({ image_url, name, rating, price, categories, review_count }: PropsRestaurant) => {
-  const navigation: any = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
 	const onNavigate = (): void => {
-		navigation.navigate('RestaurantDetail', { image_url, name, rating, price, categories, review_count });
+		navigation.navigate('RestaurantDetail', {image_url, name, rating, price, categories, review_count});
 	};
 
   return (
