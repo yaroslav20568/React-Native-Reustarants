@@ -1,5 +1,9 @@
+import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
+import Animated from "react-native-reanimated";
 import { COLORS, FONTS, FONTS_SIZE } from "../../constants";
+
+const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
 const OtpContainer = styled.View`
 	flex: 1;
@@ -8,14 +12,15 @@ const OtpContainer = styled.View`
 	marginVertical: 30;
 `;
 
-const OtpTitle = styled.Text`
+const OtpTitle = styled(Animated.Text)`
 	fontFamily: ${FONTS.poppinsSemiBold};
 	fontSize: ${FONTS_SIZE.large24};
 	color: ${COLORS.black};
 	textAlign: center;
+	textTransform: capitalize;
 `;
 
-const OtpText = styled.Text`
+const OtpText = styled(Animated.Text)`
 	fontFamily: ${FONTS.poppinsRegular};
 	fontSize: ${FONTS_SIZE.medium16};
 	color: ${COLORS.black};
@@ -23,7 +28,7 @@ const OtpText = styled.Text`
 	marginBottom: 15;
 `;
 
-const OtpButton = styled.TouchableOpacity`
+const OtpButton = styled(AnimatedTouchable)`
 	width: 70%;
 	backgroundColor: ${COLORS.lightBlue};
 	paddingVertical: 7;
@@ -36,9 +41,21 @@ const OtpButtonText = styled.Text`
 	fontSize: ${FONTS_SIZE.medium17};
 	color: ${COLORS.white};
 	textAlign: center;
+	textTransform: capitalize;
 `;
 
-const PhoneInputWrapper = styled.View`
+const OtpResendButton = styled(AnimatedTouchable)`
+	marginBottom: 15;
+`;
+
+const OtpResendButtonText = styled.Text`
+	fontFamily: ${FONTS.poppinsMedium};
+	fontSize: ${FONTS_SIZE.medium18};
+	color: ${COLORS.black};
+	textDecorationLine: underline;
+`;
+
+const PhoneInputWrapper = styled(Animated.View)`
 	marginBottom: 20;
 	flexDirection: row;
 	alignItems: center;
@@ -117,4 +134,4 @@ const CountryName = styled.Text`
 	flex: 1;
 `;
 
-export { OtpContainer, OtpTitle, OtpText, OtpButton, OtpButtonText, PhoneInputWrapper, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, CurrentCountryCode, PhoneInput, CountriesModalInner, CountriesModalHeader, CountriesModalHeaderText, CountryButton, CountryName };
+export { OtpContainer, OtpTitle, OtpText, OtpButton, OtpButtonText, OtpResendButton, OtpResendButtonText, PhoneInputWrapper, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, CurrentCountryCode, PhoneInput, CountriesModalInner, CountriesModalHeader, CountriesModalHeaderText, CountryButton, CountryName };

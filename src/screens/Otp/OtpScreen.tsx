@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScreenContainer } from '../styles';
-import { OtpStart } from '../../components/importComponents';
+import { OtpStart, OtpVerification } from '../../components/importComponents';
 import { useGetCountriesQuery } from '../../redux/RTKQuery/countriesApi';
 
 const OtpScreen = () => {
@@ -13,6 +13,7 @@ const OtpScreen = () => {
 			<OtpStart 
 				countries={data}
 			/>
+			<OtpVerification />
 		</ScreenContainer>
 	)
 }

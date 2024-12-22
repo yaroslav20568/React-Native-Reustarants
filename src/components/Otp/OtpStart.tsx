@@ -2,6 +2,7 @@ import React, { memo, useCallback, useEffect, useState } from 'react';
 import { FlatList, Modal, TouchableOpacity } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { COLORS } from '../../constants';
 import { CountriesModalHeader, CountriesModalHeaderText, CountriesModalInner, CountryButton, CountryName, CurrentCountryCode, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, OtpButton, OtpButtonText, OtpContainer, OtpText, OtpTitle, PhoneInput, PhoneInputWrapper } from './styles';
 import { ICountry } from '../../types';
@@ -34,14 +35,28 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 
 	return (
 		<OtpContainer>
-			<OtpTitle>Use Your Account to Get Started</OtpTitle>
-			<FontAwesome 
-				name='mobile-phone' 
-				size={170} 
-				color={COLORS.lightBlue} 
-			/>
-			<OtpText>Enter You Mobile Number</OtpText>
-			<PhoneInputWrapper>
+			<OtpTitle 
+				entering={FadeInUp.duration(1000)}
+			>
+				Use your account to get started
+			</OtpTitle>
+			<Animated.View
+				entering={FadeInUp.delay(300).duration(1000)}
+			>
+				<FontAwesome 
+					name='mobile-phone' 
+					size={170} 
+					color={COLORS.lightBlue} 
+				/>
+			</Animated.View>
+			<OtpText
+				entering={FadeInUp.delay(600).duration(1000)}
+			>
+				Enter you mobile number
+			</OtpText>
+			<PhoneInputWrapper
+				entering={FadeInDown.delay(900).duration(1000)}
+			>
 				<CurrentCountryCodeButton
 					activeOpacity={.7}
 					onPress={openModal}
@@ -59,6 +74,7 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 					value={phone}
 					onChangeText={setPhone}
 					borderColor={phone.length > 0 && phone.length < 8 ? COLORS.red : COLORS.black}
+					keyboardType='numeric'
 				/>
 			</PhoneInputWrapper>
 			<Modal 
@@ -92,10 +108,15 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 					/>
 				</CountriesModalInner>
 			</Modal>
-			<OtpText>You'll receive on 4 digit code on this number</OtpText>
+			<OtpText
+				entering={FadeInDown.delay(1200).duration(1000)}
+			>
+				You'll receive on 4 digit code on this number
+			</OtpText>
 			<OtpButton
 				activeOpacity={.7}
 				disabled={phone.length >= 8 ? false : true}
+				entering={FadeInDown.delay(1500).duration(1000)}
 			>
 				<OtpButtonText>Next</OtpButtonText>
 			</OtpButton>
