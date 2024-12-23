@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* MyAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MyAppTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-MyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-MyApp.a */; };
+		00E356F31AD99517003FC87E /* RestaurantsOfTheWorldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RestaurantsOfTheWorldTests.m */; };
+		0C80B921A6F3F58F76C31292 /* libPods-RestaurantsOfTheWorld.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-RestaurantsOfTheWorld.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-MyApp-MyAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-MyApp-MyAppTests.a */; };
-		6172F2D35A4C3AA820D92908 /* libPods-MyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-MyApp.a */; };
-		7EF68E3733C33B6898317E18 /* libPods-MyApp-MyAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-MyApp-MyAppTests.a */; };
+		7699B88040F8A987B510C191 /* libPods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.a */; };
+		6172F2D35A4C3AA820D92908 /* libPods-RestaurantsOfTheWorld.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-RestaurantsOfTheWorld.a */; };
+		7EF68E3733C33B6898317E18 /* libPods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		2E82BB36D4BD46A28F7E9DC4 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AE4B7370AC94EFD9119AEC9 /* Poppins-Medium.ttf */; };
 		D62CD878D4A54BDF8AABDE25 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C35857BAC0D84809B7A8C144 /* Poppins-Regular.ttf */; };
@@ -27,31 +27,31 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = MyApp;
+			remoteInfo = RestaurantsOfTheWorld;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* MyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* RestaurantsOfTheWorldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestaurantsOfTheWorldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* MyAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAppTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* MyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MyApp/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = MyApp/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MyApp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyApp/Info.plist; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-MyApp-MyAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyApp-MyAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-MyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.debug.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-MyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.release.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-MyApp-MyAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp-MyAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MyApp-MyAppTests/Pods-MyApp-MyAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-MyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D0AE47A65C8663E3B452821 /* Pods-MyApp-MyAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp-MyAppTests.release.xcconfig"; path = "Target Support Files/Pods-MyApp-MyAppTests/Pods-MyApp-MyAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		6423831EA8574132BED9D8CC /* libPods-MyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C97AB639B58BBB4B15BBE30 /* Pods-MyApp-MyAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp-MyAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MyApp-MyAppTests/Pods-MyApp-MyAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MyApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C0A881CF5CF3F2B244570E2A /* Pods-MyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.debug.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.debug.xcconfig"; sourceTree = "<group>"; };
-		D00AAFFCFCFDA5787532823F /* Pods-MyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.release.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.release.xcconfig"; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-MyApp-MyAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp-MyAppTests.release.xcconfig"; path = "Target Support Files/Pods-MyApp-MyAppTests/Pods-MyApp-MyAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* RestaurantsOfTheWorldTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RestaurantsOfTheWorldTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* RestaurantsOfTheWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantsOfTheWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RestaurantsOfTheWorld/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = RestaurantsOfTheWorld/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RestaurantsOfTheWorld/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RestaurantsOfTheWorld/Info.plist; sourceTree = "<group>"; };
+		19F6CBCC0A4E27FBF8BF4A61 /* libPods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4392A12AC88292D35C810B /* Pods-RestaurantsOfTheWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantsOfTheWorld.debug.xcconfig"; path = "Target Support Files/Pods-RestaurantsOfTheWorld/Pods-RestaurantsOfTheWorld.debug.xcconfig"; sourceTree = "<group>"; };
+		5709B34CF0A7D63546082F79 /* Pods-RestaurantsOfTheWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantsOfTheWorld.release.xcconfig"; path = "Target Support Files/Pods-RestaurantsOfTheWorld/Pods-RestaurantsOfTheWorld.release.xcconfig"; sourceTree = "<group>"; };
+		5B7EB9410499542E8C5724F5 /* Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.debug.xcconfig"; path = "Target Support Files/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5DCACB8F33CDC322A6C60F78 /* libPods-RestaurantsOfTheWorld.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RestaurantsOfTheWorld.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D0AE47A65C8663E3B452821 /* Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.release.xcconfig"; path = "Target Support Files/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.release.xcconfig"; sourceTree = "<group>"; };
+		6423831EA8574132BED9D8CC /* libPods-RestaurantsOfTheWorld.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RestaurantsOfTheWorld.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C97AB639B58BBB4B15BBE30 /* Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.debug.xcconfig"; path = "Target Support Files/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.debug.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RestaurantsOfTheWorld/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C0A881CF5CF3F2B244570E2A /* Pods-RestaurantsOfTheWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantsOfTheWorld.debug.xcconfig"; path = "Target Support Files/Pods-RestaurantsOfTheWorld/Pods-RestaurantsOfTheWorld.debug.xcconfig"; sourceTree = "<group>"; };
+		D00AAFFCFCFDA5787532823F /* Pods-RestaurantsOfTheWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantsOfTheWorld.release.xcconfig"; path = "Target Support Files/Pods-RestaurantsOfTheWorld/Pods-RestaurantsOfTheWorld.release.xcconfig"; sourceTree = "<group>"; };
+		89C6BE57DB24E9ADA2F236DE /* Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.release.xcconfig"; path = "Target Support Files/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		3AE4B7370AC94EFD9119AEC9 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		C35857BAC0D84809B7A8C144 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-MyApp-MyAppTests.a in Frameworks */,
+				7699B88040F8A987B510C191 /* libPods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,20 +71,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-MyApp.a in Frameworks */,
+				0C80B921A6F3F58F76C31292 /* libPods-RestaurantsOfTheWorld.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* MyAppTests */ = {
+		00E356EF1AD99517003FC87E /* RestaurantsOfTheWorldTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* MyAppTests.m */,
+				00E356F21AD99517003FC87E /* RestaurantsOfTheWorldTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = MyAppTests;
+			path = RestaurantsOfTheWorldTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -95,7 +95,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* MyApp */ = {
+		13B07FAE1A68108700A75B9A /* RestaurantsOfTheWorld */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -105,15 +105,15 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = MyApp;
+			name = RestaurantsOfTheWorld;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-MyApp.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-MyApp-MyAppTests.a */,
+				5DCACB8F33CDC322A6C60F78 /* libPods-RestaurantsOfTheWorld.a */,
+				19F6CBCC0A4E27FBF8BF4A61 /* libPods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -128,9 +128,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* MyApp */,
+				13B07FAE1A68108700A75B9A /* RestaurantsOfTheWorld */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* MyAppTests */,
+				00E356EF1AD99517003FC87E /* RestaurantsOfTheWorldTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -144,8 +144,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* MyApp.app */,
-				00E356EE1AD99517003FC87E /* MyAppTests.xctest */,
+				13B07F961A680F5B00A75B9A /* RestaurantsOfTheWorld.app */,
+				00E356EE1AD99517003FC87E /* RestaurantsOfTheWorldTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,10 +153,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-MyApp.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-MyApp.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-MyApp-MyAppTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-MyApp-MyAppTests.release.xcconfig */,
+				3B4392A12AC88292D35C810B /* Pods-RestaurantsOfTheWorld.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-RestaurantsOfTheWorld.release.xcconfig */,
+				5B7EB9410499542E8C5724F5 /* Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.debug.xcconfig */,
+				89C6BE57DB24E9ADA2F236DE /* Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -164,10 +164,10 @@
 		19A8D5B6E3F19114B70CCAB4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FFF37588AF8E68B5F3C6369C /* Pods-MyApp.debug.xcconfig */,
-				94DED7B4B6E7F15F8F2B80A3 /* Pods-MyApp.release.xcconfig */,
-				FB48C0ECA6C87591E1399CF3 /* Pods-MyApp-MyAppTests.debug.xcconfig */,
-				9932B45624127499328FD20D /* Pods-MyApp-MyAppTests.release.xcconfig */,
+				FFF37588AF8E68B5F3C6369C /* Pods-RestaurantsOfTheWorld.debug.xcconfig */,
+				94DED7B4B6E7F15F8F2B80A3 /* Pods-RestaurantsOfTheWorld.release.xcconfig */,
+				FB48C0ECA6C87591E1399CF3 /* Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.debug.xcconfig */,
+				9932B45624127499328FD20D /* Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -187,9 +187,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* MyAppTests */ = {
+		00E356ED1AD99517003FC87E /* RestaurantsOfTheWorldTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MyAppTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "RestaurantsOfTheWorldTests" */;
 			buildPhases = (
 				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -203,14 +203,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = MyAppTests;
-			productName = MyAppTests;
-			productReference = 00E356EE1AD99517003FC87E /* MyAppTests.xctest */;
+			name = RestaurantsOfTheWorldTests;
+			productName = RestaurantsOfTheWorldTests;
+			productReference = 00E356EE1AD99517003FC87E /* RestaurantsOfTheWorldTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* MyApp */ = {
+		13B07F861A680F5B00A75B9A /* RestaurantsOfTheWorld */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MyApp" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RestaurantsOfTheWorld" */;
 			buildPhases = (
 				219E55AD61B283FDCB02A2DE /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -225,9 +225,9 @@
 			);
 			dependencies = (
 			);
-			name = MyApp;
-			productName = MyApp;
-			productReference = 13B07F961A680F5B00A75B9A /* MyApp.app */;
+			name = RestaurantsOfTheWorld;
+			productName = RestaurantsOfTheWorld;
+			productReference = 13B07F961A680F5B00A75B9A /* RestaurantsOfTheWorld.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -247,7 +247,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MyApp" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "RestaurantsOfTheWorld" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -260,8 +260,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* MyApp */,
-				00E356ED1AD99517003FC87E /* MyAppTests */,
+				13B07F861A680F5B00A75B9A /* RestaurantsOfTheWorld */,
+				00E356ED1AD99517003FC87E /* RestaurantsOfTheWorldTests */,
 			);
 		};
 /* End PBXProject section */
@@ -311,15 +311,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyApp/Pods-MyApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-RestaurantsOfTheWorld/Pods-RestaurantsOfTheWorld-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyApp/Pods-MyApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-RestaurantsOfTheWorld/Pods-RestaurantsOfTheWorld-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyApp/Pods-MyApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RestaurantsOfTheWorld/Pods-RestaurantsOfTheWorld-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
@@ -337,7 +337,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MyApp-MyAppTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -355,7 +355,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyApp-MyAppTests/Pods-MyApp-MyAppTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -377,7 +377,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MyApp-MyAppTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -390,15 +390,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyApp/Pods-MyApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-RestaurantsOfTheWorld/Pods-RestaurantsOfTheWorld-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyApp/Pods-MyApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-RestaurantsOfTheWorld/Pods-RestaurantsOfTheWorld-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyApp/Pods-MyApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RestaurantsOfTheWorld/Pods-RestaurantsOfTheWorld-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
@@ -407,15 +407,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyApp-MyAppTests/Pods-MyApp-MyAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyApp-MyAppTests/Pods-MyApp-MyAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyApp-MyAppTests/Pods-MyApp-MyAppTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests/Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -446,7 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* MyAppTests.m in Sources */,
+				00E356F31AD99517003FC87E /* RestaurantsOfTheWorldTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +464,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* MyApp */;
+			target = 13B07F861A680F5B00A75B9A /* RestaurantsOfTheWorld */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -472,14 +472,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-MyApp-MyAppTests.debug.xcconfig */;
+			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = MyAppTests/Info.plist;
+				INFOPLIST_FILE = RestaurantsOfTheWorldTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -493,17 +493,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyApp.app/MyApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RestaurantsOfTheWorld.app/RestaurantsOfTheWorld";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-MyApp-MyAppTests.release.xcconfig */;
+			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-RestaurantsOfTheWorld-RestaurantsOfTheWorldTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = MyAppTests/Info.plist;
+				INFOPLIST_FILE = RestaurantsOfTheWorldTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -517,19 +517,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyApp.app/MyApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RestaurantsOfTheWorld.app/RestaurantsOfTheWorld";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-MyApp.debug.xcconfig */;
+			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-RestaurantsOfTheWorld.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = MyApp/Info.plist;
+				INFOPLIST_FILE = RestaurantsOfTheWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -541,7 +541,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = MyApp;
+				PRODUCT_NAME = RestaurantsOfTheWorld;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -550,12 +550,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-MyApp.release.xcconfig */;
+			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-RestaurantsOfTheWorld.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = MyApp/Info.plist;
+				INFOPLIST_FILE = RestaurantsOfTheWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -567,7 +567,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = MyApp;
+				PRODUCT_NAME = RestaurantsOfTheWorld;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -711,7 +711,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MyAppTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "RestaurantsOfTheWorldTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -720,7 +720,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MyApp" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RestaurantsOfTheWorld" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -729,7 +729,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MyApp" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "RestaurantsOfTheWorld" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
