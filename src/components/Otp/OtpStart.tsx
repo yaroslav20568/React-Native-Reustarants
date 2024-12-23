@@ -9,11 +9,12 @@ import { ICountry } from '../../types';
 
 interface PropsOtpStart {
   countries: Array<ICountry> | undefined;
+	onConfirmNumber: (fullNumber: string) => void;
 }
 
-const OtpStart = ({ countries }: PropsOtpStart) => {
+const OtpStart = ({ countries, onConfirmNumber }: PropsOtpStart) => {
 	const [selectedCountry, setSelectedCountry] = useState<ICountry | undefined>(undefined);
-	const [phone, setPhone] = useState<string>('');
+	const [phoneNumber, setPhoneNumber] = useState<string>('');
 	const [visible, setVisible] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -71,9 +72,9 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 				<PhoneInput 
 					placeholder='Enter your number'
 					placeholderTextColor={COLORS.black}
-					value={phone}
-					onChangeText={setPhone}
-					borderColor={phone.length > 0 && phone.length < 8 ? COLORS.red : COLORS.black}
+					value={phoneNumber}
+					onChangeText={setPhoneNumber}
+					borderColor={phoneNumber.length > 0 && phoneNumber.length < 8 ? COLORS.red : COLORS.black}
 					keyboardType='numeric'
 				/>
 			</PhoneInputWrapper>
@@ -115,8 +116,9 @@ const OtpStart = ({ countries }: PropsOtpStart) => {
 			</OtpText>
 			<OtpButton
 				activeOpacity={.7}
-				disabled={phone.length >= 8 ? false : true}
+				disabled={phoneNumber.length >= 8 ? false : true}
 				entering={FadeInDown.delay(1500).duration(1000)}
+				onPress={() => onConfirmNumber(selectedCountry?.callingCodes[0] + phoneNumber)}
 			>
 				<OtpButtonText>Next</OtpButtonText>
 			</OtpButton>

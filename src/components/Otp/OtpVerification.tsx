@@ -1,11 +1,15 @@
 import React from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
+import { OtpInput } from 'react-native-otp-entry';
 import { OtpButton, OtpButtonText, OtpContainer, OtpResendButton, OtpResendButtonText, OtpText, OtpTitle } from './styles';
 import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
-import { OtpInput } from 'react-native-otp-entry';
 
-const OtpVerification = () => {
+interface PropsOtpVerification {
+  fullPhoneNumber: string;
+}
+
+const OtpVerification = ({ fullPhoneNumber }: PropsOtpVerification) => {
 	return (
 		<OtpContainer>
 			<OtpTitle 
