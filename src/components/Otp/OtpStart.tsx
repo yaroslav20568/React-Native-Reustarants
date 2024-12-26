@@ -3,16 +3,21 @@ import { FlatList, Modal, TouchableOpacity } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
+import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import Lottie from 'lottie-react-native';
 import { COLORS } from '../../constants';
 import { CountriesModalHeader, CountriesModalHeaderText, CountriesModalInner, CountryButton, CountryName, CurrentCountryCode, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, OtpButton, OtpButtonText, OtpContainer, OtpText, OtpTitle, PhoneInput, PhoneInputWrapper } from './styles';
 import { ICountry } from '../../types';
 
 interface PropsOtpStart {
   countries: Array<ICountry> | undefined;
-	onConfirmNumber: (fullNumber: string) => void;
+	signInWithPhoneNumber: (fullNumber: string) => Promise<void>;
+	phoneNumberConfirm: FirebaseAuthTypes.ConfirmationResult | null;
+	setActiveComponent: (activeComponent: string) => void;
+	isLoading: boolean;
 }
 
-const OtpStart = ({ countries, onConfirmNumber }: PropsOtpStart) => {
+const OtpStart = ({ countries, signInWithPhoneNumber, phoneNumberConfirm, setActiveComponent, isLoading }: PropsOtpStart) => {
 	const [selectedCountry, setSelectedCountry] = useState<ICountry | undefined>(undefined);
 	const [phoneNumber, setPhoneNumber] = useState<string>('');
 	const [visible, setVisible] = useState<boolean>(false);
@@ -20,6 +25,12 @@ const OtpStart = ({ countries, onConfirmNumber }: PropsOtpStart) => {
 	useEffect(() => {
 		setSelectedCountry(countries?.length ? countries[0] : undefined);
 	}, [countries]);
+
+	useEffect(() => {
+		if(phoneNumberConfirm) {
+			setActiveComponent('Verification');
+		}
+	}, [phoneNumberConfirm]);
 
 	const openModal = (): void => {
 		setVisible(true);
@@ -112,15 +123,22 @@ const OtpStart = ({ countries, onConfirmNumber }: PropsOtpStart) => {
 			<OtpText
 				entering={FadeInDown.delay(1200).duration(1000)}
 			>
-				You'll receive on 4 digit code on this number
+				You'll receive on 6 digit code on this number
 			</OtpText>
 			<OtpButton
 				activeOpacity={.7}
-				disabled={phoneNumber.length >= 8 ? false : true}
+				disabled={phoneNumber.length < 8 || isLoading ? true : false}
 				entering={FadeInDown.delay(1500).duration(1000)}
-				onPress={() => onConfirmNumber(selectedCountry?.callingCodes[0] + phoneNumber)}
+				onPress={() => signInWithPhoneNumber('+' + selectedCountry?.callingCodes[0] + phoneNumber)}
 			>
-				<OtpButtonText>Next</OtpButtonText>
+				{isLoading ? 
+					<Lottie 
+						source={require('../../assets/animations/scanner.json')} 
+						style={{width: 29.5, height: 29.5}} 
+						autoPlay={true}
+						duration={3000}
+					/> : 
+					<OtpButtonText>Next</OtpButtonText>}
 			</OtpButton>
 		</OtpContainer>
 	)

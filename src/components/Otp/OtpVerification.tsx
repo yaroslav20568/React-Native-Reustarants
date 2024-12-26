@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { OtpInput } from 'react-native-otp-entry';
+import { useOtpVerify } from 'react-native-otp-verify';
+import Lottie from 'lottie-react-native';
 import { OtpButton, OtpButtonText, OtpContainer, OtpResendButton, OtpResendButtonText, OtpText, OtpTitle } from './styles';
 import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
 
 interface PropsOtpVerification {
   fullPhoneNumber: string;
+	signInWithPhoneNumber: (fullNumber: string) => Promise<void>;
+	confirmOtpCode: (otpCode: string) => Promise<void>;
+	isLoading: boolean;
 }
 
-const OtpVerification = ({ fullPhoneNumber }: PropsOtpVerification) => {
+const OtpVerification = ({ fullPhoneNumber, signInWithPhoneNumber, confirmOtpCode, isLoading }: PropsOtpVerification) => {
+	const { otp, stopListener, startListener } = useOtpVerify({numberOfDigits: 6});
+	const otpInputRef = useRef();
+
+	useEffect(() => {
+		startListener();
+
+		return () => stopListener();
+	}, []);
+
+	useEffect(() => {
+		otp && otpInputRef.current?.setValue(otp);
+	}, [otp]);
+
 	return (
 		<OtpContainer>
 			<OtpTitle 
@@ -29,13 +47,14 @@ const OtpVerification = ({ fullPhoneNumber }: PropsOtpVerification) => {
 			<OtpText
 				entering={FadeInUp.delay(600).duration(1000)}
 			>
-				Please enter 4-digit code send to you
+				Please enter 6-digit code send to you
 			</OtpText>
 			<Animated.View
 				entering={FadeInDown.delay(900).duration(1000)}
 			>
 				<OtpInput
-					numberOfDigits={4}
+					ref={otpInputRef}
+					numberOfDigits={6}
 					focusColor={COLORS.black}
 					autoFocus={false}
 					hideStick={true}
@@ -45,7 +64,7 @@ const OtpVerification = ({ fullPhoneNumber }: PropsOtpVerification) => {
 					textInputProps={{accessibilityLabel: 'One-Time Password'}}
 					theme={{
 						containerStyle: {
-							width: 220,
+							width: 300,
 							marginBottom: 20
 						},
 						pinCodeContainerStyle: {
@@ -67,14 +86,24 @@ const OtpVerification = ({ fullPhoneNumber }: PropsOtpVerification) => {
 			<OtpResendButton
 				activeOpacity={.7}
 				entering={FadeInDown.delay(1200).duration(1000)}
+				onPress={() => signInWithPhoneNumber(fullPhoneNumber)}
 			>
 				<OtpResendButtonText>Resend OTP</OtpResendButtonText>
 			</OtpResendButton>
 			<OtpButton
 				activeOpacity={.7}
+				// disabled={!!otp}
 				entering={FadeInDown.delay(1500).duration(1000)}
+				onPress={() => otp && confirmOtpCode(otp)}
 			>
-				<OtpButtonText>Verify now</OtpButtonText>
+				{isLoading ? 
+					<Lottie 
+						source={require('../../assets/animations/scanner.json')} 
+						style={{width: 29.5, height: 29.5}} 
+						autoPlay={true}
+						duration={3000}
+					/> : 
+				<OtpButtonText>Verify now</OtpButtonText>}
 			</OtpButton>
 		</OtpContainer>
 	)

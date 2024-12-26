@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "52247944252",
+    "project_id": "restaurants-of-the-world",
+    "storage_bucket": "restaurants-of-the-world.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52247944252:android:d91440e2932a7aea503739",
+        "android_client_info": {
+          "package_name": "com.restaurantsoftheworld"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo_PYCM41GdrN0FobVlLo8Z_in5FexKqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

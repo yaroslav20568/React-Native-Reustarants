@@ -34,6 +34,8 @@ const OtpButton = styled(AnimatedTouchable)`
 	paddingVertical: 7;
 	borderRadius: 20;
 	marginTop: 25;
+	justifyContent: center;
+	alignItems: center;
 `;
 
 const OtpButtonText = styled.Text`
