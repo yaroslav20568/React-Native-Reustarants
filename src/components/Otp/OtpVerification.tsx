@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
-import { OtpInput } from 'react-native-otp-entry';
+import { OtpInput, OtpInputRef } from 'react-native-otp-entry';
 import { useOtpVerify } from 'react-native-otp-verify';
 import Lottie from 'lottie-react-native';
 import { OtpButton, OtpButtonText, OtpContainer, OtpResendButton, OtpResendButtonText, OtpText, OtpTitle } from './styles';
@@ -16,7 +16,7 @@ interface PropsOtpVerification {
 
 const OtpVerification = ({ fullPhoneNumber, signInWithPhoneNumber, confirmOtpCode, isLoading }: PropsOtpVerification) => {
 	const { otp, stopListener, startListener } = useOtpVerify({numberOfDigits: 6});
-	const otpInputRef = useRef();
+	const otpInputRef = useRef<OtpInputRef | null>(null);
 
 	useEffect(() => {
 		startListener();
@@ -59,6 +59,7 @@ const OtpVerification = ({ fullPhoneNumber, signInWithPhoneNumber, confirmOtpCod
 					autoFocus={false}
 					hideStick={true}
 					blurOnFilled={true}
+					disabled={isLoading}
 					type='numeric'
 					focusStickBlinkingDuration={500}
 					textInputProps={{accessibilityLabel: 'One-Time Password'}}
@@ -85,6 +86,7 @@ const OtpVerification = ({ fullPhoneNumber, signInWithPhoneNumber, confirmOtpCod
 			</Animated.View>
 			<OtpResendButton
 				activeOpacity={.7}
+				disabled={!!otp}
 				entering={FadeInDown.delay(1200).duration(1000)}
 				onPress={() => signInWithPhoneNumber(fullPhoneNumber)}
 			>
@@ -92,7 +94,7 @@ const OtpVerification = ({ fullPhoneNumber, signInWithPhoneNumber, confirmOtpCod
 			</OtpResendButton>
 			<OtpButton
 				activeOpacity={.7}
-				// disabled={!!otp}
+				disabled={!otp}
 				entering={FadeInDown.delay(1500).duration(1000)}
 				onPress={() => otp && confirmOtpCode(otp)}
 			>

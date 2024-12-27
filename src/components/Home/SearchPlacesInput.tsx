@@ -11,7 +11,7 @@ interface PropsSearchPlacesInput {
 }
 
 const SearchPlacesInput = ({ setCity }: PropsSearchPlacesInput) => {
-	const ref = useRef<GooglePlacesAutocompleteRef | undefined>();
+	const ref = useRef<GooglePlacesAutocompleteRef | null>(null);
 
 	const animatedValue = useSharedValue<number>(30);
 

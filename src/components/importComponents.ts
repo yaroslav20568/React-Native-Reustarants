@@ -22,3 +22,4 @@ export { default as OrderList } from './OrderCompleted/OrderList';
 
 export { default as OtpStart } from './Otp/OtpStart';
 export { default as OtpVerification } from './Otp/OtpVerification';
+export { default as OtpProfile } from './Otp/OtpProfile';

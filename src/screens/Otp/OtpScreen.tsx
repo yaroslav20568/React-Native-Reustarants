@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { ScreenContainer } from '../styles';
-import { OtpStart, OtpVerification } from '../../components/importComponents';
+import { OtpProfile, OtpStart, OtpVerification } from '../../components/importComponents';
 import { useGetCountriesQuery } from '../../redux/RTKQuery/countriesApi';
 import { Alert } from 'react-native';
 
@@ -10,25 +10,28 @@ auth().settings.appVerificationDisabledForTesting = true;
 const OtpScreen = () => {
 	const { data } = useGetCountriesQuery(null);
 
-	const [activeComponent, setActiveComponent] = useState<string>('Start');
+	const [activeComponent, setActiveComponent] = useState<string>('Profile');
 	const [fullPhoneNumber, setFullPhoneNumber] = useState<string>('');
 	const [phoneNumberConfirm, setPhoneNumberConfirm] = useState<FirebaseAuthTypes.ConfirmationResult | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	const signInWithPhoneNumber = useCallback(async (fullPhoneNumber: string): Promise<void> => {
+		// setIsLoading(true);
 		// try {
 		// 	const confirmation = await auth().signInWithPhoneNumber(fullPhoneNumber);
 		// 	setFullPhoneNumber(fullPhoneNumber);
-		// 	setPhoneNumberConfirm(confirmation);
-		// } catch (e) {
-		// 	console.log(e);
+		// 	setTimeout(() => setPhoneNumberConfirm(confirmation), 100);
+		// 	setIsLoading(false);
+		// } catch(e) {
+		// 	Alert.alert('Try again');
+		// 	setIsLoading(false);
 		// }
 		setIsLoading(true);
 		const signInWithPhoneNumber = new Promise((resolve, reject) => {
 			setTimeout(() => {
 				setIsLoading(false);
 				resolve('confirm');
-				// reject('Error');
+				// reject('Try again');
 			}, 1000);
 		});
 
@@ -43,23 +46,27 @@ const OtpScreen = () => {
 	}, []);
 
 	const confirmOtpCode = useCallback(async (otpCode: string): Promise<void> => {
-    // try {
+    // setIsLoading(true);
+		// try {
     //   await phoneNumberConfirm?.confirm(otpCode);
+		// 	setTimeout(() => setActiveComponent('Profile'), 100);
+		// 	setIsLoading(false);
     // } catch (e) {
-    //   console.log(e);
+    //   Alert.alert('Invalid code');
+		// 	setIsLoading(false);
     // }
 		setIsLoading(true);
 		const confirmOtpCode = new Promise((resolve, reject) => {
 			setTimeout(() => {
 				setIsLoading(false);
-				resolve('12345');
-				// reject('Error');
+				resolve('');
+				// reject('Invalid code');
 			}, 1000);
 		});
 
 		confirmOtpCode
 			.then(() => {
-				setTimeout(() => setActiveComponent('Start'), 100);
+				setTimeout(() => setActiveComponent('Profile'), 100);
 			})
 			.catch(() => {
 				Alert.alert('Invalid code')
@@ -79,13 +86,17 @@ const OtpScreen = () => {
 					isLoading={isLoading}
 				/> : 
 				activeComponent === 'Verification' ? 
-				<OtpVerification 
-					fullPhoneNumber={fullPhoneNumber}
-					signInWithPhoneNumber={signInWithPhoneNumber}
-					confirmOtpCode={confirmOtpCode}
-					isLoading={isLoading}
-				/> : 
-				''}
+					<OtpVerification 
+						fullPhoneNumber={fullPhoneNumber}
+						signInWithPhoneNumber={signInWithPhoneNumber}
+						confirmOtpCode={confirmOtpCode}
+						isLoading={isLoading}
+					/> : 
+				activeComponent === 'Profile' ? 
+					<OtpProfile 
+						fullPhoneNumber={fullPhoneNumber}
+					/> : 
+					''}
 		</ScreenContainer>
 	)
 }

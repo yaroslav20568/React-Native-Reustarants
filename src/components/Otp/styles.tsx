@@ -57,6 +57,32 @@ const OtpResendButtonText = styled.Text`
 	textDecorationLine: underline;
 `;
 
+const OtpFormikInputWrapper = styled(Animated.View)`
+	width: 100%;
+	paddingHorizontal: 5%;
+`;
+
+const OtpFormikInput = styled.TextInput`
+	width: 90%;
+	backgroundColor: ${COLORS.lightGray};
+	fontFamily: ${FONTS.poppinsRegular};
+	fontSize: ${FONTS_SIZE.medium16};
+	color: ${COLORS.black};
+	borderRadius: 15;
+	paddingVertical: 8;
+	paddingHorizontal: 20;
+	marginTop: 20;
+`;
+
+const OtpFormikErrorText = styled.TextInput`
+	fontFamily: ${FONTS.poppinsRegular};
+	fontSize: ${FONTS_SIZE.small14};
+	color: ${COLORS.red};
+	padding: 0;
+	marginHorizontal: 20;
+	marginTop: 5;
+`;
+
 const PhoneInputWrapper = styled(Animated.View)`
 	marginBottom: 20;
 	flexDirection: row;
@@ -136,4 +162,4 @@ const CountryName = styled.Text`
 	flex: 1;
 `;
 
-export { OtpContainer, OtpTitle, OtpText, OtpButton, OtpButtonText, OtpResendButton, OtpResendButtonText, PhoneInputWrapper, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, CurrentCountryCode, PhoneInput, CountriesModalInner, CountriesModalHeader, CountriesModalHeaderText, CountryButton, CountryName };
+export { OtpContainer, OtpTitle, OtpText, OtpButton, OtpButtonText, OtpResendButton, OtpResendButtonText, OtpFormikInputWrapper, OtpFormikInput, OtpFormikErrorText, PhoneInputWrapper, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, CurrentCountryCode, PhoneInput, CountriesModalInner, CountriesModalHeader, CountriesModalHeaderText, CountryButton, CountryName };
