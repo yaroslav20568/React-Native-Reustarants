@@ -77,11 +77,10 @@ const OtpFormikInput = styled.TextInput`
 	paddingHorizontal: 20;
 `;
 
-const OtpFormikErrorText = styled.TextInput`
+const OtpFormikErrorText = styled.Text`
 	fontFamily: ${FONTS.poppinsRegular};
 	fontSize: ${FONTS_SIZE.small14};
 	color: ${COLORS.red};
-	padding: 0;
 	marginHorizontal: 20;
 	marginTop: 5;
 `;

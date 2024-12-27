@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GestureResponderEvent } from 'react-native';
-import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
+import { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Lottie from 'lottie-react-native';
 import firestore from '@react-native-firebase/firestore';
 import { OtpButton, OtpButtonText, OtpContainer, OtpFormikErrorText, OtpFormikInput, OtpFormikInputWrapper, OtpTitle, OtpUserIconWrapper } from './styles';
 import { COLORS } from '../../constants';
@@ -28,6 +29,7 @@ const yupSchema = Yup.object({
 
 const OtpProfile = ({ fullPhoneNumber }: PropsOtpProfile) => {
 	const formValues = {firstName: '', lastName: '', email: '', phone: fullPhoneNumber};
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	return (
 		<OtpContainer>
@@ -47,8 +49,14 @@ const OtpProfile = ({ fullPhoneNumber }: PropsOtpProfile) => {
 			</OtpUserIconWrapper>
 			<Formik
 				initialValues={formValues}
-				onSubmit={values => {
-					console.log(values)
+				onSubmit={(values, {resetForm}) => {
+					setIsLoading(true);
+
+					firestore().collection('users').add(values)
+						.then(() => {
+							setIsLoading(false);
+							resetForm();
+						});
 				}}
 				validationSchema={yupSchema}
 			>
@@ -98,11 +106,18 @@ const OtpProfile = ({ fullPhoneNumber }: PropsOtpProfile) => {
 						</OtpFormikInputWrapper>
 						<OtpButton
 							activeOpacity={.7}
-							// disabled={!otp}
+							disabled={isLoading}
 							entering={FadeInDown.delay(1500).duration(1000)}
 							onPress={handleSubmit as (e?: GestureResponderEvent) => void}
 						>
-							<OtpButtonText>Submit</OtpButtonText>
+							{isLoading ? 
+								<Lottie 
+									source={require('../../assets/animations/scanner.json')} 
+									style={{width: 29.5, height: 29.5}} 
+									autoPlay={true}
+									duration={3000}
+								/> : 
+								<OtpButtonText>Submit</OtpButtonText>}
 						</OtpButton>
 					</>
 				)}

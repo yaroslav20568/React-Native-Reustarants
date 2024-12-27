@@ -10,7 +10,7 @@ import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
 interface PropsOtpVerification {
   fullPhoneNumber: string;
 	signInWithPhoneNumber: (fullNumber: string) => Promise<void>;
-	confirmOtpCode: (otpCode: string) => Promise<void>;
+	confirmOtpCode: (otpCode: string, fullNumber: string) => Promise<void>;
 	isLoading: boolean;
 }
 
@@ -96,7 +96,7 @@ const OtpVerification = ({ fullPhoneNumber, signInWithPhoneNumber, confirmOtpCod
 				activeOpacity={.7}
 				disabled={!otp}
 				entering={FadeInDown.delay(1500).duration(1000)}
-				onPress={() => otp && confirmOtpCode(otp)}
+				onPress={() => otp && confirmOtpCode(otp, fullPhoneNumber)}
 			>
 				{isLoading ? 
 					<Lottie 
