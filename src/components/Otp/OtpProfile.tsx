@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import firestore from '@react-native-firebase/firestore';
-import { OtpButton, OtpButtonText, OtpContainer, OtpFormikErrorText, OtpFormikInput, OtpFormikInputWrapper, OtpTitle } from './styles';
+import { OtpButton, OtpButtonText, OtpContainer, OtpFormikErrorText, OtpFormikInput, OtpFormikInputWrapper, OtpTitle, OtpUserIconWrapper } from './styles';
 import { COLORS } from '../../constants';
 
 interface PropsOtpProfile {
@@ -36,7 +36,7 @@ const OtpProfile = ({ fullPhoneNumber }: PropsOtpProfile) => {
 			>
 				Please complete your profile
 			</OtpTitle>
-			<Animated.View
+			<OtpUserIconWrapper
 				entering={FadeInUp.delay(300).duration(1000)}
 			>
 				<FontAwesome 
@@ -44,7 +44,7 @@ const OtpProfile = ({ fullPhoneNumber }: PropsOtpProfile) => {
 					size={170} 
 					color={COLORS.lightBlue} 
 				/>
-			</Animated.View>
+			</OtpUserIconWrapper>
 			<Formik
 				initialValues={formValues}
 				onSubmit={values => {
@@ -63,7 +63,6 @@ const OtpProfile = ({ fullPhoneNumber }: PropsOtpProfile) => {
 								value={values.firstName}
 								onChangeText={handleChange('firstName')}
 								onBlur={handleBlur('firstName')}
-								style={{width: '100%'}}
 							/>
 							{errors.firstName && touched.firstName ? 
 								<OtpFormikErrorText>{errors.firstName}</OtpFormikErrorText> : 

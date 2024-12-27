@@ -16,61 +16,28 @@ const OtpScreen = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	const signInWithPhoneNumber = useCallback(async (fullPhoneNumber: string): Promise<void> => {
-		// setIsLoading(true);
-		// try {
-		// 	const confirmation = await auth().signInWithPhoneNumber(fullPhoneNumber);
-		// 	setFullPhoneNumber(fullPhoneNumber);
-		// 	setTimeout(() => setPhoneNumberConfirm(confirmation), 100);
-		// 	setIsLoading(false);
-		// } catch(e) {
-		// 	Alert.alert('Try again');
-		// 	setIsLoading(false);
-		// }
 		setIsLoading(true);
-		const signInWithPhoneNumber = new Promise((resolve, reject) => {
-			setTimeout(() => {
-				setIsLoading(false);
-				resolve('confirm');
-				// reject('Try again');
-			}, 1000);
-		});
-
-		signInWithPhoneNumber
-			.then((data) => {
-				setFullPhoneNumber(fullPhoneNumber);
-				setTimeout(() => setPhoneNumberConfirm(data), 100);
-			})
-			.catch((e) => {
-				Alert.alert(e)
-			})
+		try {
+			const confirmation = await auth().signInWithPhoneNumber(fullPhoneNumber);
+			setFullPhoneNumber(fullPhoneNumber);
+			setTimeout(() => setPhoneNumberConfirm(confirmation), 100);
+			setIsLoading(false);
+		} catch(e) {
+			Alert.alert('Try again');
+			setIsLoading(false);
+		}
 	}, []);
 
 	const confirmOtpCode = useCallback(async (otpCode: string): Promise<void> => {
-    // setIsLoading(true);
-		// try {
-    //   await phoneNumberConfirm?.confirm(otpCode);
-		// 	setTimeout(() => setActiveComponent('Profile'), 100);
-		// 	setIsLoading(false);
-    // } catch (e) {
-    //   Alert.alert('Invalid code');
-		// 	setIsLoading(false);
-    // }
-		setIsLoading(true);
-		const confirmOtpCode = new Promise((resolve, reject) => {
-			setTimeout(() => {
-				setIsLoading(false);
-				resolve('');
-				// reject('Invalid code');
-			}, 1000);
-		});
-
-		confirmOtpCode
-			.then(() => {
-				setTimeout(() => setActiveComponent('Profile'), 100);
-			})
-			.catch(() => {
-				Alert.alert('Invalid code')
-			})
+    setIsLoading(true);
+		try {
+      await phoneNumberConfirm?.confirm(otpCode);
+			setTimeout(() => setActiveComponent('Profile'), 100);
+			setIsLoading(false);
+    } catch (e) {
+      Alert.alert('Invalid code');
+			setIsLoading(false);
+    }
   }, []);
 
 	return (
