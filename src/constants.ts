@@ -30,14 +30,7 @@ enum FONTS_SIZE {
   large30 = 30
 }
 
-enum ICONS {
-  homeIcon = require('./assets/icons/tabs/homeIcon.png'),
-  favoritesIcon = require('./assets/icons/tabs/favoritesIcon.png'),
-  accountIcon = require('./assets/icons/tabs/accountIcon.png'),
-  cartIcon = require('./assets/icons/tabs/cartIcon.png')
-}
-
 const YELP_API_KEY: string = 'hERrSIqRYCBJ17qb2PBv5a9BX1pt1fL64UGAsaQUddKolA4ujZX50qCd1W3U6e1ZbFboCpFiKrfZcQtDb759Fkzm9RqVn4E0Wy-UbL-vx7F5KMsG86Lag6u2-HHmYnYx';
 const GOOGLE_API_KEY: string = 'AIzaSyCUTeIqUPZMB7jULskHrvbKcUs7wUmxYB4';
 
-export { COLORS, FONTS, FONTS_SIZE, ICONS, YELP_API_KEY, GOOGLE_API_KEY };
+export { COLORS, FONTS, FONTS_SIZE, YELP_API_KEY, GOOGLE_API_KEY };

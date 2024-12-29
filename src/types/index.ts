@@ -34,4 +34,12 @@ interface IUser {
 	phone: string;
 }
 
-export type { ICategory, IFood, IRestaurant, ICountry, IUser };
+type TTabName = 'Home' | 'Favorites' | 'Account' | 'Cart';
+
+interface ITab {
+	name: TTabName;
+	screen: () => React.JSX.Element;
+	icon: string;
+}
+
+export type { ICategory, IFood, IRestaurant, ICountry, IUser, TTabName, ITab };

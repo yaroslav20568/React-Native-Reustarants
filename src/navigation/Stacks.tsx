@@ -44,8 +44,7 @@ const Stacks = () => {
 					<Stack.Screen name="Tabs" component={Tabs} />
 					<Stack.Screen name="RestaurantDetail" component={RestaurantDetail} />
 					<Stack.Screen name="OrderCompleted" component={OrderCompleted} />
-				</>
-			}
+				</>}
 		</Stack.Navigator>
   )
 }
