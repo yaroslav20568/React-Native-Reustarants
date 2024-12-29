@@ -15,22 +15,26 @@ auth().settings.appVerificationDisabledForTesting = true;
 const OtpScreen = ({ navigation }: PropsOtp) => {
 	const { data } = useGetCountriesQuery(null);
 
-	const [activeComponent, setActiveComponent] = useState<string>('Profile');
+	const [activeComponent, setActiveComponent] = useState<string>('Start');
 	const [fullPhoneNumber, setFullPhoneNumber] = useState<string>('');
 	const [phoneNumberConfirm, setPhoneNumberConfirm] = useState<FirebaseAuthTypes.ConfirmationResult | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
+
+	const navigateToTabs = useCallback((): void => {
+		navigation.navigate('Tabs');
+	}, []);
 
 	const signInWithPhoneNumber = useCallback(async (fullPhoneNumber: string): Promise<void> => {
 		setIsLoading(true);
 		try {
 			const confirmation = await auth().signInWithPhoneNumber(fullPhoneNumber);
 			
+			setIsLoading(false);
 			setFullPhoneNumber(fullPhoneNumber);
 			setTimeout(() => setPhoneNumberConfirm(confirmation), 100);
-			setIsLoading(false);
 		} catch(e) {
-			Alert.alert('Try again');
 			setIsLoading(false);
+			Alert.alert('Try again');
 		}
 	}, [fullPhoneNumber]);
 
@@ -38,20 +42,20 @@ const OtpScreen = ({ navigation }: PropsOtp) => {
     setIsLoading(true);
 		try {
       await phoneNumberConfirm?.confirm(otpCode);
-			const user = await (await firestore().collection('users').where('phone', '==', fullPhoneNumber).get())
+			const user = (await firestore().collection('users').where('phone', '==', fullPhoneNumber).get())
 				.docs.map(doc => doc.data())[0];
 				
+			setIsLoading(false);
 			setTimeout(() => {
 				if(!user) {
 					setActiveComponent('Profile');
 				} else {
-					navigation.navigate('Tabs');
+					navigateToTabs();
 				}
 			}, 100);
-			setIsLoading(false);
     } catch (e) {
-      Alert.alert('Invalid code');
 			setIsLoading(false);
+      Alert.alert('Invalid code');
     }
   }, [fullPhoneNumber]);
 
@@ -77,6 +81,7 @@ const OtpScreen = ({ navigation }: PropsOtp) => {
 				activeComponent === 'Profile' ? 
 					<OtpProfile 
 						fullPhoneNumber={fullPhoneNumber}
+						navigateToTabs={navigateToTabs}
 					/> : 
 					''}
 		</ScreenContainer>

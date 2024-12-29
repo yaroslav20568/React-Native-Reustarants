@@ -27,4 +27,11 @@ interface ICountry {
 	flag: string;
 }
 
-export type { ICategory, IFood, IRestaurant, ICountry };
+interface IUser {
+	firstName: string;
+	lastName: string;
+	email: string;
+	phone: string;
+}
+
+export type { ICategory, IFood, IRestaurant, ICountry, IUser };

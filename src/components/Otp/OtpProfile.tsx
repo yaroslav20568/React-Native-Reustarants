@@ -6,11 +6,13 @@ import * as Yup from 'yup';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Lottie from 'lottie-react-native';
 import firestore from '@react-native-firebase/firestore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { OtpButton, OtpButtonText, OtpContainer, OtpFormikErrorText, OtpFormikInput, OtpFormikInputWrapper, OtpTitle, OtpUserIconWrapper } from './styles';
 import { COLORS } from '../../constants';
 
 interface PropsOtpProfile {
 	fullPhoneNumber: string;
+	navigateToTabs: () => void;
 }
 
 const yupSchema = Yup.object({
@@ -27,7 +29,7 @@ const yupSchema = Yup.object({
 		.required('Required')
 });
 
-const OtpProfile = ({ fullPhoneNumber }: PropsOtpProfile) => {
+const OtpProfile = ({ fullPhoneNumber, navigateToTabs }: PropsOtpProfile) => {
 	const formValues = {firstName: '', lastName: '', email: '', phone: fullPhoneNumber};
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -53,9 +55,11 @@ const OtpProfile = ({ fullPhoneNumber }: PropsOtpProfile) => {
 					setIsLoading(true);
 
 					firestore().collection('users').add(values)
-						.then(() => {
+						.then(async () => {
 							setIsLoading(false);
 							resetForm();
+							await AsyncStorage.setItem('user-data', JSON.stringify(values));
+							navigateToTabs();
 						});
 				}}
 				validationSchema={yupSchema}
