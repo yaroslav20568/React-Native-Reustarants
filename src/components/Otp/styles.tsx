@@ -133,7 +133,7 @@ const PhoneInput = styled.TextInput<IPhoneInput>`
 
 const CountriesModalInner = styled.View`
 	flex: 1;
-	paddingTop: 15;
+	paddingTop: 10;
 	backgroundColor: ${COLORS.lightGray};
 	paddingHorizontal: 15;
 `;
@@ -154,7 +154,6 @@ const CountryButton = styled.TouchableOpacity`
 	flexDirection: row;
 	alignItems: center;
 	paddingVertical: 10;
-	borderBottomWidth: 1;
 `;
 
 const CountryName = styled.Text`
@@ -162,6 +161,7 @@ const CountryName = styled.Text`
 	fontSize: ${FONTS_SIZE.medium16};
 	color: ${COLORS.black};
 	flex: 1;
+	marginLeft: 5;
 `;
 
 export { OtpContainer, OtpTitle, OtpText, OtpButton, OtpButtonText, OtpResendButton, OtpResendButtonText, OtpUserIconWrapper, OtpFormikInputWrapper, OtpFormikInput, OtpFormikErrorText, PhoneInputWrapper, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, CurrentCountryCode, PhoneInput, CountriesModalInner, CountriesModalHeader, CountriesModalHeaderText, CountryButton, CountryName };

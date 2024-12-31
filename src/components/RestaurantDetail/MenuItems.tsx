@@ -10,8 +10,9 @@ interface IPayload {
 }
 
 interface IProps {
-	onAddToCart: (obj: IPayload) => void,
-	isItemInCart: (id: number) => boolean
+	onAddToCart: (obj: IPayload) => void;
+	isItemInCart: (id: number) => boolean;
+	restaurantMenuItems: Array<IFood> | undefined;
 }
 
 const MenuItemsContainer = styled.View`
@@ -19,50 +20,11 @@ const MenuItemsContainer = styled.View`
 	paddingHorizontal: 15;
 `;
 
-const foodItems: Array<IFood> = [
-	{
-		id: 1,
-		title: 'Yorkshire pudding',
-		description: 'Traditional english pudding',
-		price: '$13.5',
-		image: 'https://realfood.tesco.com/media/images/Yorkshire-puddings-1400x919-5d5494f0-b313-48b3-b423-2179f1233e8e-0-1400x919.jpg'
-	},
-	{
-		id: 2,
-		title: 'Lasagna',
-		description: 'With butter lettuce, tomato and sauce bechamel',
-		price: '$20',
-		image: 'https://cdn.vkuso.ru/uploads/105744_4f57b20d1f80622c3eca60e7d976a6fb_270920-091138.jpg'
-	},
-	{
-		id: 3,
-		title: 'French fries',
-		description: 'Deep fried potato pieces',
-		price: '$34.2',
-		image: 'https://saleonvine.ru/wp-content/uploads/2020/04/s-7fe516830a9ab07aee104122ac4c154bba311172.jpg'
-	},
-	{
-		id: 4,
-		title: 'Draniki',
-		description: 'Potato pancakes and pancakes',
-		price: '$15.5',
-		image: 'https://grandgames.net/puzzle/f1200/draniki_.jpg'
-	},
-	{
-		id: 5,
-		title: 'Draniki',
-		description: 'Potato pancakes and pancakes',
-		price: '$15.5',
-		image: 'https://grandgames.net/puzzle/f1200/draniki_.jpg'
-	}
-];
-
-const MenuItems = ({ onAddToCart, isItemInCart }: IProps) => {
+const MenuItems = ({ onAddToCart, isItemInCart, restaurantMenuItems }: IProps) => {
   return (
 		<MenuItemsContainer>
-			{/* {foodItems.map(foodItem => <MenuItem {...foodItem} onAddToCart={onAddToCart} isItemInCart={isItemInCart} />)} */}
 			<FlatList
-        data={foodItems}
+        data={restaurantMenuItems}
         renderItem={({ item }) => <MenuItem {...item} onAddToCart={onAddToCart} isItemInCart={isItemInCart} />}
 			/>
 		</MenuItemsContainer>

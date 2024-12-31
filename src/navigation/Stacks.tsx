@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
 import { RestaurantDetail, OrderCompleted, OtpScreen } from '../screens/importScreens';
 import Tabs from './Tabs';
-import { IFood, IRestaurant, IUser } from '../types';
+import { IFood, IUser } from '../types';
 
 export type RootStackParamList = {
 	Otp: undefined;

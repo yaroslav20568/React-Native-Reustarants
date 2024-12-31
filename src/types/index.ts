@@ -9,6 +9,15 @@ interface IFood {
 	image: string;
 }
 
+interface IOpeningHour {
+	open: Array<{
+		day: number;
+		start: string;
+		end: string;
+	}>;
+	is_open_now: boolean;
+}
+
 interface IRestaurant {
 	id: string;
   image_url: string;
@@ -24,24 +33,16 @@ interface IRestaurantMoreInfo {
 	name: string;
   rating: number;
   price: string;
-	categories: {
-		alias: string;
+	categories: Array<{
 		title: string;
-	};
+	}>;
 	review_count: number;
 	phone: string;
-	hours: Array<{
-		open: Array<{
-			day: number;
-			start: string;
-			end: string;
-		}>;
-		is_open_now: false;
-	}>;
+	hours: Array<IOpeningHour>;
 	coordinates: {
     latitude: number;
     longitude: number;
-  }
+  };
 }
 
 interface ICountry {
@@ -66,4 +67,4 @@ interface ITab {
 	icon: string;
 }
 
-export type { ICategory, IFood, IRestaurant, IRestaurantMoreInfo, ICountry, IUser, TTabName, ITab };
+export type { ICategory, IFood, IOpeningHour, IRestaurant, IRestaurantMoreInfo, ICountry, IUser, TTabName, ITab };

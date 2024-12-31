@@ -1,15 +1,14 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { View, ScrollView, Animated } from 'react-native';
-import { Dimensions } from 'react-native'
-import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { COLORS } from '../../constants';
-import { Line, MenuItems, Modal, RestaurantInfo, ViewCart } from '../../components/importComponents';
+import { MenuItems, Modal, RestaurantInfo, ViewCart } from '../../components/importComponents';
 import { useActions, useAppSelector } from '../../redux/typedHooks';
 import { IFood } from './../../types';
 import { RootStackParamList } from '../../navigation/Stacks';
 import restaurantMenuParser from '../../helpers/restaurantMenuParser';
 import { useGetRestaurantQuery } from '../../redux/RTKQuery/restaurantsApi';
+import { ViewCartWrapper } from '../styles';
 
 interface IPayload {
 	isChecked: boolean;
@@ -18,26 +17,16 @@ interface IPayload {
 
 interface PropsRestaurantDetailScreen extends NativeStackScreenProps<RootStackParamList, 'RestaurantDetail'> {}
 
-const ViewCartWrapper = styled.View`
-	position: absolute;
-	z-index: 10;
-	bottom: 60;
-	width: 70%;
-	alignSelf: center;
-`;
-
 const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
-  // const route: any = useRoute();
+	const [restaurantMenuItems, setRestaurantMenuItems] = useState<Array<IFood> | undefined>(undefined);
 
-	// const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-	const [scrollPosition, setScrollPosition] = useState<number>(0);
-	const [foodItems, setFoodItems] = useState<Array<IFood> | undefined>();
-
-	const { data } = useGetRestaurantQuery(route.params.id);
+	const { restaurant } = useGetRestaurantQuery(route.params.id, {
+		selectFromResult: ({ data }) => ({ restaurant: data })
+	});
 
 	useEffect(() => {
 		restaurantMenuParser(route.params.url)
-			.then((data) => setFoodItems(data))
+			.then((data) => setRestaurantMenuItems(data))
 	}, [route.params.url]);
 
 	const { addToCart } = useActions();
@@ -55,16 +44,13 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 	}, []);
 
 	const onOpenModal = useCallback(() => {
-		// setModalIsOpen(true);
 		translateEndModal();
 	}, []);
 
 	const onCloseModal = useCallback(() => {
-		// setModalIsOpen(false);
 		translateStartModal();
 	}, []);
 
-	// console.log(scrollPosition);
   const fadeAnimModal = useRef(new Animated.Value(-Dimensions.get('window').width)).current;
 	
 	const translateEndModal = () => {
@@ -85,14 +71,21 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 
 	return (
 		<View style={{flex: 1}}>
-			<ScrollView onScroll={(e) => setScrollPosition(e.nativeEvent.contentOffset.y)}>
-				{/* <RestaurantInfo {...route.params} /> */}
-				<Line 
-					width={100} 
-					height={2} 
-					backgroundColor={COLORS.black} 
+			<ScrollView>
+				<RestaurantInfo 
+					photos={restaurant?.photos}
+					name={restaurant?.name}
+					rating={restaurant?.rating}
+					price={restaurant?.price}
+					categories={restaurant?.categories}
+					review_count={restaurant?.review_count}
+					hours={restaurant?.hours}
 				/>
-				<MenuItems onAddToCart={onAddToCart} isItemInCart={isItemInCart} />
+				<MenuItems 
+					onAddToCart={onAddToCart} 
+					isItemInCart={isItemInCart} 
+					restaurantMenuItems={restaurantMenuItems}
+				/>
 			</ScrollView>
 			
 			<Animated.View

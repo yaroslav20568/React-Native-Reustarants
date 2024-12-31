@@ -39,14 +39,14 @@ const ImageContainer = styled.View`
 	width: 24%;
 `;
 
-const MenuItem = ({id, title, description, price, image, onAddToCart, isItemInCart}: IProps) => {
+const MenuItem = ({ name, price, image, onAddToCart, isItemInCart }: IProps) => {
 	const handleAddToCart = (isChecked: boolean) => {
 		const obj = {
 			isChecked,
 			item: {
-				id,
-				title,
-				description,
+				// id,
+				name,
+				// description,
 				price,
 				image
 			}
@@ -64,7 +64,7 @@ const MenuItem = ({id, title, description, price, image, onAddToCart, isItemInCa
 						unfillColor="transparent"
 						innerIconStyle={{ borderRadius: 0, borderColor: COLORS.mediumGray }}
 						iconStyle={{ borderRadius: 0 }}
-						isChecked={isItemInCart(id)}
+						// isChecked={isItemInCart(id)}
 						onPress={handleAddToCart}
 					/>
 				</CheckboxContainer>
@@ -73,9 +73,9 @@ const MenuItem = ({id, title, description, price, image, onAddToCart, isItemInCa
 						fontFamily={FONTS.poppinsSemiBold}
 						fontSize={FONTS_SIZE.medium18}
 					>
-						{title}
+						{name}
 					</Title>
-					<Title>{description}</Title>
+					{/* <Title>{description}</Title> */}
 					<Title>{price}</Title>
 				</TitlesContainer>
 				<ImageContainer>

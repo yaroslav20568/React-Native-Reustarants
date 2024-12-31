@@ -13,7 +13,9 @@ interface PropsOtp extends NativeStackScreenProps<RootStackParamList, 'Otp'> {}
 auth().settings.appVerificationDisabledForTesting = true;
 
 const OtpScreen = ({ navigation }: PropsOtp) => {
-	const { data } = useGetCountriesQuery(null);
+	const { countries } = useGetCountriesQuery(null, {
+		selectFromResult: ({ data }) => ({ countries: data })
+	});
 
 	const [activeComponent, setActiveComponent] = useState<string>('Start');
 	const [fullPhoneNumber, setFullPhoneNumber] = useState<string>('');
@@ -65,7 +67,7 @@ const OtpScreen = ({ navigation }: PropsOtp) => {
 		>
 			{activeComponent === 'Start' ? 
 				<OtpStart 
-					countries={data}
+					countries={countries}
 					signInWithPhoneNumber={signInWithPhoneNumber}
 					phoneNumberConfirm={phoneNumberConfirm}
 					setActiveComponent={setActiveComponent}

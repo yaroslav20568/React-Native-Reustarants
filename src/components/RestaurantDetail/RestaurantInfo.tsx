@@ -1,42 +1,61 @@
 import React from 'react';
-import { View } from 'react-native';
-import styled from 'styled-components/native';
-import { FONTS, FONTS_SIZE } from '../../constants';
-import { Image, Title } from '../importComponents';
-import { IRestaurant } from './../../types';
+import { FlatList, Image, View, useWindowDimensions } from 'react-native';
+import { COLORS } from '../../constants';
+import { Line } from '../importComponents';
+import { RestaurantTexts, RestaurantName, RestaurantIsOpenNow, RestaurantIsOpenNowWrapper, RestaurantInfoParams } from './styles';
+import { IOpeningHour } from '../../types';
 
-interface PropsRestaurantInfo extends IRestaurant {
+interface PropsRestaurantInfo {
+	photos: Array<string> | undefined;
+	name: string | undefined;
+  rating: number | undefined;
+  price: string | undefined;
+	categories: Array<{
+		title: string;
+	}> | undefined;
+	review_count: number | undefined;
+	hours: Array<IOpeningHour> | undefined;
 }
 
-const InfoTexts = styled.View`
-  paddingVertical: 10;
-  paddingHorizontal: 15;
-`;
+const RestaurantInfo = ({ photos, name, rating, price, categories, review_count, hours }: PropsRestaurantInfo) => {
+  const { width } = useWindowDimensions();
+	const restaurantTextInfo = categories?.reduce((str, category) => str + category.title + ' · ', '') + `${price ? `${price} ·` : ''} 💳 · ${rating} ⭐ · (${review_count}+)`;
 
-const RestaurantInfo = ({ image_url, name, rating, price, categories, review_count }: PropsRestaurantInfo) => {
-  const categoriesString = categories.reduce((str, currValue) => str + currValue.title + ' · ', '') + `${price} · 💳 · ${rating} ⭐ · (${review_count}+)`;
-  
   return (
 		<View>
-			<Image
-				img={image_url}
-				width={100}
-				height={190}
+			<View>
+				<FlatList 
+					data={photos}
+					renderItem={({item}) => 
+						<Image
+							source={{uri: item}}
+							style={{width: width, aspectRatio: 1.7}}
+						/>
+					}
+					horizontal
+					showsHorizontalScrollIndicator={false}
+					pagingEnabled
+				/>
+				<RestaurantIsOpenNowWrapper
+					isOpenNow={hours && hours[0].is_open_now}
+				>
+					<RestaurantIsOpenNow>
+						{hours && 
+							hours[0].is_open_now ? 
+							'Open' : 
+							'Closed'} now
+					</RestaurantIsOpenNow>
+				</RestaurantIsOpenNowWrapper>
+			</View>
+			<RestaurantTexts>
+				<RestaurantName>{name}</RestaurantName>
+				<RestaurantInfoParams>{restaurantTextInfo}</RestaurantInfoParams>
+			</RestaurantTexts>
+			<Line 
+				width={100} 
+				height={2} 
+				backgroundColor={COLORS.black} 
 			/>
-			<InfoTexts>
-				<Title 
-					fontSize={FONTS_SIZE.large24}
-					fontFamily={FONTS.poppinsSemiBold} 
-				>
-					{name}
-				</Title>
-				<Title
-					fontFamily={FONTS.poppinsRegular}
-					fontSize={FONTS_SIZE.small14}
-				>
-					{categoriesString && categoriesString}
-				</Title>
-			</InfoTexts>
 		</View>
   )
 }
