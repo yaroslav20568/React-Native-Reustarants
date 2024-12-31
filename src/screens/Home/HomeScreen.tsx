@@ -45,7 +45,7 @@ const HomeScreen = () => {
 
 	const { setShippingMethod, setCity } = useActions();
 
-	const { restaurants, isLoading } = useGetRestaurantsQuery(cityName, {
+	const { restaurants, isLoading } = useGetRestaurantsQuery('SanDiego', {
 		selectFromResult: ({ data, isLoading, isError }) => ({
 			restaurants: !isError ? data?.businesses.filter(restaurant => restaurant.transactions.includes(shippingMethod.toLowerCase())) : [],
 			isLoading

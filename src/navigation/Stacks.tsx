@@ -9,12 +9,15 @@ import { IFood, IRestaurant, IUser } from '../types';
 export type RootStackParamList = {
 	Otp: undefined;
 	Tabs: undefined;
-	RestaurantDetail: IRestaurant;
+	RestaurantDetail: {
+		id: string;
+		url: string;
+	};
 	OrderCompleted: {
 		RestaurantName: string;
 		totalPrice: number
 		cartItems: Array<IFood>;
-	}
+	};
 };
 
 const Stacks = () => {

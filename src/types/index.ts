@@ -4,20 +4,44 @@ interface ICategory {
 }
 
 interface IFood {
-	id: number,
-	title: string,
-	description: string,
-	price: string,
-	image: string
+	name: string;
+	price: string;
+	image: string;
 }
 
 interface IRestaurant {
+	id: string;
   image_url: string;
   name: string;
   rating: number;
   price: string;
-  categories: Array<ICategory>;
-  review_count: number;
+	url: string;
+}
+
+interface IRestaurantMoreInfo {
+	id: string;
+	photos: Array<string>;
+	name: string;
+  rating: number;
+  price: string;
+	categories: {
+		alias: string;
+		title: string;
+	};
+	review_count: number;
+	phone: string;
+	hours: Array<{
+		open: Array<{
+			day: number;
+			start: string;
+			end: string;
+		}>;
+		is_open_now: false;
+	}>;
+	coordinates: {
+    latitude: number;
+    longitude: number;
+  }
 }
 
 interface ICountry {
@@ -42,4 +66,4 @@ interface ITab {
 	icon: string;
 }
 
-export type { ICategory, IFood, IRestaurant, ICountry, IUser, TTabName, ITab };
+export type { ICategory, IFood, IRestaurant, IRestaurantMoreInfo, ICountry, IUser, TTabName, ITab };

@@ -7,11 +7,11 @@ import { RootStackParamList } from '../../navigation/Stacks';
 
 interface PropsRestaurant extends IRestaurant {}
 
-const RestaurantItem = ({ image_url, name, rating, price, categories, review_count }: PropsRestaurant) => {
+const RestaurantItem = ({ id, image_url, name, rating, price, url }: PropsRestaurant) => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
 	const onNavigate = (): void => {
-		navigation.navigate('RestaurantDetail', {image_url, name, rating, price, categories, review_count});
+		navigation.navigate('RestaurantDetail', {id, url});
 	};
 
   return (
