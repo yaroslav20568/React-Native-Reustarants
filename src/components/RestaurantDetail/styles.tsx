@@ -36,6 +36,17 @@ const RestaurantInfoParams = styled.Text`
 	color: ${COLORS.black};
 `;
 
+const RestaurantPhoneButton = styled.TouchableOpacity`
+	alignSelf: center;
+	marginBottom: 5;
+`;
+
+const RestaurantPhoneText = styled.Text`
+	fontFamily: ${FONTS.poppinsMedium};
+	fontSize: ${FONTS_SIZE.medium18};
+	color: ${COLORS.black};
+`;
+
 const RestaurantOpeningHours = styled.View`
 	paddingVertical: 10;
   paddingHorizontal: 15;
@@ -133,6 +144,14 @@ const RestaurantOpeningHoursTimeLoader = styled(Animated.View)`
 	backgroundColor: ${COLORS.lightGray};
 `;
 
+const RestaurantPhoneButtonLoaderStyle = styled(Animated.View)`
+	width: 120;
+	height: 20;
+	backgroundColor: ${COLORS.lightGray};
+	alignSelf: center;
+	marginBottom: 15;
+`;
+
 const RestaurantIsOpenNowWrapperLoaderStyle = styled(Animated.View)`
 	backgroundColor: ${COLORS.lightGray};
 	paddingVertical: 6;
@@ -142,4 +161,46 @@ const RestaurantIsOpenNowWrapperLoaderStyle = styled(Animated.View)`
 	height: 42;
 `;
 
-export { RestaurantTexts, RestaurantName, RestaurantIsOpenNowWrapper, RestaurantIsOpenNow, RestaurantInfoParams, RestaurantOpeningHours, RestaurantOpeningHoursList, RestaurantOpeningHoursItem, RestaurantOpeningHoursDay, RestaurantOpeningHoursTime, RestaurantPhotoLoader, RestaurantTextsLoader, RestaurantNameLoader, RestaurantInfoParamsLoader, RestaurantLineLoader, RestaurantOpeningHoursLoader, RestaurantOpeningHoursListLoader, RestaurantOpeningHoursItemLoaderStyle, RestaurantOpeningHoursDayLoader, RestaurantOpeningHoursTimeLoader, RestaurantIsOpenNowWrapperLoaderStyle };
+const MenuItemsWrapper = styled.View`
+	paddingBottom: 15;
+	paddingHorizontal: 15;
+`;
+
+const MenuItemStyle = styled.View`
+	flexDirection: row;
+	alignItems: center;
+	justifyContent: space-between;
+	paddingVertical: 10;
+`;
+
+const MenuItemCheckboxWrapper = styled.View`
+	width: 11%;
+`;
+
+const MenuItemTextsWrapper = styled.View`
+	width: 65%;
+`;
+
+const MenuItemName = styled.Text`
+	fontFamily: ${FONTS.poppinsSemiBold};
+	fontSize: ${FONTS_SIZE.medium18};
+	color: ${COLORS.black};
+`;
+
+const MenuItemPrice = styled.Text`
+	fontFamily: ${FONTS.poppinsMedium};
+  fontSize: ${FONTS_SIZE.small14};
+  color: ${COLORS.black};
+`;
+
+const MenuItemImageWrapper = styled.View`
+	width: 24%;
+`;
+
+const MenuItemImage = styled.Image`
+	width: 100%;
+	aspectRatio: 1;
+	borderRadius: 10;
+`;
+
+export { RestaurantTexts, RestaurantName, RestaurantIsOpenNowWrapper, RestaurantIsOpenNow, RestaurantInfoParams, RestaurantPhoneButton, RestaurantPhoneText, RestaurantOpeningHours, RestaurantOpeningHoursList, RestaurantOpeningHoursItem, RestaurantOpeningHoursDay, RestaurantOpeningHoursTime, RestaurantPhotoLoader, RestaurantTextsLoader, RestaurantNameLoader, RestaurantInfoParamsLoader, RestaurantLineLoader, RestaurantOpeningHoursLoader, RestaurantOpeningHoursListLoader, RestaurantOpeningHoursItemLoaderStyle, RestaurantOpeningHoursDayLoader, RestaurantOpeningHoursTimeLoader, RestaurantPhoneButtonLoaderStyle, RestaurantIsOpenNowWrapperLoaderStyle, MenuItemsWrapper, MenuItemStyle, MenuItemCheckboxWrapper, MenuItemTextsWrapper, MenuItemName, MenuItemPrice, MenuItemImageWrapper, MenuItemImage };

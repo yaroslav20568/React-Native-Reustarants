@@ -2,7 +2,7 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { View, ScrollView, Animated } from 'react-native';
 import { Dimensions } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { MenuItems, Modal, RestaurantInfo, RestaurantLoader, ViewCart } from '../../components/importComponents';
+import { RestaurantMenuItems, Modal, RestaurantInfo, RestaurantLoader, ViewCart } from '../../components/importComponents';
 import { useActions, useAppSelector } from '../../redux/typedHooks';
 import { IFood } from './../../types';
 import { RootStackParamList } from '../../navigation/Stacks';
@@ -10,7 +10,7 @@ import restaurantMenuParser from '../../helpers/restaurantMenuParser';
 import { useGetRestaurantQuery } from '../../redux/RTKQuery/restaurantsApi';
 import { ViewCartWrapper } from '../styles';
 
-interface IPayload {
+interface IOnAddToCartPayload {
 	isChecked: boolean;
 	item: IFood;
 }
@@ -18,7 +18,7 @@ interface IPayload {
 interface PropsRestaurantDetailScreen extends NativeStackScreenProps<RootStackParamList, 'RestaurantDetail'> {}
 
 const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
-	const [restaurantMenuItems, setRestaurantMenuItems] = useState<Array<IFood> | undefined>(undefined);
+	const [menuItems, setMenuItems] = useState<Array<IFood> | undefined>(undefined);
 
 	const { restaurant, restaurantIsLoading } = useGetRestaurantQuery(route.params.id, {
 		selectFromResult: ({ data, isLoading }) => ({ 
@@ -29,7 +29,7 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 
 	useEffect(() => {
 		restaurantMenuParser(route.params.url)
-			.then((data) => setRestaurantMenuItems(data))
+			.then((data) => setMenuItems(data))
 	}, [route.params.url]);
 
 	const { addToCart } = useActions();
@@ -38,12 +38,12 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 		totalPrice: state.cart.totalPrice
 	}));
 
-	const onAddToCart = useCallback((obj: IPayload) => {
+	const onAddToCart = useCallback((obj: IOnAddToCartPayload) => {
 		addToCart(obj);
 	}, []);
 
-	const isItemInCart = useCallback((id: number) => {
-		return cartItems.some(cartItem => cartItem.id === id);
+	const isItemInCart = useCallback((name: string) => {
+		return cartItems.some(cartItem => cartItem.name === name);
 	}, []);
 
 	const onOpenModal = useCallback(() => {
@@ -84,26 +84,25 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 						categories={restaurant?.categories}
 						review_count={restaurant?.review_count}
 						hours={restaurant?.hours}
+						phone={restaurant?.phone}
 					/> : 
 					<RestaurantLoader />}
-				<MenuItems 
+				<RestaurantMenuItems 
 					onAddToCart={onAddToCart} 
 					isItemInCart={isItemInCart} 
-					restaurantMenuItems={restaurantMenuItems}
+					menuItems={menuItems}
 				/>
 			</ScrollView>
-			
-			<Animated.View
+			{/* <Animated.View
         style={{transform: [{ translateX: fadeAnimModal }], position: 'absolute', width: '100%', height: '100%', zIndex: 100 }}
       >
-				{/* <Modal 
-					RestaurantName={route.params.name} 
+				<Modal 
+					restaurantName={restaurant?.name} 
 					onCloseModal={onCloseModal} 
 					cartItems={cartItems}
 					totalPrice={totalPrice}
-				/> */}
+				/>
 			</Animated.View>
-			
 			{totalPrice !== 0 && 
 				<ViewCartWrapper>
 					<ViewCart 
@@ -111,7 +110,7 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 						totalPrice={totalPrice} 
 						onCallback={onOpenModal} 
 					/>
-				</ViewCartWrapper>}
+				</ViewCartWrapper>} */}
 		</View>
   )
 }

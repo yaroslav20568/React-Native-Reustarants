@@ -9,10 +9,10 @@ import { IFood } from './../../types';
 import { useActions } from './../../redux/typedHooks';
 
 interface IProps {
-	RestaurantName: string,
-	onCloseModal: () => void,
-	cartItems: Array<IFood>,
-	totalPrice: number,
+	restaurantName: string | undefined;
+	onCloseModal: () => void;
+	cartItems: Array<IFood>;
+	totalPrice: number;
 }
 
 const ModalMinorContainer = styled.TouchableOpacity`
@@ -52,7 +52,7 @@ const ViewCartWrapper = styled.View`
 	paddingHorizontal: 30;
 `;
 
-const Modal = ({ RestaurantName, onCloseModal, cartItems, totalPrice }: IProps) => {
+const Modal = ({ restaurantName, onCloseModal, cartItems, totalPrice }: IProps) => {
 	const [autoplayBool, setAutoPlayBool] = useState<boolean>(false);
 	const navigation:any = useNavigation();
 	const { clearCart } = useActions();
@@ -65,7 +65,7 @@ const Modal = ({ RestaurantName, onCloseModal, cartItems, totalPrice }: IProps) 
 			onCloseModal();
 			setTimeout(() => {
 				navigation.navigate('OrderCompleted', {
-					RestaurantName,
+					restaurantName,
 					cartItems,
 					totalPrice
 				});
@@ -98,7 +98,7 @@ const Modal = ({ RestaurantName, onCloseModal, cartItems, totalPrice }: IProps) 
 							fontSize={FONTS_SIZE.medium18}
 							marginBottom={10}
 						>
-							{RestaurantName}
+							{restaurantName}
 						</Title>
 					</TitleRestaurantWrapper>
 

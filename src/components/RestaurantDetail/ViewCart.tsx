@@ -24,7 +24,10 @@ const TotalPriceWrapper = styled.View`
 
 const ViewCart = ({ title, totalPrice, onCallback }: IProps) => {
 	return (
-		<ViewCartContainer onPress={onCallback}>
+		<ViewCartContainer 
+			activeOpacity={.7}
+			onPress={onCallback}
+		>
 			<Title 
 				color={COLORS.white} 
 				fontSize={FONTS_SIZE.medium16}

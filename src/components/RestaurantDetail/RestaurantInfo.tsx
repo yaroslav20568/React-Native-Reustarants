@@ -1,8 +1,8 @@
 import React from 'react';
-import { FlatList, Image, View, useWindowDimensions } from 'react-native';
+import { FlatList, Image, Linking, View, useWindowDimensions } from 'react-native';
 import { COLORS } from '../../constants';
 import { Line } from '../importComponents';
-import { RestaurantTexts, RestaurantName, RestaurantIsOpenNow, RestaurantIsOpenNowWrapper, RestaurantInfoParams, RestaurantOpeningHours, RestaurantOpeningHoursItem, RestaurantOpeningHoursDay, RestaurantOpeningHoursTime, RestaurantOpeningHoursList } from './styles';
+import { RestaurantTexts, RestaurantName, RestaurantIsOpenNow, RestaurantIsOpenNowWrapper, RestaurantInfoParams, RestaurantOpeningHours, RestaurantOpeningHoursItem, RestaurantOpeningHoursDay, RestaurantOpeningHoursTime, RestaurantOpeningHoursList, RestaurantPhoneButton, RestaurantPhoneText } from './styles';
 import { IOpeningHour } from '../../types';
 
 interface PropsRestaurantInfo {
@@ -15,6 +15,7 @@ interface PropsRestaurantInfo {
 	}> | undefined;
 	review_count: number | undefined;
 	hours: Array<IOpeningHour> | undefined;
+	phone: string | undefined;
 }
 
 interface IDay {
@@ -31,7 +32,7 @@ const days: IDay = {
 	6: 'Sat'
 }
 
-const RestaurantInfo = ({ photos, name, rating, price, categories, review_count, hours }: PropsRestaurantInfo) => {
+const RestaurantInfo = ({ photos, name, rating, price, categories, review_count, hours, phone }: PropsRestaurantInfo) => {
   const { width } = useWindowDimensions();
 	const restaurantTextInfo = categories?.reduce((str, category) => str + category.title + ' · ', '') + `${price ? `${price} ·` : ''} 💳 · ${rating} ⭐ · (${review_count}+)`;
 
@@ -76,16 +77,24 @@ const RestaurantInfo = ({ photos, name, rating, price, categories, review_count,
 							</RestaurantOpeningHoursItem>
 						)}
 				</RestaurantOpeningHoursList>
-				<RestaurantIsOpenNowWrapper
-					isOpenNow={hours && hours[0].is_open_now}
-				>
-					<RestaurantIsOpenNow>
-						{hours && 
-							hours[0].is_open_now ? 
-							'Open' : 
-							'Closed'} now
-					</RestaurantIsOpenNow>
-				</RestaurantIsOpenNowWrapper>
+				<View>
+					<RestaurantPhoneButton
+						activeOpacity={.7}
+						onPress={() => Linking.openURL(`tel:${phone}`)}
+					>
+						<RestaurantPhoneText>{phone}</RestaurantPhoneText>
+					</RestaurantPhoneButton>
+					<RestaurantIsOpenNowWrapper
+						isOpenNow={hours && hours[0].is_open_now}
+					>
+						<RestaurantIsOpenNow>
+							{hours && 
+								hours[0].is_open_now ? 
+								'Open' : 
+								'Closed'} now
+						</RestaurantIsOpenNow>
+					</RestaurantIsOpenNowWrapper>
+				</View>
 			</RestaurantOpeningHours>
 			<Line 
 				width={100} 

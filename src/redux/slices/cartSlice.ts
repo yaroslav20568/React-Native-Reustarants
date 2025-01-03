@@ -25,7 +25,7 @@ const cartSlice = createSlice({
 			if(action.payload.isChecked) {
 				state.items = [...state.items, action.payload.item];
 			} else {
-				state.items = state.items.filter(item => item.id !== action.payload.item.id);
+				state.items = state.items.filter(item => item.name !== action.payload.item.name);
 			}
 			state.totalPrice = state.items.reduce((acc, item) => acc + Number(item.price.replace('$', '')), 0);
 		},

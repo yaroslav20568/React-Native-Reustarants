@@ -14,7 +14,7 @@ export type RootStackParamList = {
 		url: string;
 	};
 	OrderCompleted: {
-		RestaurantName: string;
+		restaurantName: string;
 		totalPrice: number
 		cartItems: Array<IFood>;
 	};

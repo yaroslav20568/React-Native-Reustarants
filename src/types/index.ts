@@ -27,12 +27,8 @@ interface IRestaurant {
 	url: string;
 }
 
-interface IRestaurantMoreInfo {
-	id: string;
+interface IRestaurantMoreInfo extends Pick<IRestaurant, 'id' | 'name' | 'rating' | 'price'> {
 	photos: Array<string>;
-	name: string;
-  rating: number;
-  price: string;
 	categories: Array<{
 		title: string;
 	}>;

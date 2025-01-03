@@ -23,7 +23,7 @@ function ModalList({ cartItems }: IProps) {
 			renderItem={({ item }) => 
 				<>
 					<CartItem>
-						<Title>{item.title}</Title>
+						<Title>{item.name}</Title>
 						<Title>{item.price}</Title>
 					</CartItem>
 					<Line 

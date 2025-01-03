@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import { useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
-import { RestaurantInfoParamsLoader, RestaurantIsOpenNowWrapperLoaderStyle, RestaurantLineLoader, RestaurantNameLoader, RestaurantOpeningHoursDayLoader, RestaurantOpeningHoursItemLoaderStyle, RestaurantOpeningHoursListLoader, RestaurantOpeningHoursLoader, RestaurantOpeningHoursTimeLoader, RestaurantPhotoLoader, RestaurantTextsLoader } from './styles';
+import { RestaurantInfoParamsLoader, RestaurantIsOpenNowWrapperLoaderStyle, RestaurantLineLoader, RestaurantNameLoader, RestaurantOpeningHoursDayLoader, RestaurantOpeningHoursItemLoaderStyle, RestaurantOpeningHoursListLoader, RestaurantOpeningHoursLoader, RestaurantOpeningHoursTimeLoader, RestaurantPhoneButtonLoaderStyle, RestaurantPhotoLoader, RestaurantTextsLoader } from './styles';
 
 const RestaurantLoader = () => {
 	const restaurantPhotoLoaderOpacity = useSharedValue<number>(0.4);
@@ -9,6 +9,7 @@ const RestaurantLoader = () => {
 	const restaurantInfoParamsLoaderOpacity = useSharedValue<number>(0.4);
 	const restaurantLineLoaderOpacity = useSharedValue<number>(0.4);
 	const restaurantIsOpenNowWrapperLoaderOpacity = useSharedValue<number>(0.4);
+	const restaurantPhoneButtonLoaderOpacity = useSharedValue<number>(0.4);
 
 	const restaurantPhotoLoaderStyles = useAnimatedStyle(() => ({
 		opacity: restaurantPhotoLoaderOpacity.value
@@ -30,12 +31,17 @@ const RestaurantLoader = () => {
 		opacity: restaurantIsOpenNowWrapperLoaderOpacity.value
 	}));
 
+	const restaurantPhoneButtonLoaderStyles = useAnimatedStyle(() => ({
+		opacity: restaurantPhoneButtonLoaderOpacity.value
+	}));
+
 	useEffect(() => {
 		restaurantPhotoLoaderOpacity.value = withRepeat(withTiming(1), -1, true);
 		restaurantNameLoaderOpacity.value = withRepeat(withTiming(1), -1, true);
 		restaurantInfoParamsLoaderOpacity.value = withRepeat(withTiming(1), -1, true);
 		restaurantLineLoaderOpacity.value = withRepeat(withTiming(1), -1, true);
 		restaurantIsOpenNowWrapperLoaderOpacity.value = withRepeat(withTiming(1), -1, true);
+		restaurantPhoneButtonLoaderOpacity.value = withRepeat(withTiming(1), -1, true);
 	}, []);
 
 	return (
@@ -63,9 +69,14 @@ const RestaurantLoader = () => {
 						/>
 					)}
 				</RestaurantOpeningHoursListLoader>
-				<RestaurantIsOpenNowWrapperLoaderStyle
-					style={restaurantIsOpenNowWrapperLoaderStyles}
-				></RestaurantIsOpenNowWrapperLoaderStyle>
+				<View>
+					<RestaurantPhoneButtonLoaderStyle
+						style={restaurantPhoneButtonLoaderStyles}
+					></RestaurantPhoneButtonLoaderStyle>
+					<RestaurantIsOpenNowWrapperLoaderStyle
+						style={restaurantIsOpenNowWrapperLoaderStyles}
+					></RestaurantIsOpenNowWrapperLoaderStyle>
+				</View>
 			</RestaurantOpeningHoursLoader>
 			<RestaurantLineLoader 
 				style={restaurantLineLoaderStyles}
