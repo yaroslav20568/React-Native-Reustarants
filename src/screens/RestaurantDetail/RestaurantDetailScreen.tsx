@@ -2,7 +2,7 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { View, ScrollView, Animated } from 'react-native';
 import { Dimensions } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { MenuItems, Modal, RestaurantInfo, ViewCart } from '../../components/importComponents';
+import { MenuItems, Modal, RestaurantInfo, RestaurantLoader, ViewCart } from '../../components/importComponents';
 import { useActions, useAppSelector } from '../../redux/typedHooks';
 import { IFood } from './../../types';
 import { RootStackParamList } from '../../navigation/Stacks';
@@ -20,8 +20,11 @@ interface PropsRestaurantDetailScreen extends NativeStackScreenProps<RootStackPa
 const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 	const [restaurantMenuItems, setRestaurantMenuItems] = useState<Array<IFood> | undefined>(undefined);
 
-	const { restaurant } = useGetRestaurantQuery(route.params.id, {
-		selectFromResult: ({ data }) => ({ restaurant: data })
+	const { restaurant, restaurantIsLoading } = useGetRestaurantQuery(route.params.id, {
+		selectFromResult: ({ data, isLoading }) => ({ 
+			restaurant: data,
+			restaurantIsLoading: isLoading
+		})
 	});
 
 	useEffect(() => {
@@ -72,15 +75,17 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 	return (
 		<View style={{flex: 1}}>
 			<ScrollView>
-				<RestaurantInfo 
-					photos={restaurant?.photos}
-					name={restaurant?.name}
-					rating={restaurant?.rating}
-					price={restaurant?.price}
-					categories={restaurant?.categories}
-					review_count={restaurant?.review_count}
-					hours={restaurant?.hours}
-				/>
+				{!restaurantIsLoading ? 
+					<RestaurantInfo 
+						photos={restaurant?.photos}
+						name={restaurant?.name}
+						rating={restaurant?.rating}
+						price={restaurant?.price}
+						categories={restaurant?.categories}
+						review_count={restaurant?.review_count}
+						hours={restaurant?.hours}
+					/> : 
+					<RestaurantLoader />}
 				<MenuItems 
 					onAddToCart={onAddToCart} 
 					isItemInCart={isItemInCart} 

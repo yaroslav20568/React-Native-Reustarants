@@ -6,6 +6,7 @@ export { default as SearchPlacesInput } from './Home/SearchPlacesInput';
 export { default as RestaurantsList } from './Home/RestaurantsList';
 export { default as RestaurantItem } from './Home/RestaurantItem';
 export { default as RestaurantsLoader } from './Home/RestaurantsLoader';
+export { default as RestaurantLoader } from './RestaurantDetail/RestaurantLoader';
 export { default as HeaderTabs } from './Home/HeaderTabs';
 export { default as HeaderTab } from './Home/HeaderTab';
 export { default as Categories } from './Home/Categories';
