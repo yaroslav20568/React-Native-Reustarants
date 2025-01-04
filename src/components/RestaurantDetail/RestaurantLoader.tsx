@@ -72,10 +72,10 @@ const RestaurantLoader = () => {
 				<View>
 					<RestaurantPhoneButtonLoaderStyle
 						style={restaurantPhoneButtonLoaderStyles}
-					></RestaurantPhoneButtonLoaderStyle>
+					/>
 					<RestaurantIsOpenNowWrapperLoaderStyle
 						style={restaurantIsOpenNowWrapperLoaderStyles}
-					></RestaurantIsOpenNowWrapperLoaderStyle>
+					/>
 				</View>
 			</RestaurantOpeningHoursLoader>
 			<RestaurantLineLoader 

@@ -15,6 +15,7 @@ export { default as CategoryItem } from './Home/CategoryItem';
 export { default as RestaurantInfo } from './RestaurantDetail/RestaurantInfo';
 export { default as RestaurantMenuItems } from './RestaurantDetail/RestaurantMenuItems';
 export { default as RestaurantMenuItem } from './RestaurantDetail/RestaurantMenuItem';
+export { default as RestaurantMenuLoader } from './RestaurantDetail/RestaurantMenuLoader';
 export { default as ViewCart } from './RestaurantDetail/ViewCart';
 export { default as Modal } from './RestaurantDetail/Modal';
 export { default as ModalList } from './RestaurantDetail/ModalList';

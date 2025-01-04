@@ -1,3 +1,8 @@
+interface IOnAddToCartPayload {
+	isChecked: boolean;
+	item: IFood;
+}
+
 interface ICategory {
   image: object;
   text: string;
@@ -63,4 +68,4 @@ interface ITab {
 	icon: string;
 }
 
-export type { ICategory, IFood, IOpeningHour, IRestaurant, IRestaurantMoreInfo, ICountry, IUser, TTabName, ITab };
+export type { IOnAddToCartPayload, ICategory, IFood, IOpeningHour, IRestaurant, IRestaurantMoreInfo, ICountry, IUser, TTabName, ITab };

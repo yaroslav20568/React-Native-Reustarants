@@ -1,23 +1,19 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import { RestaurantMenuItem } from '../importComponents';
-import { IFood } from '../../types';
-import { MenuItemsWrapper } from './styles';
-
-interface IOnAddToCartPayload {
-	isChecked: boolean;
-	item: IFood;
-}
+import { IFood, IOnAddToCartPayload } from '../../types';
+import { RestaurantMenuItemsWrapper } from './styles';
 
 interface IProps {
 	onAddToCart: (obj: IOnAddToCartPayload) => void;
 	isItemInCart: (name: string) => boolean;
 	menuItems: Array<IFood> | undefined;
+	isOpenNow: boolean | undefined;
 }
 
-const RestaurantMenuItems = ({ onAddToCart, isItemInCart, menuItems }: IProps) => {
+const RestaurantMenuItems = ({ onAddToCart, isItemInCart, menuItems, isOpenNow }: IProps) => {
   return (
-		<MenuItemsWrapper>
+		<RestaurantMenuItemsWrapper>
 			<FlatList
         data={menuItems}
         renderItem={({item}) => 
@@ -25,10 +21,11 @@ const RestaurantMenuItems = ({ onAddToCart, isItemInCart, menuItems }: IProps) =
 						{...item} 
 						onAddToCart={onAddToCart} 
 						isItemInCart={isItemInCart} 
+						isOpenNow={isOpenNow}
 					/>
 				}
 			/>
-		</MenuItemsWrapper>
+		</RestaurantMenuItemsWrapper>
   )
 }
 

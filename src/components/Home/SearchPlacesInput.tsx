@@ -3,7 +3,8 @@ import 'react-native-get-random-values';
 import { GooglePlaceData, GooglePlacesAutocomplete, GooglePlacesAutocompleteRef } from 'react-native-google-places-autocomplete';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-import { COLORS, GOOGLE_API_KEY } from '../../constants';
+import { COLORS } from '../../constants';
+import { GOOGLE_API_KEY } from '@env';
 import { LocationIconWrapper, ClearWrapper, ClearIconWrapper, TimerIconWrapper, TimerIconText } from './styles';
 
 interface PropsSearchPlacesInput {

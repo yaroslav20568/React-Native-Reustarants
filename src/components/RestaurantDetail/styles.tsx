@@ -161,46 +161,102 @@ const RestaurantIsOpenNowWrapperLoaderStyle = styled(Animated.View)`
 	height: 42;
 `;
 
-const MenuItemsWrapper = styled.View`
+const RestaurantMenuItemsWrapper = styled.View`
 	paddingBottom: 15;
 	paddingHorizontal: 15;
 `;
 
-const MenuItemStyle = styled.View`
+const RestaurantMenuItemStyle = styled.View`
 	flexDirection: row;
 	alignItems: center;
 	justifyContent: space-between;
 	paddingVertical: 10;
 `;
 
-const MenuItemCheckboxWrapper = styled.View`
+const RestaurantMenuItemCheckboxWrapper = styled.View`
 	width: 11%;
 `;
 
-const MenuItemTextsWrapper = styled.View`
+const RestaurantMenuItemTextsWrapper = styled.View`
 	width: 65%;
 `;
 
-const MenuItemName = styled.Text`
+const RestaurantMenuItemName = styled.Text`
 	fontFamily: ${FONTS.poppinsSemiBold};
 	fontSize: ${FONTS_SIZE.medium18};
 	color: ${COLORS.black};
 `;
 
-const MenuItemPrice = styled.Text`
+const RestaurantMenuItemPrice = styled.Text`
 	fontFamily: ${FONTS.poppinsMedium};
   fontSize: ${FONTS_SIZE.small14};
   color: ${COLORS.black};
 `;
 
-const MenuItemImageWrapper = styled.View`
+const RestaurantMenuItemImageWrapper = styled.View`
 	width: 24%;
 `;
 
-const MenuItemImage = styled.Image`
+const RestaurantMenuItemImage = styled.Image`
 	width: 100%;
 	aspectRatio: 1;
 	borderRadius: 10;
 `;
 
-export { RestaurantTexts, RestaurantName, RestaurantIsOpenNowWrapper, RestaurantIsOpenNow, RestaurantInfoParams, RestaurantPhoneButton, RestaurantPhoneText, RestaurantOpeningHours, RestaurantOpeningHoursList, RestaurantOpeningHoursItem, RestaurantOpeningHoursDay, RestaurantOpeningHoursTime, RestaurantPhotoLoader, RestaurantTextsLoader, RestaurantNameLoader, RestaurantInfoParamsLoader, RestaurantLineLoader, RestaurantOpeningHoursLoader, RestaurantOpeningHoursListLoader, RestaurantOpeningHoursItemLoaderStyle, RestaurantOpeningHoursDayLoader, RestaurantOpeningHoursTimeLoader, RestaurantPhoneButtonLoaderStyle, RestaurantIsOpenNowWrapperLoaderStyle, MenuItemsWrapper, MenuItemStyle, MenuItemCheckboxWrapper, MenuItemTextsWrapper, MenuItemName, MenuItemPrice, MenuItemImageWrapper, MenuItemImage };
+const RestaurantMenuItemsWrapperLoader = styled.View`
+	paddingBottom: 15;
+	paddingHorizontal: 15;
+`;
+
+const RestaurantMenuItemLoaderStyle = styled.View`
+	flexDirection: row;
+	alignItems: center;
+	justifyContent: space-between;
+	paddingVertical: 10;
+`;
+
+const RestaurantMenuItemCheckboxWrapperLoader = styled.View`
+	width: 11%;
+`;
+
+const RestaurantMenuItemCheckboxLoader = styled(Animated.View)`
+	width: 25;
+	height: 25;
+	backgroundColor: ${COLORS.lightGray};
+`;
+
+const RestaurantMenuItemTextsWrapperLoader = styled.View`
+	width: 65%;
+`;
+
+const RestaurantMenuItemNameLoader = styled(Animated.View)`
+	width: 80%;
+	height: 20;
+	backgroundColor: ${COLORS.lightGray};
+	marginBottom: 10;
+`;
+
+const RestaurantMenuItemPriceLoader = styled(Animated.View)`
+	width: 50;
+	height: 20;
+	backgroundColor: ${COLORS.lightGray};
+`;
+
+const RestaurantMenuItemImageWrapperLoader = styled.View`
+	width: 24%;
+`;
+
+const RestaurantMenuItemImageLoader = styled(Animated.View)`
+	width: 100%;
+	aspectRatio: 1;
+	borderRadius: 10;
+	backgroundColor: ${COLORS.lightGray};
+`;
+
+const RestaurantMenuItemLineLoader = styled(Animated.View)`
+	width: 100%;
+	height: 2;
+	backgroundColor: ${COLORS.lightGray};
+`;
+
+export { RestaurantTexts, RestaurantName, RestaurantIsOpenNowWrapper, RestaurantIsOpenNow, RestaurantInfoParams, RestaurantPhoneButton, RestaurantPhoneText, RestaurantOpeningHours, RestaurantOpeningHoursList, RestaurantOpeningHoursItem, RestaurantOpeningHoursDay, RestaurantOpeningHoursTime, RestaurantPhotoLoader, RestaurantTextsLoader, RestaurantNameLoader, RestaurantInfoParamsLoader, RestaurantLineLoader, RestaurantOpeningHoursLoader, RestaurantOpeningHoursListLoader, RestaurantOpeningHoursItemLoaderStyle, RestaurantOpeningHoursDayLoader, RestaurantOpeningHoursTimeLoader, RestaurantPhoneButtonLoaderStyle, RestaurantIsOpenNowWrapperLoaderStyle, RestaurantMenuItemsWrapper, RestaurantMenuItemStyle, RestaurantMenuItemCheckboxWrapper, RestaurantMenuItemTextsWrapper, RestaurantMenuItemName, RestaurantMenuItemPrice, RestaurantMenuItemImageWrapper, RestaurantMenuItemImage, RestaurantMenuItemsWrapperLoader, RestaurantMenuItemLoaderStyle, RestaurantMenuItemCheckboxWrapperLoader, RestaurantMenuItemCheckboxLoader, RestaurantMenuItemTextsWrapperLoader, RestaurantMenuItemNameLoader, RestaurantMenuItemPriceLoader, RestaurantMenuItemImageWrapperLoader, RestaurantMenuItemImageLoader, RestaurantMenuItemLineLoader };

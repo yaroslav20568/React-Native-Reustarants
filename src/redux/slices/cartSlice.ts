@@ -1,11 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { IFood } from './../../types';
-
-interface IPayload {
-	isChecked: boolean;
-	item: IFood;
-}
+import { IFood, IOnAddToCartPayload } from './../../types';
 
 interface IState {
 	items: Array<IFood>;
@@ -21,7 +16,7 @@ const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
 	reducers: {
-		addToCart(state, action: PayloadAction<IPayload>) {
+		addToCart(state, action: PayloadAction<IOnAddToCartPayload>) {
 			if(action.payload.isChecked) {
 				state.items = [...state.items, action.payload.item];
 			} else {

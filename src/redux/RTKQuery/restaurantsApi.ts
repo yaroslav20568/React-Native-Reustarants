@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { YELP_API_KEY } from '../../constants';
 import { IRestaurant, IRestaurantMoreInfo } from './../../types';
 
 interface IRestaurantWithTransactions extends IRestaurant {
@@ -14,7 +13,7 @@ const headers = {
   accept: 'application/json',
   'x-requested-with': 'xmlhttprequest',
   'Access-Control-Allow-Origin': '*',
-  Authorization: `Bearer ${YELP_API_KEY}`,
+  Authorization: `Bearer ${process.env.YELP_API_KEY}`,
 };
 
 const restaurantsApi = createApi({

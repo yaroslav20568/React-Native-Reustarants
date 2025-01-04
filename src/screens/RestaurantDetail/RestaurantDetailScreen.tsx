@@ -2,23 +2,19 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { View, ScrollView, Animated } from 'react-native';
 import { Dimensions } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RestaurantMenuItems, Modal, RestaurantInfo, RestaurantLoader, ViewCart } from '../../components/importComponents';
+import { RestaurantMenuItems, Modal, RestaurantInfo, RestaurantLoader, ViewCart, RestaurantMenuLoader } from '../../components/importComponents';
 import { useActions, useAppSelector } from '../../redux/typedHooks';
-import { IFood } from './../../types';
+import { IFood, IOnAddToCartPayload } from './../../types';
 import { RootStackParamList } from '../../navigation/Stacks';
 import restaurantMenuParser from '../../helpers/restaurantMenuParser';
 import { useGetRestaurantQuery } from '../../redux/RTKQuery/restaurantsApi';
 import { ViewCartWrapper } from '../styles';
 
-interface IOnAddToCartPayload {
-	isChecked: boolean;
-	item: IFood;
-}
-
 interface PropsRestaurantDetailScreen extends NativeStackScreenProps<RootStackParamList, 'RestaurantDetail'> {}
 
 const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 	const [menuItems, setMenuItems] = useState<Array<IFood> | undefined>(undefined);
+	const [menuIsLoading, setMenuIsLoading] = useState<boolean>(false);
 
 	const { restaurant, restaurantIsLoading } = useGetRestaurantQuery(route.params.id, {
 		selectFromResult: ({ data, isLoading }) => ({ 
@@ -28,8 +24,12 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 	});
 
 	useEffect(() => {
+		setMenuIsLoading(true);
 		restaurantMenuParser(route.params.url)
-			.then((data) => setMenuItems(data))
+			.then((data) => {
+				setMenuItems(data);
+				setMenuIsLoading(false);
+			})
 	}, [route.params.url]);
 
 	const { addToCart } = useActions();
@@ -38,25 +38,25 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 		totalPrice: state.cart.totalPrice
 	}));
 
-	const onAddToCart = useCallback((obj: IOnAddToCartPayload) => {
+	const onAddToCart = useCallback((obj: IOnAddToCartPayload): void => {
 		addToCart(obj);
 	}, []);
 
-	const isItemInCart = useCallback((name: string) => {
+	const isItemInCart = useCallback((name: string): boolean => {
 		return cartItems.some(cartItem => cartItem.name === name);
 	}, []);
 
-	const onOpenModal = useCallback(() => {
+	const onOpenModal = useCallback((): void => {
 		translateEndModal();
 	}, []);
 
-	const onCloseModal = useCallback(() => {
+	const onCloseModal = useCallback((): void => {
 		translateStartModal();
 	}, []);
 
   const fadeAnimModal = useRef(new Animated.Value(-Dimensions.get('window').width)).current;
 	
-	const translateEndModal = () => {
+	const translateEndModal = (): void => {
     Animated.timing(fadeAnimModal, {
       toValue: 0,
       duration: 400,
@@ -64,7 +64,7 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
     }).start();
   };
 
-	const translateStartModal = () => {
+	const translateStartModal = (): void => {
     Animated.timing(fadeAnimModal, {
       toValue: -Dimensions.get('window').width,
       duration: 400,
@@ -87,13 +87,16 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 						phone={restaurant?.phone}
 					/> : 
 					<RestaurantLoader />}
-				<RestaurantMenuItems 
-					onAddToCart={onAddToCart} 
-					isItemInCart={isItemInCart} 
-					menuItems={menuItems}
-				/>
+				{!menuIsLoading ? 
+					<RestaurantMenuItems 
+						onAddToCart={onAddToCart} 
+						isItemInCart={isItemInCart} 
+						menuItems={menuItems}
+						isOpenNow={restaurant?.hours[0].is_open_now}
+					/> : 
+					<RestaurantMenuLoader />}
 			</ScrollView>
-			{/* <Animated.View
+			<Animated.View
         style={{transform: [{ translateX: fadeAnimModal }], position: 'absolute', width: '100%', height: '100%', zIndex: 100 }}
       >
 				<Modal 
@@ -110,7 +113,7 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 						totalPrice={totalPrice} 
 						onCallback={onOpenModal} 
 					/>
-				</ViewCartWrapper>} */}
+				</ViewCartWrapper>}
 		</View>
   )
 }
