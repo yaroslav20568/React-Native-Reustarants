@@ -1,20 +1,25 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { View, ScrollView, Animated } from 'react-native';
-import { Dimensions } from 'react-native';
+import React, { useState, useCallback, useEffect } from 'react';
+import { View, ScrollView, useWindowDimensions } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RestaurantMenuItems, Modal, RestaurantInfo, RestaurantLoader, ViewCart, RestaurantMenuLoader } from '../../components/importComponents';
+import { Extrapolation, interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { RestaurantMenuItems, CartModal, RestaurantInfo, RestaurantLoader, CartModalButton, RestaurantMenuLoader } from '../../components/importComponents';
 import { useActions, useAppSelector } from '../../redux/typedHooks';
 import { IFood, IOnAddToCartPayload } from './../../types';
 import { RootStackParamList } from '../../navigation/Stacks';
 import restaurantMenuParser from '../../helpers/restaurantMenuParser';
 import { useGetRestaurantQuery } from '../../redux/RTKQuery/restaurantsApi';
-import { ViewCartWrapper } from '../styles';
+import { CartModalButtonWrapper, CartModalWrapper } from '../styles';
 
 interface PropsRestaurantDetailScreen extends NativeStackScreenProps<RootStackParamList, 'RestaurantDetail'> {}
 
 const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 	const [menuItems, setMenuItems] = useState<Array<IFood> | undefined>(undefined);
 	const [menuIsLoading, setMenuIsLoading] = useState<boolean>(false);
+	const { addToCart } = useActions();
+	const { cartItems, totalPrice } = useAppSelector(state => ({
+		cartItems: state.cart.items,
+		totalPrice: state.cart.totalPrice
+	}));
 
 	const { restaurant, restaurantIsLoading } = useGetRestaurantQuery(route.params.id, {
 		selectFromResult: ({ data, isLoading }) => ({ 
@@ -32,12 +37,6 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 			})
 	}, [route.params.url]);
 
-	const { addToCart } = useActions();
-	const { cartItems, totalPrice } = useAppSelector(state => ({
-		cartItems: state.cart.items,
-		totalPrice: state.cart.totalPrice
-	}));
-
 	const onAddToCart = useCallback((obj: IOnAddToCartPayload): void => {
 		addToCart(obj);
 	}, []);
@@ -46,34 +45,23 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 		return cartItems.some(cartItem => cartItem.name === name);
 	}, []);
 
+	const { width } = useWindowDimensions();
+	const translateX = useSharedValue<number>(0);
+	
+	const cartModalWrapperStyles = useAnimatedStyle(() => ({
+		transform: [{translateX: interpolate(translateX.value, [0, 1], [-width, 0], Extrapolation.CLAMP)}]
+	}));
+
 	const onOpenModal = useCallback((): void => {
-		translateEndModal();
+		translateX.value = withTiming(1, {duration: 400});
 	}, []);
 
 	const onCloseModal = useCallback((): void => {
-		translateStartModal();
+		translateX.value = withTiming(0, {duration: 400});
 	}, []);
 
-  const fadeAnimModal = useRef(new Animated.Value(-Dimensions.get('window').width)).current;
-	
-	const translateEndModal = (): void => {
-    Animated.timing(fadeAnimModal, {
-      toValue: 0,
-      duration: 400,
-			useNativeDriver: true
-    }).start();
-  };
-
-	const translateStartModal = (): void => {
-    Animated.timing(fadeAnimModal, {
-      toValue: -Dimensions.get('window').width,
-      duration: 400,
-			useNativeDriver: true
-    }).start();
-  };
-
 	return (
-		<View style={{flex: 1}}>
+		<View>
 			<ScrollView>
 				{!restaurantIsLoading ? 
 					<RestaurantInfo 
@@ -96,24 +84,24 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 					/> : 
 					<RestaurantMenuLoader />}
 			</ScrollView>
-			<Animated.View
-        style={{transform: [{ translateX: fadeAnimModal }], position: 'absolute', width: '100%', height: '100%', zIndex: 100 }}
+			<CartModalWrapper
+        style={cartModalWrapperStyles}
       >
-				<Modal 
+				<CartModal 
 					restaurantName={restaurant?.name} 
 					onCloseModal={onCloseModal} 
 					cartItems={cartItems}
 					totalPrice={totalPrice}
 				/>
-			</Animated.View>
+			</CartModalWrapper>
 			{totalPrice !== 0 && 
-				<ViewCartWrapper>
-					<ViewCart 
-						title="View Cart" 
+				<CartModalButtonWrapper>
+					<CartModalButton 
+						title='View Cart' 
 						totalPrice={totalPrice} 
 						onCallback={onOpenModal} 
 					/>
-				</ViewCartWrapper>}
+				</CartModalButtonWrapper>}
 		</View>
   )
 }

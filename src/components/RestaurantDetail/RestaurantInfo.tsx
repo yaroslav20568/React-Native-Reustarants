@@ -55,6 +55,7 @@ const RestaurantInfo = ({ photos, name, rating, price, categories, review_count,
 				horizontal
 				showsHorizontalScrollIndicator={false}
 				pagingEnabled
+				keyExtractor={(_, index) => `photo_${index}`}
 			/>
 			<RestaurantTexts>
 				<RestaurantName>{name}</RestaurantName>

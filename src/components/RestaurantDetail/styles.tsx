@@ -259,4 +259,64 @@ const RestaurantMenuItemLineLoader = styled(Animated.View)`
 	backgroundColor: ${COLORS.lightGray};
 `;
 
-export { RestaurantTexts, RestaurantName, RestaurantIsOpenNowWrapper, RestaurantIsOpenNow, RestaurantInfoParams, RestaurantPhoneButton, RestaurantPhoneText, RestaurantOpeningHours, RestaurantOpeningHoursList, RestaurantOpeningHoursItem, RestaurantOpeningHoursDay, RestaurantOpeningHoursTime, RestaurantPhotoLoader, RestaurantTextsLoader, RestaurantNameLoader, RestaurantInfoParamsLoader, RestaurantLineLoader, RestaurantOpeningHoursLoader, RestaurantOpeningHoursListLoader, RestaurantOpeningHoursItemLoaderStyle, RestaurantOpeningHoursDayLoader, RestaurantOpeningHoursTimeLoader, RestaurantPhoneButtonLoaderStyle, RestaurantIsOpenNowWrapperLoaderStyle, RestaurantMenuItemsWrapper, RestaurantMenuItemStyle, RestaurantMenuItemCheckboxWrapper, RestaurantMenuItemTextsWrapper, RestaurantMenuItemName, RestaurantMenuItemPrice, RestaurantMenuItemImageWrapper, RestaurantMenuItemImage, RestaurantMenuItemsWrapperLoader, RestaurantMenuItemLoaderStyle, RestaurantMenuItemCheckboxWrapperLoader, RestaurantMenuItemCheckboxLoader, RestaurantMenuItemTextsWrapperLoader, RestaurantMenuItemNameLoader, RestaurantMenuItemPriceLoader, RestaurantMenuItemImageWrapperLoader, RestaurantMenuItemImageLoader, RestaurantMenuItemLineLoader };
+const CartModalOutside = styled.TouchableOpacity`
+	position: absolute;
+	z-index: 100;
+	bottom: 50%;
+	width: 100%;
+	height: 50%;
+	paddingHorizontal: 5;
+	paddingVertical: 10;
+	backgroundColor: rgba(0, 0, 0, 0.5);
+`;
+
+const CartModalStyle = styled.View`
+	position: absolute;
+	z-index: 100;
+	top: 50%;
+	width: 100%;
+	height: 50%;
+	paddingHorizontal: 10;
+	paddingVertical: 15;
+	backgroundColor: ${COLORS.white};
+`;
+
+const CartModalRestaurantName = styled.Text`
+	fontFamily: ${FONTS.poppinsSemiBold};
+	fontSize: ${FONTS_SIZE.medium18};
+	color: ${COLORS.black};
+	marginBottom: 10;
+	textAlign: center;
+`;
+
+const CartModalItem = styled.View`
+	flex-direction: row;
+	justify-content: space-between;
+	paddingHorizontal: 20;
+	paddingVertical: 20;
+`;
+
+const CartModalItemText = styled.Text`
+	fontFamily: ${FONTS.poppinsMedium};
+  fontSize: ${FONTS_SIZE.small14};
+  color: ${COLORS.black};
+`;
+
+const CartModalSubtotalWrapper = styled.View`
+	paddingHorizontal: 10;
+	paddingVertical: 20;
+	flex-direction: row;
+	justify-content: space-between;
+`;
+
+const CartModalSubtotalText = styled.Text`
+	fontFamily: ${FONTS.poppinsSemiBold};
+  fontSize: ${FONTS_SIZE.small14};
+  color: ${COLORS.black};
+`;
+
+const ViewCartWrapper = styled.View`
+	paddingHorizontal: 30;
+`;
+
+export { RestaurantTexts, RestaurantName, RestaurantIsOpenNowWrapper, RestaurantIsOpenNow, RestaurantInfoParams, RestaurantPhoneButton, RestaurantPhoneText, RestaurantOpeningHours, RestaurantOpeningHoursList, RestaurantOpeningHoursItem, RestaurantOpeningHoursDay, RestaurantOpeningHoursTime, RestaurantPhotoLoader, RestaurantTextsLoader, RestaurantNameLoader, RestaurantInfoParamsLoader, RestaurantLineLoader, RestaurantOpeningHoursLoader, RestaurantOpeningHoursListLoader, RestaurantOpeningHoursItemLoaderStyle, RestaurantOpeningHoursDayLoader, RestaurantOpeningHoursTimeLoader, RestaurantPhoneButtonLoaderStyle, RestaurantIsOpenNowWrapperLoaderStyle, RestaurantMenuItemsWrapper, RestaurantMenuItemStyle, RestaurantMenuItemCheckboxWrapper, RestaurantMenuItemTextsWrapper, RestaurantMenuItemName, RestaurantMenuItemPrice, RestaurantMenuItemImageWrapper, RestaurantMenuItemImage, RestaurantMenuItemsWrapperLoader, RestaurantMenuItemLoaderStyle, RestaurantMenuItemCheckboxWrapperLoader, RestaurantMenuItemCheckboxLoader, RestaurantMenuItemTextsWrapperLoader, RestaurantMenuItemNameLoader, RestaurantMenuItemPriceLoader, RestaurantMenuItemImageWrapperLoader, RestaurantMenuItemImageLoader, RestaurantMenuItemLineLoader, CartModalOutside, CartModalStyle, CartModalRestaurantName, CartModalItem, CartModalItemText, CartModalSubtotalWrapper, CartModalSubtotalText, ViewCartWrapper };

@@ -24,6 +24,7 @@ const RestaurantMenuItems = ({ onAddToCart, isItemInCart, menuItems, isOpenNow }
 						isOpenNow={isOpenNow}
 					/>
 				}
+				keyExtractor={(_, index) => `restaurantMenuItem_${index}`}
 			/>
 		</RestaurantMenuItemsWrapper>
   )

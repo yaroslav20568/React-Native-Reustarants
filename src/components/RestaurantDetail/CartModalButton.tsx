@@ -22,7 +22,7 @@ const TotalPriceWrapper = styled.View`
 	right: 20;
 `;
 
-const ViewCart = ({ title, totalPrice, onCallback }: IProps) => {
+const CartModalButton = ({ title, totalPrice, onCallback }: IProps) => {
 	return (
 		<ViewCartContainer 
 			activeOpacity={.7}
@@ -45,4 +45,4 @@ const ViewCart = ({ title, totalPrice, onCallback }: IProps) => {
 	)
 }
 
-export default ViewCart;
+export default CartModalButton;

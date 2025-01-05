@@ -16,9 +16,9 @@ export { default as RestaurantInfo } from './RestaurantDetail/RestaurantInfo';
 export { default as RestaurantMenuItems } from './RestaurantDetail/RestaurantMenuItems';
 export { default as RestaurantMenuItem } from './RestaurantDetail/RestaurantMenuItem';
 export { default as RestaurantMenuLoader } from './RestaurantDetail/RestaurantMenuLoader';
-export { default as ViewCart } from './RestaurantDetail/ViewCart';
-export { default as Modal } from './RestaurantDetail/Modal';
-export { default as ModalList } from './RestaurantDetail/ModalList';
+export { default as CartModalButton } from './RestaurantDetail/CartModalButton';
+export { default as CartModal } from './RestaurantDetail/CartModal';
+export { default as CartModalList } from './RestaurantDetail/CartModalList';
 
 export { default as OrderList } from './OrderCompleted/OrderList';
 
