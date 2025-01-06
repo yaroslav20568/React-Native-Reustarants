@@ -7,7 +7,7 @@ interface IState {
 	totalPrice: number;
 }
 
-const initialState:IState = {
+const initialState: IState = {
 	items: [],
 	totalPrice: 0
 };

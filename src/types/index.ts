@@ -1,3 +1,6 @@
+import { NavigationProp } from "@react-navigation/native";
+import { RootStackParamList } from "../navigation/Stacks";
+
 interface IOnAddToCartPayload {
 	isChecked: boolean;
 	item: IFood;
@@ -68,4 +71,6 @@ interface ITab {
 	icon: string;
 }
 
-export type { IOnAddToCartPayload, ICategory, IFood, IOpeningHour, IRestaurant, IRestaurantMoreInfo, ICountry, IUser, TTabName, ITab };
+type TNavigation = NavigationProp<RootStackParamList>;
+
+export type { IOnAddToCartPayload, ICategory, IFood, IOpeningHour, IRestaurant, IRestaurantMoreInfo, ICountry, IUser, TTabName, ITab, TNavigation };

@@ -21,7 +21,8 @@ const RestaurantMenuItem = ({ name, price, image, onAddToCart, isItemInCart, isO
 				price,
 				image
 			}
-		}
+		};
+		
 		onAddToCart(obj);
 	};
 
@@ -33,8 +34,8 @@ const RestaurantMenuItem = ({ name, price, image, onAddToCart, isItemInCart, isO
 						size={25}
 						fillColor='green'
 						unfillColor='transparent'
-						innerIconStyle={{ borderRadius: 0, borderColor: COLORS.mediumGray }}
-						iconStyle={{ borderRadius: 0 }}
+						innerIconStyle={{borderRadius: 0, borderColor: COLORS.mediumGray}}
+						iconStyle={{borderRadius: 0}}
 						isChecked={isItemInCart(name)}
 						onPress={handleAddToCart}
 						disabled={!isOpenNow}

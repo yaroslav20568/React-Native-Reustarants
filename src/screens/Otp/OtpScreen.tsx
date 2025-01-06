@@ -38,7 +38,7 @@ const OtpScreen = ({ navigation }: PropsOtp) => {
 			setIsLoading(false);
 			Alert.alert('Try again');
 		}
-	}, [fullPhoneNumber]);
+	}, []);
 
 	const confirmOtpCode = useCallback(async (otpCode: string, fullPhoneNumber: string): Promise<void> => {
     setIsLoading(true);
@@ -59,7 +59,7 @@ const OtpScreen = ({ navigation }: PropsOtp) => {
 			setIsLoading(false);
       Alert.alert('Invalid code');
     }
-  }, [fullPhoneNumber]);
+  }, []);
 
 	return (
 		<ScreenContainer

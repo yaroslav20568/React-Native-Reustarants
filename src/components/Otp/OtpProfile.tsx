@@ -60,7 +60,7 @@ const OtpProfile = ({ fullPhoneNumber, navigateToTabs }: PropsOtpProfile) => {
 							resetForm();
 							await AsyncStorage.setItem('user-data', JSON.stringify(values));
 							navigateToTabs();
-						});
+						})
 				}}
 				validationSchema={yupSchema}
 			>

@@ -8,17 +8,18 @@ import { IFood, IOnAddToCartPayload } from './../../types';
 import { RootStackParamList } from '../../navigation/Stacks';
 import restaurantMenuParser from '../../helpers/restaurantMenuParser';
 import { useGetRestaurantQuery } from '../../redux/RTKQuery/restaurantsApi';
-import { CartModalButtonWrapper, CartModalWrapper } from '../styles';
+import { CartModalButtonWrapper, CartModalWrapper } from '../../components/RestaurantDetail/styles';
 
 interface PropsRestaurantDetailScreen extends NativeStackScreenProps<RootStackParamList, 'RestaurantDetail'> {}
 
 const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 	const [menuItems, setMenuItems] = useState<Array<IFood> | undefined>(undefined);
 	const [menuIsLoading, setMenuIsLoading] = useState<boolean>(false);
-	const { addToCart } = useActions();
-	const { cartItems, totalPrice } = useAppSelector(state => ({
+	const { addToCart, clearCart } = useActions();
+	const { cartItems, totalPrice, shippingMethod } = useAppSelector(state => ({
 		cartItems: state.cart.items,
-		totalPrice: state.cart.totalPrice
+		totalPrice: state.cart.totalPrice,
+		shippingMethod: state.restaurantsFilter.shippingMethod
 	}));
 
 	const { restaurant, restaurantIsLoading } = useGetRestaurantQuery(route.params.id, {
@@ -92,12 +93,14 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 					onCloseModal={onCloseModal} 
 					cartItems={cartItems}
 					totalPrice={totalPrice}
+					shippingMethod={shippingMethod}
+					clearCart={clearCart}
 				/>
 			</CartModalWrapper>
 			{totalPrice !== 0 && 
 				<CartModalButtonWrapper>
 					<CartModalButton 
-						title='View Cart' 
+						title='View cart' 
 						totalPrice={totalPrice} 
 						onCallback={onOpenModal} 
 					/>
