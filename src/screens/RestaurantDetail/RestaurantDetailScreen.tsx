@@ -95,6 +95,8 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 					totalPrice={totalPrice}
 					shippingMethod={shippingMethod}
 					clearCart={clearCart}
+					restaurantCoords={restaurant?.coordinates}
+					restaurantAddress={`${restaurant?.location.address1}, ${restaurant?.location.city}`}
 				/>
 			</CartModalWrapper>
 			{totalPrice !== 0 && 

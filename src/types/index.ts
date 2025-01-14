@@ -26,6 +26,11 @@ interface IOpeningHour {
 	is_open_now: boolean;
 }
 
+interface ICoordinate {
+	latitude: number;
+	longitude: number;
+}
+
 interface IRestaurant {
 	id: string;
   image_url: string;
@@ -43,10 +48,11 @@ interface IRestaurantMoreInfo extends Pick<IRestaurant, 'id' | 'name' | 'rating'
 	review_count: number;
 	phone: string;
 	hours: Array<IOpeningHour>;
-	coordinates: {
-    latitude: number;
-    longitude: number;
-  };
+	coordinates: ICoordinate;
+	location: {
+		address1: string;
+		city: string;
+	};
 }
 
 interface ICountry {
@@ -73,4 +79,38 @@ interface ITab {
 
 type TNavigation = NavigationProp<RootStackParamList>;
 
-export type { IOnAddToCartPayload, ICategory, IFood, IOpeningHour, IRestaurant, IRestaurantMoreInfo, ICountry, IUser, TTabName, ITab, TNavigation };
+interface IOrderClient {
+	phone: string;
+	address?: string | null;
+}
+
+interface IOrderPrice {
+	items: number;
+	delivery?: number | null;
+}
+
+interface IOrderTime {
+	cooking: number;
+	delivery?: number | null;
+}
+
+interface IOrderStatus {
+	isPaid: boolean;
+	isCooked: boolean;
+	isDelivered?: boolean;
+}
+
+interface IOrder {
+	restaurant: {
+		name: string;
+		address: string;
+	};
+	items: Array<IFood>;
+	shippingMethod: string;
+	client: IOrderClient;
+	price: IOrderPrice;
+	time: IOrderTime;
+	status: IOrderStatus;
+}
+
+export type { IOnAddToCartPayload, ICategory, IFood, IOpeningHour, ICoordinate, IRestaurant, IRestaurantMoreInfo, ICountry, IUser, TTabName, ITab, TNavigation, IOrderClient, IOrderPrice, IOrderTime, IOrderStatus, IOrder };

@@ -5,3 +5,4 @@ export { default as CartScreen} from './Cart/CartScreen';
 export { default as RestaurantDetail } from './RestaurantDetail/RestaurantDetailScreen';
 export { default as OrderCompleted } from './OrderCompleted/OrderCompletedScreen';
 export { default as OtpScreen } from './Otp/OtpScreen';
+export { default as MapScreen } from './Map/MapScreen';
