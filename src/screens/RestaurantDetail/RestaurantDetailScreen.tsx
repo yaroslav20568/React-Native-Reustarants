@@ -6,7 +6,7 @@ import { RestaurantMenuItems, CartModal, RestaurantInfo, RestaurantLoader, CartM
 import { useActions, useAppSelector } from '../../redux/typedHooks';
 import { IFood, IOnAddToCartPayload } from './../../types';
 import { RootStackParamList } from '../../navigation/Stacks';
-import restaurantMenuParser from '../../helpers/restaurantMenuParser';
+import { restaurantMenuParser } from '../../helpers/importHelpers';
 import { useGetRestaurantQuery } from '../../redux/RTKQuery/restaurantsApi';
 import { CartModalButtonWrapper, CartModalWrapper } from '../../components/RestaurantDetail/styles';
 

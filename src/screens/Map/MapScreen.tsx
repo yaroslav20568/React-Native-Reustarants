@@ -1,72 +1,63 @@
-import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
 import { MAPBOX_API_KEY } from '@env';
 import { RootStackParamList } from '../../navigation/Stacks';
 import Mapbox from '@rnmapbox/maps';
-import { Position } from '@rnmapbox/maps/lib/typescript/src/types/Position';
 import { COLORS } from '../../constants';
 import { IOrder } from '../../types';
+import { useLazyGetDirectionRouteQuery } from '../../redux/RTKQuery/directionRouteApi';
+import { CartModalButton } from '../../components/importComponents';
+import { CartModalButtonWrapper } from '../../components/RestaurantDetail/styles';
+import { getDistanceUnitMeasurement, getTimeUnitMeasurement } from '../../helpers/importHelpers';
 
 Mapbox.setAccessToken(MAPBOX_API_KEY);
-
-interface IRouteDirection {
-	geometry: {
-		coordinates: Array<Position>;
-		distance: number;
-		duration: number;
-	}
-}
-
-interface IDirection {
-	routes: Array<IRouteDirection>;
-}
 
 interface PropsMapScreen extends NativeStackScreenProps<RootStackParamList, 'Map'> {}
 
 const MapScreen = ({ route }: PropsMapScreen) => {
 	const { orderId, restaurantCoords } = route.params;
-	const lat = restaurantCoords.latitude;
-	const lon = restaurantCoords.longitude;
 	const [userPosition, setUserPosition] = useState<[number, number] | null>(null);
-	const [routes, setRoutes] = useState<Array<Position>>([]);
 
-	useEffect(() => {
-		if(userPosition) {
-			setRoutes([]);
+	const [directionRouteTrigger, { directionRoute, directionRouteParams, isFetching }] = useLazyGetDirectionRouteQuery({
+		selectFromResult: ({ data, isFetching }) => {
+			const route = data?.routes[0];
 
-			fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${lon},${lat};${userPosition && userPosition[0]},${userPosition && userPosition[1]}?overview=full&geometries=geojson&access_token=${MAPBOX_API_KEY}`)
-				.then((response) => {
-					return response.json();
-				})
-				.then(async (data) => {
-					setRoutes(data.routes[0].geometry.coordinates);
-					console.log('distance: ' + data.routes[0].distance / 1000);
-					console.log('duration: ' + data.routes[0].duration / 60);
-					console.log('price: ' + (data.routes[0].distance / 1000) * 3);
-
-					const order = (await firestore().collection<IOrder>('orders').doc(orderId).get()).data() as IOrder;
-
-					firestore().collection<IOrder>('orders').doc(orderId).update({
-						...order,
-						client: {
-							...order?.client,
-							address: 'San Diego'
-						},
-						price: {
-							...order?.price,
-							delivery: (data.routes[0].distance / 1000) * 3
-						},
-						time: {
-							...order?.time,
-							delivery: data.routes[0].duration / 60
-						}
-					})
-				})
+			return {
+				directionRoute: route?.geometry,
+				directionRouteParams: {
+					distance: route?.distance as number,
+					duration: route?.duration ? Math.round(route?.duration / 60) : 0,
+					price: route?.distance ? +((route?.distance / 1000) * 3).toFixed(2) : 0
+				},
+				isFetching
+			}
 		}
-	}, [userPosition]);
+	});
+
+	const updateOrder = useCallback(async (): Promise<void> => {
+		const order = (await firestore().collection<IOrder>('orders').doc(orderId).get()).data() as IOrder;
+		const totalPrice = +(order.price.items + directionRouteParams.price).toFixed(2);
+		console.log(totalPrice);
+
+		firestore().collection<IOrder>('orders').doc(orderId).update({
+			...order,
+			client: {
+				...order?.client,
+				address: 'San Diego'
+			},
+			price: {
+				...order?.price,
+				delivery: directionRouteParams.price
+			},
+			time: {
+				...order?.time,
+				delivery: directionRouteParams.duration
+			}
+		})
+	}, [directionRouteParams]);
 
   return (
     <>
@@ -76,15 +67,24 @@ const MapScreen = ({ route }: PropsMapScreen) => {
 				attributionEnabled={false}
 				surfaceView={false}
 				style={{flex: 1}} 
-				onPress={(log) => setUserPosition(log.geometry.coordinates)}
+				onPress={(e) => {
+					setUserPosition(e.geometry.coordinates)
+					directionRouteTrigger({ 
+						restaurantCoords, 
+						userCoords: {
+							longitude: e.geometry.coordinates[0], 
+							latitude: e.geometry.coordinates[1]
+						} 
+					});
+				}}
 			>
 				<Mapbox.Camera 
 					zoomLevel={17}
-					centerCoordinate={[lon, lat]}
+					centerCoordinate={[restaurantCoords.longitude, restaurantCoords.latitude]}
 				/>
 				<Mapbox.PointAnnotation 
 					id='restaurant' 
-					coordinate={[lon, lat]}
+					coordinate={[restaurantCoords.longitude, restaurantCoords.latitude]}
 				>
 					<View>
 						<Ionicons 
@@ -101,7 +101,7 @@ const MapScreen = ({ route }: PropsMapScreen) => {
 					>
 						<></>
 					</Mapbox.PointAnnotation>}
-				{routes.length ? 
+				{directionRoute?.coordinates.length && 
 					<Mapbox.ShapeSource
 						id={'routeSource'}
 						lineMetrics={true}
@@ -110,7 +110,7 @@ const MapScreen = ({ route }: PropsMapScreen) => {
 							type: 'Feature',
 							geometry: {
 								type: 'LineString',
-								coordinates: routes
+								coordinates: directionRoute.coordinates
 							}
 						}}
 					>
@@ -123,9 +123,28 @@ const MapScreen = ({ route }: PropsMapScreen) => {
 								lineWidth: 4
 							}}
 						/>
-					</Mapbox.ShapeSource> : 
-					''}
+					</Mapbox.ShapeSource>}
 			</Mapbox.MapView>
+			<View style={{position: 'absolute', width: '90%', alignSelf: 'center', top: 15, backgroundColor: '#fff', paddingVertical: 15, paddingHorizontal: 15, borderRadius: 10}}>
+				{directionRoute?.coordinates.length ? 
+					<View>
+						<Text style={{color: '#000', marginBottom: 3}}>Distance: {getDistanceUnitMeasurement(directionRouteParams.distance)}</Text>
+						<Text style={{color: '#000', marginBottom: 3}}>Duration: {getTimeUnitMeasurement(directionRouteParams.duration)}</Text>
+						<Text style={{color: '#000'}}>The amount is charged for 1 km 3 dollars</Text>
+					</View> : 
+					<Text>Find and select the delivery address on the map</Text>
+				}
+			</View>
+			{directionRoute?.coordinates.length && !isFetching && 
+				<>
+					<CartModalButtonWrapper>
+						<CartModalButton 
+							title='To pay' 
+							totalPrice={directionRouteParams.price} 
+							onCallback={updateOrder} 
+						/>
+					</CartModalButtonWrapper>
+				</>}
 		</>
   );
 };

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { IFood } from '../types';
 
 const getRandomPrice = () => {
-	return '$' + (Math.random() * (30 - 10) + 10.).toFixed(2);
+	return '$' + (Math.random() * (30 - 10) + 10).toFixed(2);
 };
 
 const restaurantMenuParser = async (restaurantUrl: string): Promise<Array<IFood>> => {
