@@ -1,11 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ICoordinate } from '../../types';
-import { Position } from '@rnmapbox/maps/lib/typescript/src/types/Position';
+import { ICoordinate, IDirectionRouteGeometry } from '../../types';
 
 interface IDirectionRoute {
-	geometry: {
-		coordinates: Array<Position>;
-	}
+	geometry: IDirectionRouteGeometry;
 	distance: number;
 	duration: number;
 }

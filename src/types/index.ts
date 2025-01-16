@@ -1,5 +1,6 @@
 import { NavigationProp } from "@react-navigation/native";
 import { RootStackParamList } from "../navigation/Stacks";
+import { Position } from "@rnmapbox/maps/lib/typescript/src/types/Position";
 
 interface IOnAddToCartPayload {
 	isChecked: boolean;
@@ -113,4 +114,14 @@ interface IOrder {
 	status: IOrderStatus;
 }
 
-export type { IOnAddToCartPayload, ICategory, IFood, IOpeningHour, ICoordinate, IRestaurant, IRestaurantMoreInfo, ICountry, IUser, TTabName, ITab, TNavigation, IOrderClient, IOrderPrice, IOrderTime, IOrderStatus, IOrder };
+interface IDirectionRouteGeometry {
+	coordinates: Array<Position>;
+}
+
+interface IDirectionRouteParams {
+	distance: number;
+	duration: number;
+	price: number;
+}
+
+export type { IOnAddToCartPayload, ICategory, IFood, IOpeningHour, ICoordinate, IRestaurant, IRestaurantMoreInfo, ICountry, IUser, TTabName, ITab, TNavigation, IOrderClient, IOrderPrice, IOrderTime, IOrderStatus, IOrder, IDirectionRouteGeometry, IDirectionRouteParams };
