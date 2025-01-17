@@ -1,9 +1,9 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { IRestaurant } from './../../types';
+import { IRestaurant } from './../../../types';
 import { RestaurantImage, RestaurantInfo, RestaurantName, RestaurantPrice, RestaurantRating, WrapperRestaurantRating } from './styles';
-import { RootStackParamList } from '../../navigation/Stacks';
+import { RootStackParamList } from '../../../navigation/Stacks';
 
 interface PropsRestaurant extends IRestaurant {}
 

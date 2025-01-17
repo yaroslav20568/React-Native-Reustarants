@@ -1,7 +1,8 @@
 import React from 'react';
-import { CategoryItem } from '../importComponents';
-import { ICategory } from '../../types';
-import { CategoriesContainer, FlatListSeparator } from './styles';
+import { CategoryItem } from '../../importComponents';
+import { ICategory } from '../../../types';
+import { CategoriesContainer } from './styles';
+import { FlatListSeparator } from '../../../screens/styles';
 
 interface PropsCategories {
   shippingTypeItems: Array<ICategory>;
