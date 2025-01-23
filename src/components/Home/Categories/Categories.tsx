@@ -1,7 +1,7 @@
 import React from 'react';
 import { CategoryItem } from '../../importComponents';
 import { ICategory } from '../../../types';
-import { CategoriesContainer } from './styles';
+import { Container } from './styles';
 import { FlatListSeparator } from '../../../screens/styles';
 
 interface PropsCategories {
@@ -18,7 +18,7 @@ const Categories = ({ shippingTypeItems }: PropsCategories) => {
 	};
 
   return (
-		<CategoriesContainer 
+		<Container 
 			data={shippingTypeItems}
 			renderItem={({item}) => 
 				<CategoryItem 

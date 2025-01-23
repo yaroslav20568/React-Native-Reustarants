@@ -2,11 +2,11 @@ import Animated from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import { COLORS } from '../../../constants';
 
-interface IRestaurantLoaderStyle {
+interface ILoaderStyle {
 	marginBottom: number;
 }
 
-const RestaurantLoaderStyle = styled(Animated.View)<IRestaurantLoaderStyle>`
+const Loader = styled(Animated.View)<ILoaderStyle>`
 	width: 100%;
 	aspectRatio: 1.5;
 	backgroundColor: ${COLORS.lightGray};
@@ -15,4 +15,4 @@ const RestaurantLoaderStyle = styled(Animated.View)<IRestaurantLoaderStyle>`
 	marginBottom: ${(props) => props.marginBottom};
 `;
 
-export { RestaurantLoaderStyle };
+export { Loader };

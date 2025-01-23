@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { COLORS } from '../../../constants';
-import { Tab, TabText } from './styles';
+import { Tab, Name } from './styles';
 
 interface PropsHeaderTab {
   nameTab: string;
@@ -13,7 +13,7 @@ interface PropsHeaderTab {
 const HeaderTab = ({ nameTab, shippingMethod, index, onSelectTab }: PropsHeaderTab) => {
 	const colorProgress = useSharedValue<number>(1);
 
-	const headerTabTextStyles = useAnimatedStyle(() => ({
+	const nameStyles = useAnimatedStyle(() => ({
 		color: interpolateColor(colorProgress.value, [0, 1], [COLORS.white, COLORS.black])
 	}));
 
@@ -34,11 +34,11 @@ const HeaderTab = ({ nameTab, shippingMethod, index, onSelectTab }: PropsHeaderT
 			onPress={onPress}
 			activeOpacity={.7}
 		>
-			<TabText 
-				style={headerTabTextStyles}
+			<Name 
+				style={nameStyles}
 			>
 				{nameTab}
-			</TabText>
+			</Name>
 		</Tab>
 	)
 }

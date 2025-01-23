@@ -1,9 +1,9 @@
 import React from 'react';
 import { FlatList, Image, Linking, View, useWindowDimensions } from 'react-native';
-import { COLORS } from '../../constants';
-import { Line } from '../importComponents';
-import { RestaurantTexts, RestaurantName, RestaurantIsOpenNow, RestaurantIsOpenNowWrapper, RestaurantInfoParams, RestaurantOpeningHours, RestaurantOpeningHoursItem, RestaurantOpeningHoursDay, RestaurantOpeningHoursTime, RestaurantOpeningHoursList, RestaurantPhoneButton, RestaurantPhoneText } from './styles';
-import { IOpeningHour } from '../../types';
+import { COLORS } from '../../../constants';
+import { Line } from '../../importComponents';
+import { Texts, Name, IsOpenNow, IsOpenNowWrapper, InfoParams, OpeningHours, OpeningHoursItem, OpeningHoursDay, OpeningHoursTime, OpeningHoursList, PhoneButton, PhoneText } from './styles';
+import { IOpeningHour } from '../../../types';
 
 interface PropsRestaurantInfo {
 	photos: Array<string> | undefined;
@@ -34,7 +34,7 @@ const days: IDay = {
 
 const RestaurantInfo = ({ photos, name, rating, price, categories, review_count, hours, phone }: PropsRestaurantInfo) => {
   const { width } = useWindowDimensions();
-	const restaurantTextInfo = categories?.reduce((str, category) => str + category.title + ' · ', '') + `${price ? `${price} ·` : ''} 💳 · ${rating} ⭐ · (${review_count}+)`;
+	const textInfo = categories?.reduce((str, category) => str + category.title + ' · ', '') + `${price ? `${price} ·` : ''} 💳 · ${rating} ⭐ · (${review_count}+)`;
 
 	const transformTime = (time: string): string => {
 		const splitTime = time.split('');
@@ -57,46 +57,46 @@ const RestaurantInfo = ({ photos, name, rating, price, categories, review_count,
 				pagingEnabled
 				keyExtractor={(_, index) => `photo_${index}`}
 			/>
-			<RestaurantTexts>
-				<RestaurantName>{name}</RestaurantName>
-				<RestaurantInfoParams>{restaurantTextInfo}</RestaurantInfoParams>
-			</RestaurantTexts>
+			<Texts>
+				<Name>{name}</Name>
+				<InfoParams>{textInfo}</InfoParams>
+			</Texts>
 			<Line 
 				width={100} 
 				height={2} 
 				backgroundColor={COLORS.black} 
 			/>
-			<RestaurantOpeningHours>
-				<RestaurantOpeningHoursList>
+			<OpeningHours>
+				<OpeningHoursList>
 					{hours && 
 						hours[0].open.map((hour, index) => 
-							<RestaurantOpeningHoursItem
+							<OpeningHoursItem
 								key={`RestaurantOpeningHoursItem_${index}`}
 							>
-								<RestaurantOpeningHoursDay>{days[hour.day]}</RestaurantOpeningHoursDay>
-								<RestaurantOpeningHoursTime>{transformTime(hour.start)} - {transformTime(hour.end)}</RestaurantOpeningHoursTime>
-							</RestaurantOpeningHoursItem>
+								<OpeningHoursDay>{days[hour.day]}</OpeningHoursDay>
+								<OpeningHoursTime>{transformTime(hour.start)} - {transformTime(hour.end)}</OpeningHoursTime>
+							</OpeningHoursItem>
 						)}
-				</RestaurantOpeningHoursList>
+				</OpeningHoursList>
 				<View>
-					<RestaurantPhoneButton
+					<PhoneButton
 						activeOpacity={.7}
 						onPress={() => Linking.openURL(`tel:${phone}`)}
 					>
-						<RestaurantPhoneText>{phone}</RestaurantPhoneText>
-					</RestaurantPhoneButton>
-					<RestaurantIsOpenNowWrapper
+						<PhoneText>{phone}</PhoneText>
+					</PhoneButton>
+					<IsOpenNowWrapper
 						isOpenNow={hours && hours[0].is_open_now}
 					>
-						<RestaurantIsOpenNow>
+						<IsOpenNow>
 							{hours && 
 								hours[0].is_open_now ? 
 								'Open' : 
 								'Closed'} now
-						</RestaurantIsOpenNow>
-					</RestaurantIsOpenNowWrapper>
+						</IsOpenNow>
+					</IsOpenNowWrapper>
 				</View>
-			</RestaurantOpeningHours>
+			</OpeningHours>
 			<Line 
 				width={100} 
 				height={2} 

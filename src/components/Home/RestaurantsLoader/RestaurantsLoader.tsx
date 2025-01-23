@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import { useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
-import { RestaurantLoaderStyle } from './styles';
+import { Loader } from './styles';
 
 const RestaurantsLoader = () => {
   return (
@@ -23,7 +23,7 @@ interface PropsRestaurantLoader {
 const RestaurantLoader = ({ index }: PropsRestaurantLoader) => {
 	const opacity = useSharedValue<number>(0.4);
 
-	const restaurantLoaderStyles = useAnimatedStyle(() => ({
+	const loaderStyles = useAnimatedStyle(() => ({
 		opacity: opacity.value
 	}));
 
@@ -32,9 +32,9 @@ const RestaurantLoader = ({ index }: PropsRestaurantLoader) => {
 	}, []);
 
 	return (
-		<RestaurantLoaderStyle 
+		<Loader 
 			marginBottom={index !== 9 ? 20 : 0}
-			style={restaurantLoaderStyles} 
+			style={loaderStyles} 
 		/>
 	);
 };

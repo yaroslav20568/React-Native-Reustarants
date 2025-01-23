@@ -1,12 +1,12 @@
 import styled from 'styled-components/native';
 import { COLORS, FONTS, FONTS_SIZE } from '../../../constants';
 
-const RestaurantImage = styled.Image`
+const Image = styled.Image`
 	width: 100%;
 	aspectRatio: 1.8;
 `;
 
-const RestaurantInfo = styled.View`
+const Info = styled.View`
   backgroundColor: ${COLORS.white};
   flexDirection: row;
   alignItems: center;
@@ -17,19 +17,19 @@ const RestaurantInfo = styled.View`
   borderBottomRightRadius: 10;
 `;
 
-const RestaurantName = styled.Text`
+const Name = styled.Text`
 	fontFamily: ${FONTS.poppinsSemiBold};
   fontSize: ${FONTS_SIZE.medium16};
   color: ${COLORS.black};
 `;
 
-const RestaurantPrice = styled.Text`
+const Price = styled.Text`
 	fontFamily: ${FONTS.poppinsMedium};
   fontSize: ${FONTS_SIZE.small14};
   color: ${COLORS.mediumGray};
 `;
 
-const WrapperRestaurantRating = styled.View`
+const RatingWrapper = styled.View`
   backgroundColor: ${COLORS.lightGray};
   alignItems: center;
   justifyContent: center;
@@ -38,10 +38,10 @@ const WrapperRestaurantRating = styled.View`
   borderRadius: 100;
 `;
 
-const RestaurantRating = styled.Text`
+const Rating = styled.Text`
 	fontFamily: ${FONTS.poppinsMedium};
   fontSize: ${FONTS_SIZE.small14};
   color: ${COLORS.black};
 `;
 
-export { RestaurantImage, RestaurantInfo, RestaurantName, RestaurantPrice, RestaurantRating, WrapperRestaurantRating };
+export { Image, Info, Name, Price, Rating, RatingWrapper };

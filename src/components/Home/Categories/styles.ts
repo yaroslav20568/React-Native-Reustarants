@@ -1,9 +1,9 @@
 import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
 
-const CategoriesContainer = (styled.FlatList`
+const Container = (styled.FlatList`
   paddingVertical: 5;
   marginVertical: 5;
 ` as unknown) as typeof FlatList;
 
-export { CategoriesContainer };
+export { Container };

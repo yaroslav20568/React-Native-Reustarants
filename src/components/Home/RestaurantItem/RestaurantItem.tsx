@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { IRestaurant } from './../../../types';
-import { RestaurantImage, RestaurantInfo, RestaurantName, RestaurantPrice, RestaurantRating, WrapperRestaurantRating } from './styles';
+import { Image, Info, Name, Price, Rating, RatingWrapper } from './styles';
 import { RootStackParamList } from '../../../navigation/Stacks';
 
 interface PropsRestaurant extends IRestaurant {}
@@ -19,18 +19,18 @@ const RestaurantItem = ({ id, image_url, name, rating, price, url }: PropsRestau
 			activeOpacity={.7} 
 			onPress={onNavigate}
 		>
-			<RestaurantImage 
+			<Image 
 				source={{uri: image_url}}
 			/>
-      <RestaurantInfo>
+      <Info>
 				<View>
-					<RestaurantName>{name}</RestaurantName>
-					{price && <RestaurantPrice>{price}</RestaurantPrice>}
+					<Name>{name}</Name>
+					{price && <Price>{price}</Price>}
 				</View>
-				<WrapperRestaurantRating>
-					<RestaurantRating>{String(rating)}</RestaurantRating>
-				</WrapperRestaurantRating>
-			</RestaurantInfo>
+				<RatingWrapper>
+					<Rating>{String(rating)}</Rating>
+				</RatingWrapper>
+			</Info>
     </TouchableOpacity>
   );
 };

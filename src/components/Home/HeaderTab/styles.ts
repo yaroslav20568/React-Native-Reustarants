@@ -9,9 +9,9 @@ const Tab = styled.TouchableOpacity`
 	borderRadius: 20;
 `;
 
-const TabText = styled(Animated.Text)`
+const Name = styled(Animated.Text)`
 	fontSize: ${FONTS_SIZE.medium16};
 	fontFamily: ${FONTS.poppinsSemiBold};
 `;
 
-export { Tab, TabText };
+export { Tab, Name };

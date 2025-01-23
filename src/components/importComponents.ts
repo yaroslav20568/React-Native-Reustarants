@@ -6,13 +6,13 @@ export { default as SearchPlacesInput } from './Home/SearchPlacesInput/SearchPla
 export { default as RestaurantsList } from './Home/RestaurantsList/RestaurantsList';
 export { default as RestaurantItem } from './Home/RestaurantItem/RestaurantItem';
 export { default as RestaurantsLoader } from './Home/RestaurantsLoader/RestaurantsLoader';
-export { default as RestaurantLoader } from './RestaurantDetail/RestaurantLoader';
+export { default as RestaurantLoader } from './RestaurantDetail/RestaurantLoader/RestaurantLoader';
 export { default as HeaderTabs } from './Home/HeaderTabs/HeaderTabs';
 export { default as HeaderTab } from './Home/HeaderTab/HeaderTab';
 export { default as Categories } from './Home/Categories/Categories';
 export { default as CategoryItem } from './Home/CategoryItem/CategoryItem';
 
-export { default as RestaurantInfo } from './RestaurantDetail/RestaurantInfo';
+export { default as RestaurantInfo } from './RestaurantDetail/RestaurantInfo/RestaurantInfo';
 export { default as RestaurantMenuItems } from './RestaurantDetail/RestaurantMenuItems';
 export { default as RestaurantMenuItem } from './RestaurantDetail/RestaurantMenuItem';
 export { default as RestaurantMenuLoader } from './RestaurantDetail/RestaurantMenuLoader';

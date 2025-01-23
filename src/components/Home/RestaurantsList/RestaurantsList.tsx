@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import { RestaurantItem, RestaurantsLoader } from '../../importComponents';
 import { IRestaurant } from '../../../types';
-import { RestaurantsContainer, RestaurantsEmptyText } from './styles';
+import { Container, EmptyText } from './styles';
 import { FlatListSeparator } from '../../../screens/styles';
 
 interface PropsRestaurantsList {
@@ -13,7 +13,7 @@ interface PropsRestaurantsList {
 const RestaurantsList = ({ restaurants, isLoading }: PropsRestaurantsList) => {
   const ListEmptyComponent = (): JSX.Element => {
 		return (
-			<RestaurantsEmptyText>Рестораны не найдены</RestaurantsEmptyText>
+			<EmptyText>Рестораны не найдены</EmptyText>
 		);
 	};
 
@@ -26,7 +26,7 @@ const RestaurantsList = ({ restaurants, isLoading }: PropsRestaurantsList) => {
 	};
 
 	return (
-    <RestaurantsContainer>
+    <Container>
 			{!isLoading ? 
         <FlatList
 					data={restaurants}
@@ -40,7 +40,7 @@ const RestaurantsList = ({ restaurants, isLoading }: PropsRestaurantsList) => {
 					keyExtractor={(_, index) => `restaurantItem_${index}`}
 				/> : 
         <RestaurantsLoader />}
-    </RestaurantsContainer>
+    </Container>
   );
 };
 

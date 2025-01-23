@@ -1,5 +1,5 @@
 import React from 'react';
-import { CategoryContainer, CategoryImage, CategoryText } from './styles';
+import { Container, Image, Name } from './styles';
 
 interface PropsCategory {
   image: object;
@@ -8,14 +8,14 @@ interface PropsCategory {
 
 const CategoryItem = ({ image, text }: PropsCategory) => {
   return (
-    <CategoryContainer
+    <Container
 			activeOpacity={.7}
 		>
-			<CategoryImage 
+			<Image 
 				source={image}
 			/>
-			<CategoryText>{text}</CategoryText>
-    </CategoryContainer>
+			<Name>{text}</Name>
+    </Container>
   );
 };
 
