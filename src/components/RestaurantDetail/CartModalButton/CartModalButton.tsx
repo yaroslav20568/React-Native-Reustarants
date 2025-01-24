@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartModalButtonStyle, CartModalButtonText, CartModalButtonPrice } from './styles';
+import { Container, ButtonText, ButtonPrice } from './styles';
 
 interface PropsCartModalButton {
 	title: string,
@@ -9,13 +9,13 @@ interface PropsCartModalButton {
 
 const CartModalButton = ({ title, totalPrice, onCallback }: PropsCartModalButton) => {
 	return (
-		<CartModalButtonStyle 
+		<Container 
 			activeOpacity={.7}
 			onPress={onCallback}
 		>
-			<CartModalButtonText>{title}</CartModalButtonText>
-			<CartModalButtonPrice>${(totalPrice)}</CartModalButtonPrice>
-		</CartModalButtonStyle>
+			<ButtonText>{title}</ButtonText>
+			<ButtonPrice>${(totalPrice)}</ButtonPrice>
+		</Container>
 	)
 }
 

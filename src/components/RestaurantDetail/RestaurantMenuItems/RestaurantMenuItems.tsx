@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import { RestaurantMenuItem } from '../importComponents';
-import { IFood, IOnAddToCartPayload } from '../../types';
-import { RestaurantMenuItemsWrapper } from './styles';
+import { RestaurantMenuItem } from '../../importComponents';
+import { IFood, IOnAddToCartPayload } from '../../../types';
+import { MenuItemsWrapper } from './styles';
 
 interface IProps {
 	onAddToCart: (obj: IOnAddToCartPayload) => void;
@@ -13,7 +13,7 @@ interface IProps {
 
 const RestaurantMenuItems = ({ onAddToCart, isItemInCart, menuItems, isOpenNow }: IProps) => {
   return (
-		<RestaurantMenuItemsWrapper>
+		<MenuItemsWrapper>
 			<FlatList
         data={menuItems}
         renderItem={({item}) => 
@@ -26,7 +26,7 @@ const RestaurantMenuItems = ({ onAddToCart, isItemInCart, menuItems, isOpenNow }
 				}
 				keyExtractor={(_, index) => `restaurantMenuItem_${index}`}
 			/>
-		</RestaurantMenuItemsWrapper>
+		</MenuItemsWrapper>
   )
 }
 

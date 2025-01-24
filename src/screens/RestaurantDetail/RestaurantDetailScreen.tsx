@@ -8,7 +8,8 @@ import { IFood, IOnAddToCartPayload } from './../../types';
 import { RootStackParamList } from '../../navigation/Stacks';
 import { restaurantMenuParser } from '../../helpers/importHelpers';
 import { useGetRestaurantQuery } from '../../redux/RTKQuery/restaurantsApi';
-import { CartModalButtonWrapper, CartModalWrapper } from '../../components/RestaurantDetail/styles';
+import { CartModalButtonWrapper } from '../../components/RestaurantDetail/CartModalButton/styles';
+import { CartModalWrapper } from '../../components/RestaurantDetail/CartModal/styles';
 
 interface PropsRestaurantDetailScreen extends NativeStackScreenProps<RootStackParamList, 'RestaurantDetail'> {}
 

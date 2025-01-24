@@ -3,10 +3,11 @@ import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Lottie from 'lottie-react-native';
 import firestore from '@react-native-firebase/firestore';
-import { CartModalButton, CartModalList } from '../importComponents';
-import { ICoordinate, IFood, IUser, TNavigation, IOrderClient, IOrderPrice, IOrderTime, IOrderStatus } from '../../types';
-import { CartModalOutside, CartModalRestaurantName, CartModalStyle, CartModalSubtotalText, CartModalSubtotalWrapper, ViewCartWrapper } from './styles'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CartModalButton, CartModalList } from '../../importComponents';
+import { ICoordinate, IFood, IUser, TNavigation, IOrderClient, IOrderPrice, IOrderTime, IOrderStatus } from '../../../types';
+import { OutsideContainer, RestaurantName, Container, SubtotalText, SubtotalWrapper } from './styles';
+import { ViewCartWrapper } from '../CartModalButton/styles';
 
 interface PropsCartModal {
 	restaurantName: string | undefined;
@@ -85,27 +86,27 @@ const CartModal = ({ restaurantName, onCloseModal, cartItems, totalPrice, shippi
 
 	return (
 		<>
-			<CartModalOutside 
+			<OutsideContainer 
 				onPress={onCloseModal}
 				activeOpacity={1}
 			/>
 			{autoplayBool && 
 				<Lottie 
-					source={require('../../assets/animations/scanner.json')} 
+					source={require('../../../assets/animations/scanner.json')} 
 					style={{position: 'absolute', zIndex: 300}} 
 					autoPlay={autoplayBool}
 					duration={3000}
 				/>}
-			<CartModalStyle>
+			<Container>
 				<ScrollView>
-					<CartModalRestaurantName>{restaurantName}</CartModalRestaurantName>
+					<RestaurantName>{restaurantName}</RestaurantName>
 					<CartModalList 
 						cartItems={cartItems} 
 					/>
-					<CartModalSubtotalWrapper>
-						<CartModalSubtotalText>Subtotal</CartModalSubtotalText>
-						<CartModalSubtotalText>${totalPrice}</CartModalSubtotalText>
-					</CartModalSubtotalWrapper>
+					<SubtotalWrapper>
+						<SubtotalText>Subtotal</SubtotalText>
+						<SubtotalText>${totalPrice}</SubtotalText>
+					</SubtotalWrapper>
 					<ViewCartWrapper>
 						<CartModalButton 
 							title='Checkout' 
@@ -114,7 +115,7 @@ const CartModal = ({ restaurantName, onCloseModal, cartItems, totalPrice, shippi
 						/>
 					</ViewCartWrapper>
 				</ScrollView>
-			</CartModalStyle>
+			</Container>
 		</>
 	)
 }

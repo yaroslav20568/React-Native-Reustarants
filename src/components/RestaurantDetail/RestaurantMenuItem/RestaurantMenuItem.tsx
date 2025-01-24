@@ -1,10 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import { COLORS } from '../../constants';
-import { Line } from '../importComponents';
-import { IFood, IOnAddToCartPayload } from '../../types';
-import { RestaurantMenuItemCheckboxWrapper, RestaurantMenuItemImage, RestaurantMenuItemImageWrapper, RestaurantMenuItemName, RestaurantMenuItemPrice, RestaurantMenuItemStyle, RestaurantMenuItemTextsWrapper } from './styles';
+import { COLORS } from '../../../constants';
+import { Line } from '../../importComponents';
+import { IFood, IOnAddToCartPayload } from '../../../types';
+import { MenuItemCheckboxWrapper, MenuItemImage, MenuItemImageWrapper, MenuItemName, MenuItemPrice, MenuItem, MenuItemTextsWrapper } from './styles';
 
 interface IProps extends IFood {
 	onAddToCart: (obj: IOnAddToCartPayload) => void;
@@ -28,8 +28,8 @@ const RestaurantMenuItem = ({ name, price, image, onAddToCart, isItemInCart, isO
 
   return (
 		<View>
-			<RestaurantMenuItemStyle>
-				<RestaurantMenuItemCheckboxWrapper>
+			<MenuItem>
+				<MenuItemCheckboxWrapper>
 					<BouncyCheckbox
 						size={25}
 						fillColor='green'
@@ -40,17 +40,17 @@ const RestaurantMenuItem = ({ name, price, image, onAddToCart, isItemInCart, isO
 						onPress={handleAddToCart}
 						disabled={!isOpenNow}
 					/>
-				</RestaurantMenuItemCheckboxWrapper>
-				<RestaurantMenuItemTextsWrapper>
-					<RestaurantMenuItemName>{name}</RestaurantMenuItemName>
-					<RestaurantMenuItemPrice>{price}</RestaurantMenuItemPrice>
-				</RestaurantMenuItemTextsWrapper>
-				<RestaurantMenuItemImageWrapper>
-					<RestaurantMenuItemImage 
+				</MenuItemCheckboxWrapper>
+				<MenuItemTextsWrapper>
+					<MenuItemName>{name}</MenuItemName>
+					<MenuItemPrice>{price}</MenuItemPrice>
+				</MenuItemTextsWrapper>
+				<MenuItemImageWrapper>
+					<MenuItemImage 
 						source={{uri: image}}
 					/>
-				</RestaurantMenuItemImageWrapper>
-			</RestaurantMenuItemStyle>
+				</MenuItemImageWrapper>
+			</MenuItem>
 			<Line 
 				width={100} 
 				height={1} 

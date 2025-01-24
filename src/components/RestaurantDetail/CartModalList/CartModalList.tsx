@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
-import { COLORS } from '../../constants';
-import { IFood } from '../../types';
-import { Line } from '../importComponents';
+import { COLORS } from '../../../constants';
+import { IFood } from '../../../types';
+import { Line } from '../../importComponents';
 import { CartModalItem, CartModalItemText } from './styles';
 
 interface PropsCartModalList {

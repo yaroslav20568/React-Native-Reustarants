@@ -13,12 +13,12 @@ export { default as Categories } from './Home/Categories/Categories';
 export { default as CategoryItem } from './Home/CategoryItem/CategoryItem';
 
 export { default as RestaurantInfo } from './RestaurantDetail/RestaurantInfo/RestaurantInfo';
-export { default as RestaurantMenuItems } from './RestaurantDetail/RestaurantMenuItems';
-export { default as RestaurantMenuItem } from './RestaurantDetail/RestaurantMenuItem';
-export { default as RestaurantMenuLoader } from './RestaurantDetail/RestaurantMenuLoader';
-export { default as CartModalButton } from './RestaurantDetail/CartModalButton';
-export { default as CartModal } from './RestaurantDetail/CartModal';
-export { default as CartModalList } from './RestaurantDetail/CartModalList';
+export { default as RestaurantMenuItems } from './RestaurantDetail/RestaurantMenuItems/RestaurantMenuItems';
+export { default as RestaurantMenuItem } from './RestaurantDetail/RestaurantMenuItem/RestaurantMenuItem';
+export { default as RestaurantMenuLoader } from './RestaurantDetail/RestaurantMenuLoader/RestaurantMenuLoader';
+export { default as CartModalButton } from './RestaurantDetail/CartModalButton/CartModalButton';
+export { default as CartModal } from './RestaurantDetail/CartModal/CartModal';
+export { default as CartModalList } from './RestaurantDetail/CartModalList/CartModalList';
 
 export { default as OrderList } from './OrderCompleted/OrderList';
 

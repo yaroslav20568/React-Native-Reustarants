@@ -7,7 +7,7 @@ import { Point } from 'geojson';
 import { ICoordinate, IDirectionRouteParams, IOrder } from '../../types';
 import { useLazyGetDirectionRouteQuery } from '../../redux/RTKQuery/directionRouteApi';
 import { CartModalButton, MapView, MapInfo } from '../../components/importComponents';
-import { CartModalButtonWrapper } from '../../components/RestaurantDetail/styles';
+import { CartModalButtonWrapper } from '../../components/RestaurantDetail/CartModalButton/styles';
 
 interface PropsMapScreen extends NativeStackScreenProps<RootStackParamList, 'Map'> {}
 
