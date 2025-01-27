@@ -5,9 +5,9 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import Lottie from 'lottie-react-native';
-import { COLORS } from '../../constants';
+import { COLORS } from '../../../constants';
 import { CountriesModalHeader, CountriesModalHeaderText, CountriesModalInner, CountryButton, CountryName, CurrentCountryCode, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, OtpButton, OtpButtonText, OtpContainer, OtpText, OtpTitle, PhoneInput, PhoneInputWrapper } from './styles';
-import { ICountry } from '../../types';
+import { ICountry } from '../../../types';
 
 interface PropsOtpStart {
   countries: Array<ICountry> | undefined;
@@ -133,7 +133,7 @@ const OtpStart = ({ countries, signInWithPhoneNumber, phoneNumberConfirm, setAct
 			>
 				{isLoading ? 
 					<Lottie 
-						source={require('../../assets/animations/scanner.json')} 
+						source={require('../../../assets/animations/scanner.json')} 
 						style={{width: 29.5, height: 29.5}} 
 						autoPlay={true}
 						duration={3000}

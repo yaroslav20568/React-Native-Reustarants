@@ -22,9 +22,9 @@ export { default as CartModalList } from './RestaurantDetail/CartModalList/CartM
 
 export { default as OrderList } from './OrderCompleted/OrderList';
 
-export { default as OtpStart } from './Otp/OtpStart';
-export { default as OtpVerification } from './Otp/OtpVerification';
-export { default as OtpProfile } from './Otp/OtpProfile';
+export { default as OtpStart } from './Otp/OtpStart/OtpStart';
+export { default as OtpVerification } from './Otp/OtpVerification/OtpVerification';
+export { default as OtpProfile } from './Otp/OtpProfile/OtpProfile';
 
-export { default as MapView } from './Map/MapView';
-export { default as MapInfo } from './Map/MapInfo';
+export { default as MapView } from './Map/MapView/MapView';
+export { default as MapInfo } from './Map/MapInfo/MapInfo';

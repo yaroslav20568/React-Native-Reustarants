@@ -7,8 +7,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Lottie from 'lottie-react-native';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { OtpButton, OtpButtonText, OtpContainer, OtpFormikErrorText, OtpFormikInput, OtpFormikInputWrapper, OtpTitle, OtpUserIconWrapper } from './styles';
-import { COLORS } from '../../constants';
+import { OtpButton, OtpButtonText, OtpContainer, OtpTitle } from '../OtpStart/styles';
+import { OtpUserIconWrapper, OtpFormikInputWrapper, OtpFormikInput, OtpFormikErrorText } from './styles';
+import { COLORS } from '../../../constants';
 
 interface PropsOtpProfile {
 	fullPhoneNumber: string;
@@ -116,7 +117,7 @@ const OtpProfile = ({ fullPhoneNumber, navigateToTabs }: PropsOtpProfile) => {
 						>
 							{isLoading ? 
 								<Lottie 
-									source={require('../../assets/animations/scanner.json')} 
+									source={require('../../../assets/animations/scanner.json')} 
 									style={{width: 29.5, height: 29.5}} 
 									autoPlay={true}
 									duration={3000}

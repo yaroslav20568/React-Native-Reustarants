@@ -3,8 +3,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Mapbox from '@rnmapbox/maps';
 import { Point } from 'geojson';
 import { MAPBOX_API_KEY } from '@env';
-import { ICoordinate, IDirectionRouteGeometry } from '../../types';
-import { COLORS } from '../../constants';
+import { ICoordinate, IDirectionRouteGeometry } from '../../../types';
+import { COLORS } from '../../../constants';
 
 Mapbox.setAccessToken(MAPBOX_API_KEY);
 

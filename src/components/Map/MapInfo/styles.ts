@@ -1,9 +1,8 @@
 import styled from 'styled-components/native';
-import { FONTS, FONTS_SIZE, COLORS } from '../../constants';
+import { FONTS, FONTS_SIZE, COLORS } from '../../../constants';
 
-const MapInfoStyle = styled.View`
+const Container = styled.View`
 	position: absolute;
-	// width: 90%;
 	alignSelf: center;
 	top: 15;
 	backgroundColor: #fff;
@@ -12,18 +11,18 @@ const MapInfoStyle = styled.View`
 	borderRadius: 10;
 `;
 
-const MapInfoText = styled.Text`
+const Title = styled.Text`
 	fontFamily: ${FONTS.poppinsMedium};
   fontSize: ${FONTS_SIZE.small14};
   color: ${COLORS.black};
 `;
 
-const MapInfoDistance = styled(MapInfoText)`
+const Distance = styled(Title)`
 	marginBottom: 3;
 `;
 
-const MapInfoDuration = styled(MapInfoText)`
+const Duration = styled(Title)`
 	marginBottom: 3;
 `;
 
-export { MapInfoStyle, MapInfoText, MapInfoDistance, MapInfoDuration };
+export { Container, Title, Distance, Duration };

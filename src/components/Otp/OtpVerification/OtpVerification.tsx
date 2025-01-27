@@ -4,8 +4,9 @@ import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { OtpInput, OtpInputRef } from 'react-native-otp-entry';
 import { useOtpVerify } from 'react-native-otp-verify';
 import Lottie from 'lottie-react-native';
-import { OtpButton, OtpButtonText, OtpContainer, OtpResendButton, OtpResendButtonText, OtpText, OtpTitle } from './styles';
-import { COLORS, FONTS, FONTS_SIZE } from '../../constants';
+import { OtpButton, OtpButtonText, OtpContainer, OtpText, OtpTitle } from '../OtpStart/styles';
+import { OtpResendButton, OtpResendButtonText } from './styles';
+import { COLORS, FONTS, FONTS_SIZE } from '../../../constants';
 
 interface PropsOtpVerification {
   fullPhoneNumber: string;
@@ -100,7 +101,7 @@ const OtpVerification = ({ fullPhoneNumber, signInWithPhoneNumber, confirmOtpCod
 			>
 				{isLoading ? 
 					<Lottie 
-						source={require('../../assets/animations/scanner.json')} 
+						source={require('../../../assets/animations/scanner.json')} 
 						style={{width: 29.5, height: 29.5}} 
 						autoPlay={true}
 						duration={3000}
