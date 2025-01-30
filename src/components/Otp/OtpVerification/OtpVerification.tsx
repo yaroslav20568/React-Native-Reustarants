@@ -4,8 +4,8 @@ import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { OtpInput, OtpInputRef } from 'react-native-otp-entry';
 import { useOtpVerify } from 'react-native-otp-verify';
 import Lottie from 'lottie-react-native';
-import { OtpButton, OtpButtonText, OtpContainer, OtpText, OtpTitle } from '../OtpStart/styles';
-import { OtpResendButton, OtpResendButtonText } from './styles';
+import { Button, ButtonText, Container, Text, Title } from '../OtpStart/styles';
+import { ResendButton, ResendButtonText } from './styles';
 import { COLORS, FONTS, FONTS_SIZE } from '../../../constants';
 
 interface PropsOtpVerification {
@@ -30,12 +30,12 @@ const OtpVerification = ({ fullPhoneNumber, signInWithPhoneNumber, confirmOtpCod
 	}, [otp]);
 
 	return (
-		<OtpContainer>
-			<OtpTitle 
+		<Container>
+			<Title 
 				entering={FadeInUp.duration(1000)}
 			>
 				Phone verification
-			</OtpTitle>
+			</Title>
 			<Animated.View
 				entering={FadeInUp.delay(300).duration(1000)}
 			>
@@ -45,11 +45,11 @@ const OtpVerification = ({ fullPhoneNumber, signInWithPhoneNumber, confirmOtpCod
 					color={COLORS.lightBlue} 
 				/>
 			</Animated.View>
-			<OtpText
+			<Text
 				entering={FadeInUp.delay(600).duration(1000)}
 			>
 				Please enter 6-digit code send to you
-			</OtpText>
+			</Text>
 			<Animated.View
 				entering={FadeInDown.delay(900).duration(1000)}
 			>
@@ -85,15 +85,15 @@ const OtpVerification = ({ fullPhoneNumber, signInWithPhoneNumber, confirmOtpCod
 					}}
 				/>
 			</Animated.View>
-			<OtpResendButton
+			<ResendButton
 				activeOpacity={.7}
 				disabled={!!otp}
 				entering={FadeInDown.delay(1200).duration(1000)}
 				onPress={() => signInWithPhoneNumber(fullPhoneNumber)}
 			>
-				<OtpResendButtonText>Resend OTP</OtpResendButtonText>
-			</OtpResendButton>
-			<OtpButton
+				<ResendButtonText>Resend OTP</ResendButtonText>
+			</ResendButton>
+			<Button
 				activeOpacity={.7}
 				disabled={!otp}
 				entering={FadeInDown.delay(1500).duration(1000)}
@@ -106,9 +106,9 @@ const OtpVerification = ({ fullPhoneNumber, signInWithPhoneNumber, confirmOtpCod
 						autoPlay={true}
 						duration={3000}
 					/> : 
-				<OtpButtonText>Verify now</OtpButtonText>}
-			</OtpButton>
-		</OtpContainer>
+				<ButtonText>Verify now</ButtonText>}
+			</Button>
+		</Container>
 	)
 }
 

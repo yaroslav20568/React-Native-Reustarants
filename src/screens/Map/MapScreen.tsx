@@ -8,6 +8,7 @@ import { ICoordinate, IDirectionRouteParams, IOrder } from '../../types';
 import { useLazyGetDirectionRouteQuery } from '../../redux/RTKQuery/directionRouteApi';
 import { CartModalButton, MapView, MapInfo } from '../../components/importComponents';
 import { CartModalButtonWrapper } from '../../components/RestaurantDetail/CartModalButton/styles';
+import { ScreenContainer } from '../styles';
 
 interface PropsMapScreen extends NativeStackScreenProps<RootStackParamList, 'Map'> {}
 
@@ -65,7 +66,7 @@ const MapScreen = ({ route }: PropsMapScreen) => {
 	}, [directionRouteParams]);
 
   return (
-    <View style={{flex: 1}}>
+    <ScreenContainer>
 			<MapView 
 				restaurantCoords={restaurantCoords}
 				userCoords={userCoords}
@@ -84,7 +85,7 @@ const MapScreen = ({ route }: PropsMapScreen) => {
 						onCallback={updateOrder} 
 					/>
 				</CartModalButtonWrapper>}
-		</View>
+		</ScreenContainer>
   );
 };
 

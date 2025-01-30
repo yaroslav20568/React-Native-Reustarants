@@ -5,14 +5,14 @@ import { COLORS, FONTS, FONTS_SIZE } from '../../../constants';
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
-const OtpContainer = styled.View`
+const Container = styled.View`
 	flex: 1;
 	alignItems: center;
 	justifyContent: center;
 	marginVertical: 30;
 `;
 
-const OtpTitle = styled(Animated.Text)`
+const Title = styled(Animated.Text)`
 	fontFamily: ${FONTS.poppinsSemiBold};
 	fontSize: ${FONTS_SIZE.large24};
 	color: ${COLORS.black};
@@ -20,7 +20,7 @@ const OtpTitle = styled(Animated.Text)`
 	textTransform: capitalize;
 `;
 
-const OtpText = styled(Animated.Text)`
+const Text = styled(Animated.Text)`
 	fontFamily: ${FONTS.poppinsRegular};
 	fontSize: ${FONTS_SIZE.medium16};
 	color: ${COLORS.black};
@@ -28,7 +28,7 @@ const OtpText = styled(Animated.Text)`
 	marginBottom: 15;
 `;
 
-const OtpButton = styled(AnimatedTouchable)`
+const Button = styled(AnimatedTouchable)`
 	width: 70%;
 	backgroundColor: ${COLORS.lightBlue};
 	paddingVertical: 7;
@@ -38,7 +38,7 @@ const OtpButton = styled(AnimatedTouchable)`
 	alignItems: center;
 `;
 
-const OtpButtonText = styled.Text`
+const ButtonText = styled.Text`
 	fontFamily: ${FONTS.poppinsMedium};
 	fontSize: ${FONTS_SIZE.medium17};
 	color: ${COLORS.white};
@@ -125,4 +125,4 @@ const CountryName = styled.Text`
 	marginLeft: 5;
 `;
 
-export { OtpContainer, OtpTitle, OtpText, OtpButton, OtpButtonText, PhoneInputWrapper, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, CurrentCountryCode, PhoneInput, CountriesModalInner, CountriesModalHeader, CountriesModalHeaderText, CountryButton, CountryName };
+export { Container, Title, Text, Button, ButtonText, PhoneInputWrapper, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, CurrentCountryCode, PhoneInput, CountriesModalInner, CountriesModalHeader, CountriesModalHeaderText, CountryButton, CountryName };

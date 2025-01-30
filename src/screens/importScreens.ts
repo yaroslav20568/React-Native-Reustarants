@@ -6,3 +6,4 @@ export { default as RestaurantDetail } from './RestaurantDetail/RestaurantDetail
 export { default as OrderCompleted } from './OrderCompleted/OrderCompletedScreen';
 export { default as OtpScreen } from './Otp/OtpScreen';
 export { default as MapScreen } from './Map/MapScreen';
+export { default as LoadingScreen } from './Loading/LoadingScreen';

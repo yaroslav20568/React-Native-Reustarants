@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
-const ScreenContainer = styled.ScrollView`
-  paddingHorizontal: 15;
+const ScreenContainer = styled.View`
+  flex: 1;
 `;
 
 export { ScreenContainer };

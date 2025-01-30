@@ -6,7 +6,7 @@ import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import Lottie from 'lottie-react-native';
 import { COLORS } from '../../../constants';
-import { CountriesModalHeader, CountriesModalHeaderText, CountriesModalInner, CountryButton, CountryName, CurrentCountryCode, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, OtpButton, OtpButtonText, OtpContainer, OtpText, OtpTitle, PhoneInput, PhoneInputWrapper } from './styles';
+import { CountriesModalHeader, CountriesModalHeaderText, CountriesModalInner, CountryButton, CountryName, CurrentCountryCode, CurrentCountryCodeButton, CurrentCountryCodeWrapper, CurrentCountryFlag, Button, ButtonText, Container, Text, Title, PhoneInput, PhoneInputWrapper } from './styles';
 import { ICountry } from '../../../types';
 
 interface PropsOtpStart {
@@ -46,12 +46,12 @@ const OtpStart = ({ countries, signInWithPhoneNumber, phoneNumberConfirm, setAct
 	}, []);
 
 	return (
-		<OtpContainer>
-			<OtpTitle 
+		<Container>
+			<Title 
 				entering={FadeInUp.duration(1000)}
 			>
 				Use your account to get started
-			</OtpTitle>
+			</Title>
 			<Animated.View
 				entering={FadeInUp.delay(300).duration(1000)}
 			>
@@ -61,11 +61,11 @@ const OtpStart = ({ countries, signInWithPhoneNumber, phoneNumberConfirm, setAct
 					color={COLORS.lightBlue} 
 				/>
 			</Animated.View>
-			<OtpText
+			<Text
 				entering={FadeInUp.delay(600).duration(1000)}
 			>
 				Enter you mobile number
-			</OtpText>
+			</Text>
 			<PhoneInputWrapper
 				entering={FadeInDown.delay(900).duration(1000)}
 			>
@@ -120,12 +120,12 @@ const OtpStart = ({ countries, signInWithPhoneNumber, phoneNumberConfirm, setAct
 					/>
 				</CountriesModalInner>
 			</Modal>
-			<OtpText
+			<Text
 				entering={FadeInDown.delay(1200).duration(1000)}
 			>
 				You'll receive on 6 digit code on this number
-			</OtpText>
-			<OtpButton
+			</Text>
+			<Button
 				activeOpacity={.7}
 				disabled={phoneNumber.length < 8 || isLoading ? true : false}
 				entering={FadeInDown.delay(1500).duration(1000)}
@@ -138,9 +138,9 @@ const OtpStart = ({ countries, signInWithPhoneNumber, phoneNumberConfirm, setAct
 						autoPlay={true}
 						duration={3000}
 					/> : 
-					<OtpButtonText>Next</OtpButtonText>}
-			</OtpButton>
-		</OtpContainer>
+					<ButtonText>Next</ButtonText>}
+			</Button>
+		</Container>
 	)
 }
 

@@ -3,7 +3,7 @@ import { FlatList } from 'react-native';
 import { RestaurantItem, RestaurantsLoader } from '../../importComponents';
 import { IRestaurant } from '../../../types';
 import { Container, EmptyText } from './styles';
-import { FlatListSeparator } from '../../../screens/styles';
+import { FlatListSeparator } from '../../styles';
 
 interface PropsRestaurantsList {
 	restaurants: Array<IRestaurant> | undefined;

@@ -2,7 +2,7 @@ import React from 'react';
 import { CategoryItem } from '../../importComponents';
 import { ICategory } from '../../../types';
 import { Container } from './styles';
-import { FlatListSeparator } from '../../../screens/styles';
+import { FlatListSeparator } from '../../styles';
 
 interface PropsCategories {
   shippingTypeItems: Array<ICategory>;

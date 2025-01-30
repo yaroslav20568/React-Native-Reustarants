@@ -7,6 +7,7 @@ import { ScreenContainer } from '../styles';
 import { OtpProfile, OtpStart, OtpVerification } from '../../components/importComponents';
 import { useGetCountriesQuery } from '../../redux/RTKQuery/countriesApi';
 import { RootStackParamList } from '../../navigation/Stacks';
+import { IUser } from '../../types';
 
 interface PropsOtp extends NativeStackScreenProps<RootStackParamList, 'Otp'> {}
 
@@ -44,7 +45,7 @@ const OtpScreen = ({ navigation }: PropsOtp) => {
     setIsLoading(true);
 		try {
       await phoneNumberConfirm?.confirm(otpCode);
-			const user = (await firestore().collection('users').where('phone', '==', fullPhoneNumber).get())
+			const user = (await firestore().collection<IUser>('users').where('phone', '==', fullPhoneNumber).get())
 				.docs.map(doc => doc.data())[0];
 				
 			setIsLoading(false);

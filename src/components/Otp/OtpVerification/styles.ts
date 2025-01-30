@@ -5,15 +5,15 @@ import { COLORS, FONTS, FONTS_SIZE } from '../../../constants';
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
-const OtpResendButton = styled(AnimatedTouchable)`
+const ResendButton = styled(AnimatedTouchable)`
 	marginBottom: 15;
 `;
 
-const OtpResendButtonText = styled.Text`
+const ResendButtonText = styled.Text`
 	fontFamily: ${FONTS.poppinsMedium};
 	fontSize: ${FONTS_SIZE.medium18};
 	color: ${COLORS.black};
 	textDecorationLine: underline;
 `;
 
-export { OtpResendButton, OtpResendButtonText };
+export { ResendButton, ResendButtonText };

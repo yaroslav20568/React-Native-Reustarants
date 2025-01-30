@@ -5,7 +5,7 @@ import Lottie from 'lottie-react-native';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CartModalButton, CartModalList } from '../../importComponents';
-import { ICoordinate, IFood, IUser, TNavigation, IOrderClient, IOrderPrice, IOrderTime, IOrderStatus } from '../../../types';
+import { ICoordinate, IFood, IUser, TNavigation, IOrderClient, IOrderPrice, IOrderTime, IOrderStatus, IOrder } from '../../../types';
 import { OutsideContainer, RestaurantName, Container, SubtotalText, SubtotalWrapper } from './styles';
 import { ViewCartWrapper } from '../CartModalButton/styles';
 
@@ -50,10 +50,10 @@ const CartModal = ({ restaurantName, onCloseModal, cartItems, totalPrice, shippi
 		}
 
 		setTimeout(() => {
-			firestore().collection('orders').add({
+			firestore().collection<IOrder>('orders').add({
 				restaurant: {
-					name: restaurantName,
-					address: restaurantAddress
+					name: restaurantName as string,
+					address: restaurantAddress as string
 				},
 				items: cartItems,
 				shippingMethod,

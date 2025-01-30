@@ -7,9 +7,10 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Lottie from 'lottie-react-native';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { OtpButton, OtpButtonText, OtpContainer, OtpTitle } from '../OtpStart/styles';
-import { OtpUserIconWrapper, OtpFormikInputWrapper, OtpFormikInput, OtpFormikErrorText } from './styles';
+import { Button, ButtonText, Container, Title } from '../OtpStart/styles';
+import { UserIconWrapper, FormikInputWrapper, FormikInput, FormikErrorText } from './styles';
 import { COLORS } from '../../../constants';
+import { IUser } from '../../../types';
 
 interface PropsOtpProfile {
 	fullPhoneNumber: string;
@@ -35,13 +36,13 @@ const OtpProfile = ({ fullPhoneNumber, navigateToTabs }: PropsOtpProfile) => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	return (
-		<OtpContainer>
-			<OtpTitle 
+		<Container>
+			<Title 
 				entering={FadeInUp.duration(1000)}
 			>
 				Please complete your profile
-			</OtpTitle>
-			<OtpUserIconWrapper
+			</Title>
+			<UserIconWrapper
 				entering={FadeInUp.delay(300).duration(1000)}
 			>
 				<FontAwesome 
@@ -49,13 +50,13 @@ const OtpProfile = ({ fullPhoneNumber, navigateToTabs }: PropsOtpProfile) => {
 					size={170} 
 					color={COLORS.lightBlue} 
 				/>
-			</OtpUserIconWrapper>
+			</UserIconWrapper>
 			<Formik
 				initialValues={formValues}
 				onSubmit={(values, {resetForm}) => {
 					setIsLoading(true);
 
-					firestore().collection('users').add(values)
+					firestore().collection<IUser>('users').add(values)
 						.then(async () => {
 							setIsLoading(false);
 							resetForm();
@@ -67,10 +68,10 @@ const OtpProfile = ({ fullPhoneNumber, navigateToTabs }: PropsOtpProfile) => {
 			>
 				{({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
 					<>
-						<OtpFormikInputWrapper
+						<FormikInputWrapper
 							entering={FadeInDown.delay(600).duration(1000)}
 						>
-							<OtpFormikInput 
+							<FormikInput 
 								placeholder='First name'
 								placeholderTextColor={COLORS.darkGray}
 								value={values.firstName}
@@ -78,13 +79,13 @@ const OtpProfile = ({ fullPhoneNumber, navigateToTabs }: PropsOtpProfile) => {
 								onBlur={handleBlur('firstName')}
 							/>
 							{errors.firstName && touched.firstName ? 
-								<OtpFormikErrorText>{errors.firstName}</OtpFormikErrorText> : 
+								<FormikErrorText>{errors.firstName}</FormikErrorText> : 
 								null}
-						</OtpFormikInputWrapper>
-						<OtpFormikInputWrapper
+						</FormikInputWrapper>
+						<FormikInputWrapper
 							entering={FadeInDown.delay(900).duration(1000)}
 						>
-							<OtpFormikInput 
+							<FormikInput 
 								placeholder='Last name'
 								placeholderTextColor={COLORS.darkGray}
 								value={values.lastName}
@@ -92,13 +93,13 @@ const OtpProfile = ({ fullPhoneNumber, navigateToTabs }: PropsOtpProfile) => {
 								onBlur={handleBlur('lastName')}
 							/>
 							{errors.lastName && touched.lastName ? 
-								<OtpFormikErrorText>{errors.lastName}</OtpFormikErrorText> : 
+								<FormikErrorText>{errors.lastName}</FormikErrorText> : 
 								null}
-						</OtpFormikInputWrapper>
-						<OtpFormikInputWrapper
+						</FormikInputWrapper>
+						<FormikInputWrapper
 							entering={FadeInDown.delay(1200).duration(1000)}
 						>
-							<OtpFormikInput 
+							<FormikInput 
 								placeholder='Email'
 								placeholderTextColor={COLORS.darkGray}
 								value={values.email}
@@ -106,10 +107,10 @@ const OtpProfile = ({ fullPhoneNumber, navigateToTabs }: PropsOtpProfile) => {
 								onBlur={handleBlur('email')}
 							/>
 							{errors.email && touched.email ? 
-								<OtpFormikErrorText>{errors.email}</OtpFormikErrorText> : 
+								<FormikErrorText>{errors.email}</FormikErrorText> : 
 								null}
-						</OtpFormikInputWrapper>
-						<OtpButton
+						</FormikInputWrapper>
+						<Button
 							activeOpacity={.7}
 							disabled={isLoading}
 							entering={FadeInDown.delay(1500).duration(1000)}
@@ -122,12 +123,12 @@ const OtpProfile = ({ fullPhoneNumber, navigateToTabs }: PropsOtpProfile) => {
 									autoPlay={true}
 									duration={3000}
 								/> : 
-								<OtpButtonText>Submit</OtpButtonText>}
-						</OtpButton>
+								<ButtonText>Submit</ButtonText>}
+						</Button>
 					</>
 				)}
 			</Formik>
-		</OtpContainer>
+		</Container>
 	)
 }
 
