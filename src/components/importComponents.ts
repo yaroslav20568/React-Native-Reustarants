@@ -28,3 +28,5 @@ export { default as OtpProfile } from './Otp/OtpProfile/OtpProfile';
 
 export { default as MapView } from './Map/MapView/MapView';
 export { default as MapInfo } from './Map/MapInfo/MapInfo';
+
+export { default as PaymentForm } from './Payment/PaymentForm';
