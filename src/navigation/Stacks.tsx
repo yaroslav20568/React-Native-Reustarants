@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
-import { RestaurantDetailScreen, OrderCompletedScreen, OtpScreen, MapScreen, LoadingScreen, PaymentScreen } from '../screens/importScreens';
+import { RestaurantDetailScreen, OrderCheckoutScreen, OtpScreen, MapScreen, LoadingScreen } from '../screens/importScreens';
 import Tabs from './Tabs';
 import { ICoordinate, IFood, IUser } from '../types';
 
@@ -14,16 +14,16 @@ export type RootStackParamList = {
 		id: string;
 		url: string;
 	};
-	OrderCompleted: {
-		restaurantName: string | undefined;
-		totalPrice: number;
-		cartItems: Array<IFood>;
-	};
 	Map: {
 		orderId: string;
 		restaurantCoords: ICoordinate;
 	};
-	Payment: undefined;
+	OrderCheckout: {
+		restaurantName: string | undefined;
+		totalPrice: number;
+		cartItems: Array<IFood>;
+		orderId: string;
+	};
 };
 
 const Stacks = () => {
@@ -54,11 +54,10 @@ const Stacks = () => {
 				<>
 					{!user ? 
 						<Stack.Screen name="Otp" component={OtpScreen} /> :
-						// <Stack.Screen name="Tabs" component={Tabs} />}
-						<Stack.Screen name="Payment" component={PaymentScreen} />}
+						<Stack.Screen name="Tabs" component={Tabs} />}
 					<Stack.Screen name="RestaurantDetail" component={RestaurantDetailScreen} />
-					<Stack.Screen name="OrderCompleted" component={OrderCompletedScreen} />
 					<Stack.Screen name="Map" component={MapScreen} />
+					<Stack.Screen name="OrderCheckout" component={OrderCheckoutScreen} />
 				</>}
 		</Stack.Navigator>
   )

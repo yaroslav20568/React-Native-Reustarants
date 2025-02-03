@@ -36,9 +36,8 @@ const OrderList = ({ cartItems }: IProps) => {
 								fontFamily={FONTS.poppinsSemiBold}
 								fontSize={FONTS_SIZE.medium18}
 							>
-								{item.title}
+								{item.name}
 							</Title>
-							<Title>{item.description}</Title>
 							<Title>{item.price}</Title>
 						</TitlesContainer>
 						<ImageContainer>

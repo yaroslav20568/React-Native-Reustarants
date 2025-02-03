@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Mapbox from '@rnmapbox/maps';
 import { Point } from 'geojson';
 import { MAPBOX_API_KEY } from '@env';
 import { ICoordinate, IDirectionRouteGeometry } from '../../../types';
 import { COLORS } from '../../../constants';
+import { CameraRef } from '@rnmapbox/maps/lib/typescript/src/components/Camera';
 
 Mapbox.setAccessToken(MAPBOX_API_KEY);
 
@@ -16,6 +17,14 @@ interface PropsMapView {
 }
 
 const MapView = ({ restaurantCoords, userCoords, directionRoute, onSetUserCoords }: PropsMapView) => {
+	const ref = useRef<CameraRef>(null);
+
+	useEffect(() => {
+		if(directionRoute?.coordinates.length) {
+			ref.current?.fitBounds(directionRoute.coordinates[0], directionRoute.coordinates[directionRoute.coordinates.length - 1], [100, 100], 1000);
+		}
+	}, [directionRoute]);
+
 	return (
 		<Mapbox.MapView 
 			logoEnabled={false}
@@ -31,6 +40,7 @@ const MapView = ({ restaurantCoords, userCoords, directionRoute, onSetUserCoords
 			<Mapbox.Camera 
 				zoomLevel={17}
 				centerCoordinate={[restaurantCoords.longitude, restaurantCoords.latitude]}
+				ref={ref}
 			/>
 			<Mapbox.PointAnnotation 
 				id='restaurant' 

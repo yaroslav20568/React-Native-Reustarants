@@ -1,18 +1,17 @@
 import React, { useCallback, useState } from 'react';
-import { View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import firestore from '@react-native-firebase/firestore';
 import { RootStackParamList } from '../../navigation/Stacks';
 import { Point } from 'geojson';
-import { ICoordinate, IDirectionRouteParams, IOrder } from '../../types';
+import { ICoordinate, IDirectionRouteParams, IOrder, TNavigation } from '../../types';
 import { useLazyGetDirectionRouteQuery } from '../../redux/RTKQuery/directionRouteApi';
 import { CartModalButton, MapView, MapInfo } from '../../components/importComponents';
 import { CartModalButtonWrapper } from '../../components/RestaurantDetail/CartModalButton/styles';
-import { ScreenContainer } from '../styles';
+import { ScreenContainer } from './styles';
 
 interface PropsMapScreen extends NativeStackScreenProps<RootStackParamList, 'Map'> {}
 
-const MapScreen = ({ route }: PropsMapScreen) => {
+const MapScreen = ({ route, navigation }: PropsMapScreen) => {
 	const { orderId, restaurantCoords } = route.params;
 	const [userCoords, setUserCoords] = useState<ICoordinate | null>(null);
 
@@ -46,7 +45,6 @@ const MapScreen = ({ route }: PropsMapScreen) => {
 	const updateOrder = useCallback(async (): Promise<void> => {
 		const order = (await firestore().collection<IOrder>('orders').doc(orderId).get()).data() as IOrder;
 		const totalPrice = +(order.price.items + directionRouteParams.price).toFixed(2);
-		console.log(totalPrice);
 
 		firestore().collection<IOrder>('orders').doc(orderId).update({
 			...order,
@@ -62,7 +60,14 @@ const MapScreen = ({ route }: PropsMapScreen) => {
 				...order?.time,
 				delivery: directionRouteParams.duration
 			}
-		})
+		});
+
+		navigation.navigate('OrderCheckout', {
+			restaurantName: order.restaurant.name,
+			totalPrice: totalPrice,
+			cartItems: order.items,
+			orderId
+		});
 	}, [directionRouteParams]);
 
   return (

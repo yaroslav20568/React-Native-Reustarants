@@ -14,6 +14,7 @@ import { CartModalWrapper } from '../../components/RestaurantDetail/CartModal/st
 interface PropsRestaurantDetailScreen extends NativeStackScreenProps<RootStackParamList, 'RestaurantDetail'> {}
 
 const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
+	const { id, url } = route.params;
 	const [menuItems, setMenuItems] = useState<Array<IFood> | undefined>(undefined);
 	const [menuIsLoading, setMenuIsLoading] = useState<boolean>(false);
 	const { addToCart, clearCart } = useActions();
@@ -23,7 +24,7 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 		shippingMethod: state.restaurantsFilter.shippingMethod
 	}));
 
-	const { restaurant, restaurantIsLoading } = useGetRestaurantQuery(route.params.id, {
+	const { restaurant, restaurantIsLoading } = useGetRestaurantQuery(id, {
 		selectFromResult: ({ data, isLoading }) => ({ 
 			restaurant: data,
 			restaurantIsLoading: isLoading
@@ -32,12 +33,12 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 
 	useEffect(() => {
 		setMenuIsLoading(true);
-		restaurantMenuParser(route.params.url)
+		restaurantMenuParser(url)
 			.then((data) => {
 				setMenuItems(data);
 				setMenuIsLoading(false);
 			})
-	}, [route.params.url]);
+	}, [url]);
 
 	const onAddToCart = useCallback((obj: IOnAddToCartPayload): void => {
 		addToCart(obj);
@@ -63,7 +64,7 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 	}, []);
 
 	return (
-		<View>
+		<>
 			<ScrollView>
 				{!restaurantIsLoading ? 
 					<RestaurantInfo 
@@ -108,7 +109,7 @@ const RestaurantDetailScreen = ({ route }: PropsRestaurantDetailScreen) => {
 						onCallback={onOpenModal} 
 					/>
 				</CartModalButtonWrapper>}
-		</View>
+		</>
   )
 }
 
