@@ -4,7 +4,7 @@ import { COLORS, FONTS, FONTS_SIZE } from '../../../constants';
 const CartModalButtonWrapper = styled.View`
 	position: absolute;
 	z-index: 10;
-	bottom: 20;
+	bottom: 5;
 	width: 70%;
 	alignSelf: center;
 `;

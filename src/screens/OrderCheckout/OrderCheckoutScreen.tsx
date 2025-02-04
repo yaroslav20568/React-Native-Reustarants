@@ -43,7 +43,7 @@ const OrderCheckoutScreen = ({ route }: PropsOrderCheckoutScreen) => {
 		const {
 			paymentIntent,
 			ephemeralKey,
-			customer,
+			customer
 		} = await fetchPaymentSheetParams();
 
 		const { error } = await initPaymentSheet({
@@ -53,7 +53,7 @@ const OrderCheckoutScreen = ({ route }: PropsOrderCheckoutScreen) => {
 			paymentIntentClientSecret: paymentIntent,
 			allowsDelayedPaymentMethods: true,
 			defaultBillingDetails: {
-				name: 'Jane Doe',
+				name: 'Jane Doe'
 			}
 		});
 

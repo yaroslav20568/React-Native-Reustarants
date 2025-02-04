@@ -4,7 +4,7 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { COLORS } from '../../../constants';
 import { Line } from '../../importComponents';
 import { IFood, IOnAddToCartPayload } from '../../../types';
-import { MenuItemCheckboxWrapper, MenuItemImage, MenuItemImageWrapper, MenuItemName, MenuItemPrice, MenuItem, MenuItemTextsWrapper } from './styles';
+import { MenuItemImage, MenuItemImageWrapper, MenuItemName, MenuItemPrice, MenuItem, MenuItemTextsWrapper, MenuItemLeftWrapper } from './styles';
 
 interface IProps extends IFood {
 	onAddToCart: (obj: IOnAddToCartPayload) => void;
@@ -29,7 +29,7 @@ const RestaurantMenuItem = ({ name, price, image, onAddToCart, isItemInCart, isO
   return (
 		<View>
 			<MenuItem>
-				<MenuItemCheckboxWrapper>
+				<MenuItemLeftWrapper>
 					<BouncyCheckbox
 						size={25}
 						fillColor='green'
@@ -40,11 +40,11 @@ const RestaurantMenuItem = ({ name, price, image, onAddToCart, isItemInCart, isO
 						onPress={handleAddToCart}
 						disabled={!isOpenNow}
 					/>
-				</MenuItemCheckboxWrapper>
-				<MenuItemTextsWrapper>
-					<MenuItemName>{name}</MenuItemName>
-					<MenuItemPrice>{price}</MenuItemPrice>
-				</MenuItemTextsWrapper>
+					<MenuItemTextsWrapper>
+						<MenuItemName>{name}</MenuItemName>
+						<MenuItemPrice>{price}</MenuItemPrice>
+					</MenuItemTextsWrapper>
+				</MenuItemLeftWrapper>
 				<MenuItemImageWrapper>
 					<MenuItemImage 
 						source={{uri: image}}
