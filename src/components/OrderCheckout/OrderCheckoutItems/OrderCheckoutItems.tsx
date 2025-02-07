@@ -9,7 +9,7 @@ interface IProps {
 	cartItems: Array<IFood>,
 }
 
-const OrderList = ({ cartItems }: IProps) => {
+const OrderCheckoutItems = ({ cartItems }: IProps) => {
 	return (
 		<FlatList 
 			data={cartItems}
@@ -37,4 +37,4 @@ const OrderList = ({ cartItems }: IProps) => {
 	)
 }
 
-export default OrderList;
+export default OrderCheckoutItems;

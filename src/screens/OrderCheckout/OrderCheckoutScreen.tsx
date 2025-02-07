@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert } from 'react-native';
+import { Alert, BackHandler } from 'react-native';
 import Lottie from 'lottie-react-native';
 import { useStripe } from '@stripe/stripe-react-native';
 import firestore from '@react-native-firebase/firestore';
@@ -7,7 +7,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ScreenContainer } from '../styles';
 import Title from '../../components/UI/Title';
 import { FONTS, FONTS_SIZE } from '../../constants';
-import { CartModalButton, OrderList } from '../../components/importComponents';
+import { CartModalButton, OrderCheckoutItems } from '../../components/importComponents';
 import { SERVER_URL } from '@env';
 import { IOrder } from '../../types';
 import { RootStackParamList } from '../../navigation/Stacks';
@@ -15,7 +15,7 @@ import { CartModalButtonWrapper } from '../../components/RestaurantDetail/CartMo
 
 interface PropsOrderCheckoutScreen extends NativeStackScreenProps<RootStackParamList, 'OrderCheckout'> {}
 
-const OrderCheckoutScreen = ({ route }: PropsOrderCheckoutScreen) => {
+const OrderCheckoutScreen = ({ route, navigation }: PropsOrderCheckoutScreen) => {
 	const { restaurantName, totalPrice, cartItems, orderId } = route.params;
 
 	const { initPaymentSheet, presentPaymentSheet } = useStripe();
@@ -79,11 +79,21 @@ const OrderCheckoutScreen = ({ route }: PropsOrderCheckoutScreen) => {
 		}
 	};
 
+	const afterPayBackHandler = () => {
+		navigation.navigate('Tabs');
+		return true;
+	}
+
 	useEffect(() => {
-		if(!isPaid) {
-			initializePaymentSheet();
-		}
+		!isPaid && initializePaymentSheet();
 	}, []);
+
+	useEffect(() => {
+		isPaid && BackHandler.addEventListener('hardwareBackPress', afterPayBackHandler);
+    return () => {
+      isPaid && BackHandler.removeEventListener('hardwareBackPress', afterPayBackHandler);
+    };
+	}, [isPaid]);
 
 	return (
 		<>
@@ -103,7 +113,7 @@ const OrderCheckoutScreen = ({ route }: PropsOrderCheckoutScreen) => {
 							{`Your order at ${restaurantName} has been placed for $${totalPrice} 🚀`}
 						</Title>
 					</>}
-				<OrderList 
+				<OrderCheckoutItems 
 					cartItems={cartItems} 
 				/>
 				{isPaid && 
